@@ -10,6 +10,9 @@
         <dependent-module archiveName="Global-1.0.0-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/Global/Global">
             <dependency-type>uses</dependency-type>
         </dependent-module>
+        <dependent-module archiveName="Login-1.0.0-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/Login/Login">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
         <property name="context-root" value="PuertoRico"/>
         <property name="java-output-path" value="/PuertoRico/target/classes"/>
     </wb-module>

@@ -16,9 +16,6 @@
         <dependent-module archiveName="TrxYPagos-1.0.0-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/TrxYPagos/TrxYPagos">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="AccountSelection-1.0.0-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/AccountSelection/AccountSelection">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
         <property name="context-root" value="PuertoRico"/>
         <property name="java-output-path" value="/PuertoRico/target/classes"/>
     </wb-module>

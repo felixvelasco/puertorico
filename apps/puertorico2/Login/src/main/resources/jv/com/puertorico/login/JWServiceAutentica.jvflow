@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="ASCII"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:al="http://eclipse.org/graphiti/mm/algorithms" xmlns:operations="http://jvoice.vectorsf.com/operations/1.0" xmlns:pi="http://eclipse.org/graphiti/mm/pictograms">
-  <pi:Diagram visible="true" gridUnit="10" diagramTypeId="jVoiceDiagram" name="JWServiceAutentica" snapToGrid="true" pictogramLinks="/0/@link /0/@children.0/@link /0/@children.1/@link /0/@connections.0/@link /0/@children.2/@link /0/@children.3/@link /0/@connections.1/@connectionDecorators.1/@link /0/@connections.1/@link /0/@children.4/@link /0/@connections.2/@connectionDecorators.1/@link /0/@connections.2/@link /0/@connections.3/@connectionDecorators.1/@link /0/@connections.3/@link /0/@children.5/@link /0/@connections.4/@connectionDecorators.1/@link /0/@connections.4/@link /0/@children.6/@link /0/@connections.5/@connectionDecorators.1/@link /0/@connections.5/@link /0/@children.7/@link /0/@connections.6/@connectionDecorators.1/@link /0/@connections.6/@link /0/@children.8/@link /0/@connections.7/@link /0/@children.9/@link /0/@connections.8/@link" version="0.10.0">
+  <pi:Diagram visible="true" gridUnit="10" diagramTypeId="jVoiceDiagram" name="JWServiceAutentica" snapToGrid="true" pictogramLinks="/0/@link /0/@children.0/@link /0/@children.1/@link /0/@connections.0/@link /0/@children.2/@link /0/@children.3/@link /0/@connections.1/@connectionDecorators.1/@link /0/@connections.1/@link /0/@children.4/@link /0/@connections.2/@connectionDecorators.1/@link /0/@connections.2/@link /0/@connections.3/@connectionDecorators.1/@link /0/@connections.3/@link /0/@children.5/@link /0/@connections.4/@connectionDecorators.1/@link /0/@connections.4/@link /0/@children.6/@link /0/@connections.5/@connectionDecorators.1/@link /0/@connections.5/@link /0/@children.7/@link /0/@connections.6/@connectionDecorators.1/@link /0/@connections.6/@link /0/@children.8/@link /0/@connections.7/@link /0/@children.9/@link /0/@connections.8/@link /0/@connections.9/@link /0/@connections.10/@link" version="0.10.0">
     <graphicsAlgorithm xsi:type="al:Rectangle" background="/0/@colors.1" foreground="/0/@colors.0" lineWidth="1" transparency="0.0" width="1000" height="1000"/>
     <link businessObjects="_G4s2RI8KEeOSC-k0rNC4Cg"/>
     <children xsi:type="pi:ContainerShape" visible="true" active="true">
@@ -106,11 +106,11 @@
       </graphicsAlgorithm>
       <link businessObjects="_foZqMI8KEeOSC-k0rNC4Cg"/>
       <anchors xsi:type="pi:ChopboxAnchor" incomingConnections="/0/@connections.1"/>
-      <anchors xsi:type="pi:FixPointAnchor" visible="true" active="true">
+      <anchors xsi:type="pi:FixPointAnchor" visible="true" active="true" outgoingConnections="/0/@connections.9">
         <properties key="TOOLTIP" value="ok"/>
         <properties key="EVENT_NAME" value="ok"/>
         <properties key="org.eclipse.graphiti.pattern.id.id" value="eventImage"/>
-        <graphicsAlgorithm xsi:type="al:Image" lineWidth="1" transparency="0.0" width="24" height="24" id="ok_off" stretchH="false" stretchV="false" proportional="false"/>
+        <graphicsAlgorithm xsi:type="al:Image" lineWidth="1" transparency="0.0" width="24" height="24" id="ok_on" stretchH="false" stretchV="false" proportional="false"/>
         <location y="32"/>
       </anchors>
     </children>
@@ -135,11 +135,11 @@
       </graphicsAlgorithm>
       <link businessObjects="_nqaY0I8KEeOSC-k0rNC4Cg"/>
       <anchors xsi:type="pi:ChopboxAnchor" incomingConnections="/0/@connections.2"/>
-      <anchors xsi:type="pi:FixPointAnchor" visible="true" active="true">
+      <anchors xsi:type="pi:FixPointAnchor" visible="true" active="true" outgoingConnections="/0/@connections.10">
         <properties key="TOOLTIP" value="ok"/>
         <properties key="EVENT_NAME" value="ok"/>
         <properties key="org.eclipse.graphiti.pattern.id.id" value="eventImage"/>
-        <graphicsAlgorithm xsi:type="al:Image" lineWidth="1" transparency="0.0" width="24" height="24" id="ok_off" stretchH="false" stretchV="false" proportional="false"/>
+        <graphicsAlgorithm xsi:type="al:Image" lineWidth="1" transparency="0.0" width="24" height="24" id="ok_on" stretchH="false" stretchV="false" proportional="false"/>
         <location y="32"/>
       </anchors>
     </children>
@@ -220,7 +220,7 @@
         </graphicsAlgorithmChildren>
       </graphicsAlgorithm>
       <link businessObjects="__KD6II8KEeOSC-k0rNC4Cg"/>
-      <anchors xsi:type="pi:ChopboxAnchor" incomingConnections="/0/@connections.6"/>
+      <anchors xsi:type="pi:ChopboxAnchor" incomingConnections="/0/@connections.6 /0/@connections.9 /0/@connections.10"/>
     </children>
     <children xsi:type="pi:ContainerShape" visible="true" active="true">
       <properties key="org.eclipse.graphiti.pattern.patternType" value="org.eclipse.graphiti.pattern.idpattern"/>
@@ -462,6 +462,40 @@
         </graphicsAlgorithm>
       </connectionDecorators>
     </connections>
+    <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="/0/@children.3/@anchors.1" end="/0/@children.7/@anchors.0">
+      <graphicsAlgorithm xsi:type="al:Polyline" foreground="/0/@colors.7" lineWidth="2" filled="false" transparency="0.0"/>
+      <link businessObjects="_qPqEgI9REeOGU9bb8XVdJA"/>
+      <connectionDecorators visible="true" locationRelative="true" location="1.0">
+        <graphicsAlgorithm xsi:type="al:Polygon" background="/0/@colors.7" foreground="/0/@colors.7" lineWidth="1" filled="true" transparency="0.0">
+          <points x="-7" y="4"/>
+          <points x="2"/>
+          <points x="-7" y="-4"/>
+          <points x="-1"/>
+          <points x="-7" y="4"/>
+          <points x="-3"/>
+          <points x="-7" y="-4"/>
+          <points x="-5"/>
+          <points x="-7" y="4"/>
+        </graphicsAlgorithm>
+      </connectionDecorators>
+    </connections>
+    <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="/0/@children.4/@anchors.1" end="/0/@children.7/@anchors.0">
+      <graphicsAlgorithm xsi:type="al:Polyline" foreground="/0/@colors.7" lineWidth="2" filled="false" transparency="0.0"/>
+      <link businessObjects="_qk24cI9REeOGU9bb8XVdJA"/>
+      <connectionDecorators visible="true" locationRelative="true" location="1.0">
+        <graphicsAlgorithm xsi:type="al:Polygon" background="/0/@colors.7" foreground="/0/@colors.7" lineWidth="1" filled="true" transparency="0.0">
+          <points x="-7" y="4"/>
+          <points x="2"/>
+          <points x="-7" y="-4"/>
+          <points x="-1"/>
+          <points x="-7" y="4"/>
+          <points x="-3"/>
+          <points x="-7" y="-4"/>
+          <points x="-5"/>
+          <points x="-7" y="4"/>
+        </graphicsAlgorithm>
+      </connectionDecorators>
+    </connections>
     <colors red="227" green="238" blue="249"/>
     <colors red="255" green="255" blue="255"/>
     <colors green="131" blue="169"/>
@@ -484,11 +518,11 @@
       <case condition="jwsAutenticaSevice.result == 1" eventName="PinIncorrecto"/>
       <case eventName="default"/>
     </states>
-    <states xsi:type="operations:PromptState" id="_foZqMI8KEeOSC-k0rNC4Cg" name="clienteNoExiste" incomingTransitions="_lAgXUI8KEeOSC-k0rNC4Cg">
+    <states xsi:type="operations:PromptState" id="_foZqMI8KEeOSC-k0rNC4Cg" name="clienteNoExiste" incomingTransitions="_lAgXUI8KEeOSC-k0rNC4Cg" outgoingTransitions="_qPqEgI9REeOGU9bb8XVdJA">
       <fireableEvents>ok</fireableEvents>
       <locution href="JWServiceAutentica.resources/clienteNoExiste.voiceDsl#/"/>
     </states>
-    <states xsi:type="operations:PromptState" id="_nqaY0I8KEeOSC-k0rNC4Cg" name="pinIncorrecto" incomingTransitions="_qt5X8I8KEeOSC-k0rNC4Cg">
+    <states xsi:type="operations:PromptState" id="_nqaY0I8KEeOSC-k0rNC4Cg" name="pinIncorrecto" incomingTransitions="_qt5X8I8KEeOSC-k0rNC4Cg" outgoingTransitions="_qk24cI9REeOGU9bb8XVdJA">
       <fireableEvents>ok</fireableEvents>
       <locution href="JWServiceAutentica.resources/pinIncorrecto.voiceDsl#/"/>
     </states>
@@ -497,7 +531,7 @@
       <case eventName="default"/>
     </states>
     <states xsi:type="operations:FinalState" id="_941i0I8KEeOSC-k0rNC4Cg" name="Final" incomingTransitions="_-xELUI8KEeOSC-k0rNC4Cg"/>
-    <states xsi:type="operations:FinalState" id="__KD6II8KEeOSC-k0rNC4Cg" name="Relogin" incomingTransitions="__34pcI8KEeOSC-k0rNC4Cg"/>
+    <states xsi:type="operations:FinalState" id="__KD6II8KEeOSC-k0rNC4Cg" name="Relogin" incomingTransitions="__34pcI8KEeOSC-k0rNC4Cg _qPqEgI9REeOGU9bb8XVdJA _qk24cI9REeOGU9bb8XVdJA"/>
     <states xsi:type="operations:CallState" id="_msGb0I8dEeOcRLZQ1ku6GQ" name="autenticacion" description="autenticacion" incomingTransitions="_G42nXo8KEeOSC-k0rNC4Cg" outgoingTransitions="_oH6SgI8dEeOcRLZQ1ku6GQ" methodName="autenticacion" bean="_YAwBsI8dEeOcRLZQ1ku6GQ">
       <fireableEvents>ok</fireableEvents>
     </states>
@@ -514,6 +548,8 @@
     <transitions id="__34pcI8KEeOSC-k0rNC4Cg" source="_0h3zcI8KEeOSC-k0rNC4Cg" target="__KD6II8KEeOSC-k0rNC4Cg" eventName="moreAttempts"/>
     <transitions id="_oH6SgI8dEeOcRLZQ1ku6GQ" source="_msGb0I8dEeOcRLZQ1ku6GQ" target="_LJ2iYI8KEeOSC-k0rNC4Cg" eventName="ok"/>
     <transitions id="_yg3qYI8dEeOcRLZQ1ku6GQ" source="_vPmG4I8dEeOcRLZQ1ku6GQ" target="_0h3zcI8KEeOSC-k0rNC4Cg" eventName="ok"/>
+    <transitions id="_qPqEgI9REeOGU9bb8XVdJA" source="_foZqMI8KEeOSC-k0rNC4Cg" target="__KD6II8KEeOSC-k0rNC4Cg" eventName="ok"/>
+    <transitions id="_qk24cI9REeOGU9bb8XVdJA" source="_nqaY0I8KEeOSC-k0rNC4Cg" target="__KD6II8KEeOSC-k0rNC4Cg" eventName="ok"/>
     <beans id="_YAwBsI8dEeOcRLZQ1ku6GQ" name="jwsAutenticaSevice" fqdn="com.isb.login.components.JwsAutenticaSevice" nameBean="jwsAutenticaSevice"/>
     <beans id="_jB-TcI8dEeOcRLZQ1ku6GQ" name="loginMain" fqdn="com.isb.login.components.LoginMain" nameBean="loginMain"/>
   </operations:Flow>
