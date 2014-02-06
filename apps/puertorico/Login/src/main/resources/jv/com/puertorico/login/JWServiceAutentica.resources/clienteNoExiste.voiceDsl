@@ -1,0 +1,14 @@
+output clienteNoExiste
+
+audios{
+	main:
+		when("loginMain.loginAttempts == 0") {
+			say src "puerto_rico-es-US-SAN-BC-IDENTIFICACION-NM-PT1" wording "El número de seguro social que especificó no es válido"
+		}
+		when("loginMain.loginAttempts == 1") {
+			say src "puerto_rico-es-US-SAN-BC-IDENTIFICACION-NM-PT2" wording "El número de seguro social que especificó no es válido"
+		}
+		when("loginMain.loginAttempts == 2") {
+			say src "puerto_rico-es-US-SAN-BC-IDENTIFICACION-NM-PT3" wording "El número de seguro social que especificó no es válido"
+		}
+}

@@ -1,0 +1,53 @@
+<flow xmlns="http://www.springframework.org/schema/webflow"	
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"	
+xsi:schemaLocation="http://www.springframework.org/schema/webflow
+http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd"
+parent="AccountSelection/errorHandler"
+start-state= "_jVoiceCheckInit" >
+
+
+
+
+<action-state id="_jVoiceCheckInit">
+	<evaluate expression="jVoiceArchData.initialized" />
+		<transition on="no" to="_jVoiceInit"/>
+		<transition to="serviceCuentasMerch"/>
+	</action-state>
+
+<view-state id="_jVoiceInit" view="_init" model="jVoiceArchData">
+	<transition to="serviceCuentasMerch" >
+		<set name="jVoiceArchData.initialized" value="true"/>
+	</transition>
+</view-state>
+<end-state id="Final" view="#{flowProcessor.getRenderer().getView()}">
+	<output name="result" value="''" />
+</end-state>
+<action-state id="serviceCuentasMerch">
+   <evaluate expression="jwsCuentasMerch.serviceCuentasMerch(pagoComercio.comercioSel.merchantId)"
+   />
+   
+
+	 <transition to="numeroCuentas"></transition>
+	
+</action-state>
+
+<action-state id="numeroCuentas">
+	<evaluate expression="jwsCuentasMerch.listaCtaComercio.size() == 1" />
+	<transition on="yes" to="setSeleccion"/>
+	<transition to="MenuSelCuentaComercio"/>
+</action-state>
+<action-state id="setSeleccion">
+   <evaluate expression="selCuentaComercio.setSeleccion(jwsCuentasMerch.listaCtaComercio[0])"
+   />
+   
+
+	 <transition to="Final"></transition>
+	
+</action-state>
+<subflow-state id="MenuSelCuentaComercio" subflow="com/puertorico/accountselection/MenuSelCuentaComercio">
+ <transition to="Final">
+ 	<set name="flowScope.result" value="currentEvent.attributes.result" />
+ </transition>
+
+</subflow-state>
+</flow> 

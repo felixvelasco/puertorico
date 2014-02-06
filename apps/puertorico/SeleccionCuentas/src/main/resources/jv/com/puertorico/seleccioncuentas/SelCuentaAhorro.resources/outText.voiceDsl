@@ -1,0 +1,6 @@
+output outText
+
+audios{
+	main:
+		say wording "${text.texto}"
+}

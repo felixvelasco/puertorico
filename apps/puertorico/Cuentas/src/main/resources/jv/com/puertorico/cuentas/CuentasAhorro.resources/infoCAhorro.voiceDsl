@@ -1,0 +1,6 @@
+output infoCAhorro
+
+audios{
+	main:
+		say wording "El balance disponible de su cuenta terminada en {$} es {$}"
+}

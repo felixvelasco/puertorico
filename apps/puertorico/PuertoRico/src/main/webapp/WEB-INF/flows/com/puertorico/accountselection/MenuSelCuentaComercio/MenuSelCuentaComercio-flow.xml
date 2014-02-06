@@ -1,0 +1,100 @@
+<flow xmlns="http://www.springframework.org/schema/webflow"	
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"	
+xsi:schemaLocation="http://www.springframework.org/schema/webflow
+http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd"
+parent="AccountSelection/errorHandler"
+start-state= "_jVoiceCheckInit" >
+
+
+
+
+<action-state id="_jVoiceCheckInit">
+	<evaluate expression="jVoiceArchData.initialized" />
+		<transition on="no" to="_jVoiceInit"/>
+		<transition to="isMore5Options"/>
+	</action-state>
+
+<view-state id="_jVoiceInit" view="_init" model="jVoiceArchData">
+	<transition to="isMore5Options" >
+		<set name="jVoiceArchData.initialized" value="true"/>
+	</transition>
+</view-state>
+<end-state id="Final" view="#{flowProcessor.getRenderer().getView()}">
+	<output name="result" value="''" />
+</end-state>
+<action-state id="isMore5Options">
+   <evaluate expression="selCuentaComercio.setMoreOptions(jwsCuentasMerch.listaCtaComercio.size() &gt; 5)"
+   />
+   
+
+	 <transition to="initPagina"></transition>
+	
+</action-state>
+<action-state id="initPagina">
+   <evaluate expression="selCuentaComercio.setPagina(0)"
+   />
+   
+
+	 <transition to="menu"></transition>
+	
+</action-state>
+<action-state id="menu">
+	<on-entry>
+		<evaluate expression="jVoiceArchInput" result="flashScope.menu"></evaluate>
+		<set name="flashScope.menu.name" value="'menu'" />
+		<set name="flashScope.menu.bargein" value="true" />
+		<set name="flashScope.menu.maxAttempts" value="1" />
+		<set name="flashScope.menu.maxNoInput" value="1" />
+		<set name="flashScope.menu.maxNoMatch" value="1" />
+		
+		<evaluate expression="jVoiceArchGrammar" result="flashScope.grammar1" />
+		<set name="flashScope.grammar1.src" value="'builtin:dtmf/digits'"/>
+		<set name="flashScope.grammar1.mode" value="'dtmf'"/>
+		<set name="flashScope.grammar1.module" value="'AccountSelection'"/>
+		<evaluate expression="flashScope.menu.grammars.add(flashScope.grammar1)" />
+		
+        <evaluate expression="jVoiceArchAudioItem" result="flashScope.menumainAudios1"/><evaluate expression="jVoiceArchWording" result="flashScope.menumainAudios1.wording"/>
+        <set name="flashScope.menumainAudios1.wording.text" value="'' + menuSelCuentaComercio.getTts() + ''"/>
+        <evaluate expression="flashScope.menu.mainAudios.add(flashScope.menumainAudios1)"/>
+        <evaluate expression="jVoiceArchAudioItem" result="flashScope.menunoMatchAudios1"/><set name="flashScope.menunoMatchAudios1.src" value="locutionProvider.getAudioSrc('puerto_rico-es-US-SAN-BC-NM','AccountSelection')"/>
+        <evaluate expression="jVoiceArchWording" result="flashScope.menunoMatchAudios1.wording"/>
+        <set name="flashScope.menunoMatchAudios1.wording.text" value="'La opción que usted seleccionó no es válida.'"/>
+        <evaluate expression="flashScope.menu.noMatchAudios.add(flashScope.menunoMatchAudios1)"/>
+        <evaluate expression="jVoiceArchAudioItem" result="flashScope.menunoInputAudios1"/><set name="flashScope.menunoInputAudios1.src" value="locutionProvider.getAudioSrc('puerto_rico-es-US-SAN-BC-NI','AccountSelection')"/>
+        <evaluate expression="jVoiceArchWording" result="flashScope.menunoInputAudios1.wording"/>
+        <set name="flashScope.menunoInputAudios1.wording.text" value="'No ha seleccionado una opción.'"/>
+        <evaluate expression="flashScope.menu.noInputAudios.add(flashScope.menunoInputAudios1)"/>
+	</on-entry>
+	<evaluate expression="flowProcessor.process(flashScope.menu)"/>			
+	<transition to="render_menu"/>
+</action-state>
+
+<view-state id="render_menu" view="#{flowProcessor.getRenderer().getView()}" model="lastInputResult">
+	<transition on="match" to="opcion"/>
+</view-state>
+
+<action-state id="opcion">
+	<evaluate expression="selCuentaComercio.pagina*5+T(java.lang.Integer).parseInt(lastInputResult.interpretation) &lt;= jwsCuentasMerch.listaCtaComercio.size()" />
+	<transition on="yes" to="Final"/>
+	<transition to="opcion_Mas"/>
+</action-state>
+<action-state id="opcion_Mas">
+	<evaluate expression="lastInputResult.interpretation == '6' &amp;&amp; selCuentaComercio.moreOptions" />
+	<transition on="yes" to="setPagina"/>
+	<transition to="menu"/>
+</action-state>
+<action-state id="setPagina">
+   <evaluate expression="selCuentaComercio.setPagina(selCuentaComercio.pagina + 1)"
+   />
+   
+
+	 <transition to="masPaginas"></transition>
+	
+</action-state>
+
+<action-state id="masPaginas">
+	<evaluate expression="selCuentaComercio.pagina * 5  &lt;  jwsCuentasMerch.listaCtaComercio.size()" />
+	<transition on="yes" to="menu"/>
+	<transition to="initPagina"/>
+</action-state>
+</flow> 

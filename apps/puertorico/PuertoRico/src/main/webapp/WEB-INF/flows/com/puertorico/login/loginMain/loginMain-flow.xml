@@ -1,0 +1,63 @@
+<flow xmlns="http://www.springframework.org/schema/webflow"	
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"	
+xsi:schemaLocation="http://www.springframework.org/schema/webflow
+http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd"
+parent="Login/errorHandler"
+start-state= "_jVoiceCheckInit" >
+<input name="callData"/>
+
+
+
+
+<action-state id="_jVoiceCheckInit">
+	<evaluate expression="jVoiceArchData.initialized" />
+		<transition on="no" to="_jVoiceInit"/>
+		<transition to="initAttempts"/>
+	</action-state>
+
+<view-state id="_jVoiceInit" view="_init" model="jVoiceArchData">
+	<transition to="initAttempts" >
+		<set name="jVoiceArchData.initialized" value="true"/>
+	</transition>
+</view-state>
+<end-state id="Final" view="#{flowProcessor.getRenderer().getView()}">
+	<output name="result" value="''" />
+</end-state>
+<subflow-state id="identificacion" subflow="com/puertorico/login/identificacion">
+ <transition to="autenticacion">
+ 	<set name="flowScope.result" value="currentEvent.attributes.result" />
+ </transition>
+
+</subflow-state>
+<subflow-state id="autenticacion" subflow="com/puertorico/login/autenticacion">
+ <transition to="JWServiceAutentica">
+ 	<set name="flowScope.result" value="currentEvent.attributes.result" />
+ </transition>
+
+</subflow-state>
+<action-state id="initAttempts">
+   <evaluate expression="loginMain.setLoginAttempts(0)"
+   />
+   
+
+	 <transition to="identificacion"></transition>
+	
+</action-state>
+<subflow-state id="portfolio" subflow="com/puertorico/login/portfolio">
+ <transition to="Final">
+ 	<set name="flowScope.result" value="currentEvent.attributes.result" />
+ </transition>
+
+</subflow-state>
+<subflow-state id="JWServiceAutentica" subflow="com/puertorico/login/JWServiceAutentica">
+<transition on="Next" to="portfolio">
+	<set name="flowScope.result" value="currentEvent.attributes.result" />
+</transition>
+<transition on="Relogin" to="identificacion">
+	<set name="flowScope.result" value="currentEvent.attributes.result" />
+</transition>
+<transition on="Final" to="Final">
+	<set name="flowScope.result" value="currentEvent.attributes.result" />
+</transition>
+</subflow-state>
+</flow> 

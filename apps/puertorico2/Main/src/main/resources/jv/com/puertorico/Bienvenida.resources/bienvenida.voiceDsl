@@ -1,0 +1,14 @@
+output bienvenida
+
+audios{
+	main:
+		when("callData.application.equalsIgnoreCase('retail')") {
+			say wording "Gracias por llamar a Banco en Casa, un servicio de Banco Santander Puerto Rico, donde nuestra meta, es servirle mejor."
+		}
+		when("callData.application.equalsIgnoreCase('pymes')") {
+			say wording "Gracias por llamar a la linea pimes, un servicio de Banco Santander Puerto Rico, donde nuestra meta es servirle mejor."
+		}
+		when("callData.application.equalsIgnoreCase('uline')") {
+			say wording "Gracias por llamar a la linea yulain, un servicio de Banco Santander Puerto Rico, donde nuestra meta es servirle mejor."
+		}
+}

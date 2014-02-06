@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="ASCII"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:al="http://eclipse.org/graphiti/mm/algorithms" xmlns:operations="http://jvoice.vectorsf.com/operations/1.0" xmlns:pi="http://eclipse.org/graphiti/mm/pictograms">
+  <pi:Diagram visible="true" gridUnit="10" diagramTypeId="jVoiceDiagram" name="TrxYPagosMain" snapToGrid="true" pictogramLinks="/0/@link /0/@children.0/@link /0/@children.1/@link /0/@connections.0/@link" version="0.10.0">
+    <graphicsAlgorithm xsi:type="al:Rectangle" background="/0/@colors.1" foreground="/0/@colors.0" lineWidth="1" transparency="0.0" width="1000" height="1000"/>
+    <link businessObjects="_DBvOAI5VEeOQOYtjKOjRMQ"/>
+    <children xsi:type="pi:ContainerShape" visible="true" active="true">
+      <properties key="org.eclipse.graphiti.pattern.patternType" value="org.eclipse.graphiti.pattern.idpattern"/>
+      <graphicsAlgorithm xsi:type="al:Polygon" background="/0/@colors.2" lineWidth="0" lineStyle="UNSPECIFIED" filled="true" lineVisible="false" width="556" height="3" x="212">
+        <properties key="org.eclipse.graphiti.pattern.id.id" value="roundedRectangle"/>
+        <points/>
+        <points x="556"/>
+        <points x="553" y="2"/>
+        <points x="284" y="2"/>
+        <points x="278" y="8"/>
+        <points x="272" y="2"/>
+        <points x="2" y="2"/>
+      </graphicsAlgorithm>
+      <link businessObjects="_DCFzUI5VEeOQOYtjKOjRMQ"/>
+      <anchors xsi:type="pi:ChopboxAnchor" outgoingConnections="/0/@connections.0"/>
+    </children>
+    <children xsi:type="pi:ContainerShape" visible="true" active="true">
+      <properties key="org.eclipse.graphiti.pattern.patternType" value="org.eclipse.graphiti.pattern.idpattern"/>
+      <graphicsAlgorithm xsi:type="al:Rectangle" lineStyle="UNSPECIFIED" width="180" height="28" x="400" y="200" style="/0/@styles.0">
+        <properties key="org.eclipse.graphiti.pattern.id.id" value="mainFigure"/>
+        <graphicsAlgorithmChildren xsi:type="al:Polygon" lineStyle="UNSPECIFIED" width="48" height="28" style="/0/@styles.1">
+          <properties key="org.eclipse.graphiti.pattern.id.id" value="statePolygon"/>
+          <graphicsAlgorithmChildren xsi:type="al:Image" lineWidth="1" transparency="0.0" width="24" height="24" x="10" y="2" id="icon_comp_final" stretchH="false" stretchV="false" proportional="false">
+            <properties key="org.eclipse.graphiti.pattern.id.id" value="stateImage"/>
+          </graphicsAlgorithmChildren>
+          <points/>
+          <points x="45"/>
+          <points x="45" y="10"/>
+          <points x="42" y="14"/>
+          <points x="45" y="18"/>
+          <points x="45" y="28"/>
+          <points y="28"/>
+        </graphicsAlgorithmChildren>
+        <graphicsAlgorithmChildren xsi:type="al:Text" lineStyle="UNSPECIFIED" width="101" height="28" x="45" style="/0/@styles.2" horizontalAlignment="UNSPECIFIED" verticalAlignment="UNSPECIFIED" value="Final">
+          <properties key="org.eclipse.graphiti.pattern.id.id" value="nameText"/>
+        </graphicsAlgorithmChildren>
+      </graphicsAlgorithm>
+      <link businessObjects="_DCGaZI5VEeOQOYtjKOjRMQ"/>
+      <anchors xsi:type="pi:ChopboxAnchor" incomingConnections="/0/@connections.0"/>
+    </children>
+    <styles background="/0/@colors.4" foreground="/0/@colors.3" lineWidth="1" filled="true" lineVisible="true" id="mainRectangleStyle" horizontalAlignment="UNSPECIFIED" verticalAlignment="UNSPECIFIED"/>
+    <styles background="/0/@colors.5" lineWidth="0" lineStyle="UNSPECIFIED" filled="true" lineVisible="false" id="imageRectangleStyle" horizontalAlignment="UNSPECIFIED" verticalAlignment="UNSPECIFIED"/>
+    <styles foreground="/0/@colors.6" lineStyle="UNSPECIFIED" filled="false" lineVisible="false" id="finalTextStyle" font="/0/@fonts.0"/>
+    <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="/0/@children.0/@anchors.0" end="/0/@children.1/@anchors.0">
+      <graphicsAlgorithm xsi:type="al:Polyline" foreground="/0/@colors.7" lineWidth="2" filled="false" transparency="0.0"/>
+      <link businessObjects="_DCHohY5VEeOQOYtjKOjRMQ"/>
+      <connectionDecorators visible="true" locationRelative="true" location="1.0">
+        <graphicsAlgorithm xsi:type="al:Polygon" background="/0/@colors.7" foreground="/0/@colors.7" lineWidth="1" filled="true" transparency="0.0">
+          <points x="-7" y="4"/>
+          <points x="2"/>
+          <points x="-7" y="-4"/>
+          <points x="-1"/>
+          <points x="-7" y="4"/>
+          <points x="-3"/>
+          <points x="-7" y="-4"/>
+          <points x="-5"/>
+          <points x="-7" y="4"/>
+        </graphicsAlgorithm>
+      </connectionDecorators>
+    </connections>
+    <colors red="227" green="238" blue="249"/>
+    <colors red="255" green="255" blue="255"/>
+    <colors green="131" blue="169"/>
+    <colors red="88" green="120" blue="161"/>
+    <colors red="238" green="238" blue="238"/>
+    <colors red="41" green="76" blue="123"/>
+    <colors red="53" green="100" blue="162"/>
+    <colors red="188" green="188" blue="188"/>
+    <fonts name="Arial" size="10"/>
+  </pi:Diagram>
+  <operations:Flow id="_DBvOAI5VEeOQOYtjKOjRMQ" name="TrxYPagosMain" description="TrxYPagosMain">
+    <states xsi:type="operations:InitialState" id="_DCFzUI5VEeOQOYtjKOjRMQ" name="Initial" outgoingTransitions="_DCHohY5VEeOQOYtjKOjRMQ"/>
+    <states xsi:type="operations:FinalState" id="_DCGaZI5VEeOQOYtjKOjRMQ" name="Final" incomingTransitions="_DCHohY5VEeOQOYtjKOjRMQ"/>
+    <transitions id="_DCHohY5VEeOQOYtjKOjRMQ" source="_DCFzUI5VEeOQOYtjKOjRMQ" target="_DCGaZI5VEeOQOYtjKOjRMQ" eventName="Ok"/>
+  </operations:Flow>
+</xmi:XMI>

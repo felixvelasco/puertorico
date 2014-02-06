@@ -1,0 +1,33 @@
+input MenuConf
+{
+	bargein true
+	maxAttempts 3
+	maxNoInput 2
+	maxNoMatch 2
+}
+grammars{
+	dtmf "builtin:dtmf/digits"
+}
+audios{
+ 	main: 
+ 		when("'attempts==0'") {
+ 			say src "puerto_rico-es-US-SAN-BC-MENU-CONFIRMACION-COMERCIO-A-PT1" wording "Usted ha seleccionado realizar un pago a"
+ 			say wording "${pagoComercio.comercioSel.merchantName}"
+ 			say src "puerto_rico-es-US-SAN-BC-MENU-CONFIRMACION-COMERCIO-C-PT1" wording "si es correcto, presione 1. Para selecionar otro comercio, presione 2."
+ 		}
+ 		when("'attempts==1'") {
+ 			say src "puerto_rico-es-US-SAN-BC-MENU-CONFIRMACION-COMERCIO-A-PT2" wording "Usted ha seleccionado realizar un pago a"
+ 			say wording "${pagoComercio.comercioSel.merchantName}"
+ 			say src "puerto_rico-es-US-SAN-BC-MENU-CONFIRMACION-COMERCIO-C-PT2" wording "si es correcto, presione 1. Para selecionar otro comercio, presione 2."
+ 		} 
+ 		when("'attempts==2'") {
+ 			say src "puerto_rico-es-US-SAN-BC-MENU-CONFIRMACION-COMERCIO-A-PT3" wording "Usted ha seleccionado realizar un pago a"
+ 			say wording "${pagoComercio.comercioSel.merchantName}"
+ 			say src "puerto_rico-es-US-SAN-BC-MENU-CONFIRMACION-COMERCIO-C-PT3" wording "si es correcto, presione 1. Para selecionar otro comercio, presione 2."
+ 		} 
+ 	noinput:
+ 		say src "puerto_rico-es-US-SAN-BC-NI" wording "No ha seleccionado una opción."
+ 	nomatch:
+ 		say src "puerto_rico-es-US-SAN-BC-NM" wording "La opción que usted seleccionó no es válida."
+}
+

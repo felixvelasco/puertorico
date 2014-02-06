@@ -1,0 +1,6 @@
+output promocion
+
+audios{
+	main:
+		say wording "Le ofrecemos una oferta que no podrá rechazar. Llame al 8, 0, 6 2, 2, 2 3, 3, 3; e infórmese."
+}

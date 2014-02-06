@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<endpoints>
+
+	<endpoint namespace="http://ws.ivrpr.com/" name="WebServicesPort"
+		url="http://localhost:8088/mockWebServicesPortBinding" />
+
+	<endpoint namespace="http://tempuri.org/" name="ServicesSoap"
+		url="http://localhost:8088/mockServicesSoap" />
+
+</endpoints>
+

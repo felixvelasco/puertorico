@@ -1,0 +1,17 @@
+output bienvenida
+
+ {
+
+}
+audios{
+	main:
+		when("callData.application.equalsIgnoreCase('retail')") {
+			say src "puerto_rico-es-US-SAN-BC-BIENVENIDA-RETAIL" wording "Gracias por llamar a Banco en Casa, un servicio de Banco Santander Puerto Rico, donde nuestra meta, es servirle mejor."
+		}
+		when("callData.application.equalsIgnoreCase('pymes')") {
+			say src "puerto_rico-es-US-SAN-BC-BIENVENIDA-PYMES_RETAIL" wording "Gracias por llamar a la linea pimes, un servicio de Banco Santander Puerto Rico, donde nuestra meta es servirle mejor."
+		}
+		when("callData.application.equalsIgnoreCase('uline')") {
+			say src "puerto_rico-es-US-SAN-BC-BIENVENIDA-ULINE_RETAIL" wording "Gracias por llamar a la linea yulain, un servicio de Banco Santander Puerto Rico, donde nuestra meta es servirle mejor."
+		}
+}

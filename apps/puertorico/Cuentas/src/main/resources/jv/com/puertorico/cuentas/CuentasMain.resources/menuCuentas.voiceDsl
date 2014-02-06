@@ -1,0 +1,15 @@
+menu menuCuentas
+
+grammars{
+	dtmf "builtin:dtmf/digits"
+}
+audios{
+
+	main:
+		say wording "Para cuentas de ahorro pulse dos, para otro tipo de cuenta pulse otro número"  
+}
+
+options{
+	cuentaAhorro : "cuentaAhorro"
+	transfer : "transfer"	
+}

@@ -1,0 +1,58 @@
+<flow xmlns="http://www.springframework.org/schema/webflow"	
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"	
+xsi:schemaLocation="http://www.springframework.org/schema/webflow
+http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd"
+parent="Main/errorHandler"
+start-state= "_jVoiceCheckInit" >
+
+
+<action-state id="_jVoiceCheckInit">
+	<evaluate expression="jVoiceArchData.initialized" />
+		<transition on="no" to="_jVoiceInit"/>
+		<transition to="inicializacion"/>
+	</action-state>
+
+<view-state id="_jVoiceInit" view="_init" model="jVoiceArchData">
+	<transition to="inicializacion" >
+		<set name="jVoiceArchData.initialized" value="true"/>
+	</transition>
+</view-state>
+<view-state id="Final" view="flowRedirect:jVoiceArchFlows/jVoiceArchFlows/jVoiceArch-end"/>
+<action-state id="bienvenida">
+	<on-entry>
+		<evaluate expression="jVoiceArchOutput" result="flashScope.bienvenida"></evaluate>
+		<evaluate expression="jVoiceArchAudioItem" result="flashScope.bienvenidaaudioItems1"/><set name="flashScope.bienvenidaaudioItems1.src" value="locutionProvider.getAudioSrc('puerto_rico-es-US-SAN-BC-BIENVENIDA-RETAIL','Main')"/>
+		<evaluate expression="jVoiceArchWording" result="flashScope.bienvenidaaudioItems1.wording"/>
+		<set name="flashScope.bienvenidaaudioItems1.wording.text" value="'Gracias por llamar a Banco en Casa, un servicio de Banco Santander Puerto Rico, donde nuestra meta, es servirle mejor.'"/>
+		<set name="flashScope.bienvenidaaudioItems1.condition" value="callData.application.equalsIgnoreCase('retail')"/><evaluate expression="flashScope.bienvenida.audioItems.add(flashScope.bienvenidaaudioItems1)"/><evaluate expression="jVoiceArchAudioItem" result="flashScope.bienvenidaaudioItems2"/><set name="flashScope.bienvenidaaudioItems2.src" value="locutionProvider.getAudioSrc('puerto_rico-es-US-SAN-BC-BIENVENIDA-PYMES_RETAIL','Main')"/>
+		<evaluate expression="jVoiceArchWording" result="flashScope.bienvenidaaudioItems2.wording"/>
+		<set name="flashScope.bienvenidaaudioItems2.wording.text" value="'Gracias por llamar a la linea pimes, un servicio de Banco Santander Puerto Rico, donde nuestra meta es servirle mejor.'"/>
+		<set name="flashScope.bienvenidaaudioItems2.condition" value="callData.application.equalsIgnoreCase('pymes')"/><evaluate expression="flashScope.bienvenida.audioItems.add(flashScope.bienvenidaaudioItems2)"/><evaluate expression="jVoiceArchAudioItem" result="flashScope.bienvenidaaudioItems3"/><set name="flashScope.bienvenidaaudioItems3.src" value="locutionProvider.getAudioSrc('puerto_rico-es-US-SAN-BC-BIENVENIDA-ULINE_RETAIL','Main')"/>
+		<evaluate expression="jVoiceArchWording" result="flashScope.bienvenidaaudioItems3.wording"/>
+		<set name="flashScope.bienvenidaaudioItems3.wording.text" value="'Gracias por llamar a la linea yulain, un servicio de Banco Santander Puerto Rico, donde nuestra meta es servirle mejor.'"/>
+		<set name="flashScope.bienvenidaaudioItems3.condition" value="callData.application.equalsIgnoreCase('uline')"/><evaluate expression="flashScope.bienvenida.audioItems.add(flashScope.bienvenidaaudioItems3)"/> 
+	</on-entry>
+	<evaluate expression="flowProcessor.process(flashScope.bienvenida)"/>
+	<transition to="promocion"/>
+</action-state>
+
+<subflow-state id="promocion" subflow="com/puertorico/promocion">
+ <transition to="menuPrincipal">
+ 	<set name="flowScope.result" value="currentEvent.attributes.result" />
+ </transition>
+
+</subflow-state>
+<subflow-state id="inicializacion" subflow="com/puertorico/inicializacion">
+ <transition to="bienvenida">
+ 	<set name="flowScope.result" value="currentEvent.attributes.result" />
+ </transition>
+
+</subflow-state>
+<subflow-state id="menuPrincipal" subflow="com/puertorico/menuPrincipal">
+<input name="callData" value="callData" />
+ <transition to="Final">
+ 	<set name="flowScope.result" value="currentEvent.attributes.result" />
+ </transition>
+
+</subflow-state>
+</flow> 

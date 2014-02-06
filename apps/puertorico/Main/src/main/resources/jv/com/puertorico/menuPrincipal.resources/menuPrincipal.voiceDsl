@@ -1,0 +1,28 @@
+input menuPrincipal
+
+{
+	bargein true
+	maxAttempts 3
+	maxNoInput 3
+	maxNoMatch 3
+}
+grammars{
+	dtmf "builtin:dtmf/digits?length=1"
+	voice "digits" 
+ }
+audios{
+	main:
+		when("'attempts==0'") {
+			say src "puerto_rico-es-US-SAN-BC-MENU-PRINCIPAL-PT1" wording "Nuestro menú ha cambiado. Ahora le ofrecemos nuevas transacciones y servicios. Por favor,escuche las opciones con detenimiento. Para información sobre sus cuentas, tarjetas o préstamos, presione 1. Para realizar pagos o transacciones en sus cuentas, presione 2. Para solicitar un préstamo personal o una  tarjeta de crédito o para verificar el estado de su solicitud , presione 3 . Para información sobre servicio de internet, presione 4. Para cambiar su número secreto, presione 5. Para información de seguros, presione 6."
+		}
+		when("'attempts==1'") {
+			say src "puerto_rico-es-US-SAN-BC-MENU-PRINCIPAL-PT2" wording "Para información sobre sus cuentas, tarjetas o préstamos, presione 1. Para realizar pagos o transacciones en sus cuentas, presione 2. Para solicitar un préstamo personal o una  tarjeta de crédito o para verificar el estado de su solicitud , presione 3 . Para información sobre servicio de internet, presione 4. Para cambiar su número secreto, presione 5. Para información de seguros, presione 6."
+		}
+		when("'attempts==2'") {
+			say src "puerto_rico-es-US-SAN-BC-MENU-PRINCIPAL-PT3" wording "Para información sobre sus cuentas, tarjetas o préstamos, presione 1. Para realizar pagos o transacciones en sus cuentas, presione 2. Para solicitar un préstamo personal o una  tarjeta de crédito o para verificar el estado de su solicitud , presione 3 . Para información sobre servicio de internet, presione 4. Para cambiar su número secreto, presione 5. Para información de seguros, presione 6."
+		}
+	nomatch:
+		say src "puerto_rico-es-US-SAN-BC-NM" wording "La opción que usted seleccionó no es válida."
+	noinput:
+		say src "puerto_rico-es-US-SAN-BC-NI" wording "No ha seleccionado una opción."
+}

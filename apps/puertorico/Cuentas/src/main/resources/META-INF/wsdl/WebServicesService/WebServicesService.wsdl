@@ -1,0 +1,1390 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="WebServicesService" targetNamespace="http://ws.ivrpr.com/"
+	xmlns:wsp1_2="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"
+	xmlns:tns="http://ws.ivrpr.com/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+	<types>
+		<xs:schema version="1.0" targetNamespace="http://ws.ivrpr.com/"
+			xmlns:tns="http://ws.ivrpr.com/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+			<xs:element name="JWSPRActivacionTdc" type="tns:JWSPRActivacionTdc" />
+
+			<xs:element name="JWSPRActivacionTdcResponse" type="tns:JWSPRActivacionTdcResponse" />
+
+			<xs:element name="JWSPRBalanceAhorro" type="tns:JWSPRBalanceAhorro" />
+
+			<xs:element name="JWSPRBalanceAhorroResponse" type="tns:JWSPRBalanceAhorroResponse" />
+
+			<xs:element name="JWSPRBalanceCheque" type="tns:JWSPRBalanceCheque" />
+
+			<xs:element name="JWSPRBalanceChequeResponse" type="tns:JWSPRBalanceChequeResponse" />
+
+			<xs:element name="JWSPRBalancePrestamo" type="tns:JWSPRBalancePrestamo" />
+
+
+			<xs:element name="JWSPRCambioNip" type="tns:JWSPRCambioNip" />
+
+			<xs:element name="JWSPRCambioNipResponse" type="tns:JWSPRCambioNipResponse" />
+
+			<xs:element name="JWSPRCertDepositos" type="tns:JWSPRCertDepositos" />
+
+			<xs:element name="JWSPRCertDepositosResponse" type="tns:JWSPRCertDepositosResponse" />
+
+			<xs:element name="JWSPRChequePagado" type="tns:JWSPRChequePagado" />
+
+			<xs:element name="JWSPRChequePagadoResponse" type="tns:JWSPRChequePagadoResponse" />
+
+			<xs:element name="JWSPRCtasIRA" type="tns:JWSPRCtasIRA" />
+
+			<xs:element name="JWSPRCtasIRAResponse" type="tns:JWSPRCtasIRAResponse" />
+
+			<xs:element name="JWSPRLineaReserva" type="tns:JWSPRLineaReserva" />
+
+			<xs:element name="JWSPRLineaReservaResponse" type="tns:JWSPRLineaReservaResponse" />
+
+			<xs:element name="JWSPRMovCtas" type="tns:JWSPRMovCtas" />
+
+			<xs:element name="JWSPRMovCtasResponse" type="tns:JWSPRMovCtasResponse" />
+
+			<xs:element name="JWSPRMovTdc" type="tns:JWSPRMovTdc" />
+
+			<xs:element name="JWSPRMovTdcResponse" type="tns:JWSPRMovTdcResponse" />
+
+			<xs:element name="JWSPRPagoTdc" type="tns:JWSPRPagoTdc" />
+
+			<xs:element name="JWSPRPagoTdcResponse" type="tns:JWSPRPagoTdcResponse" />
+
+			<xs:element name="JWSPRPortafolio" type="tns:JWSPRPortafolio" />
+
+			<xs:element name="JWSPRPortafolioResponse" type="tns:JWSPRPortafolioResponse" />
+
+			<xs:element name="JWSPRSuspendeCheques" type="tns:JWSPRSuspendeCheques" />
+
+			<xs:element name="JWSPRSuspendeChequesResponse" type="tns:JWSPRSuspendeChequesResponse" />
+
+			<xs:element name="JWSPRTarjetaCredito" type="tns:JWSPRTarjetaCredito" />
+
+			<xs:element name="JWSPRTarjetaCreditoResponse" type="tns:JWSPRTarjetaCreditoResponse" />
+
+			<xs:element name="JWSPRTransferCtas" type="tns:JWSPRTransferCtas" />
+
+			<xs:element name="JWSPRTransferCtasResponse" type="tns:JWSPRTransferCtasResponse" />
+
+			<xs:element name="JWServiceAutentica" type="tns:JWServiceAutentica" />
+
+			<xs:element name="JWServiceAutenticaResponse" type="tns:JWServiceAutenticaResponse" />
+
+			<xs:element name="JWServiceSPF" type="tns:JWServiceSPF" />
+
+			<xs:element name="JWServiceSPFResponse" type="tns:JWServiceSPFResponse" />
+
+			<xs:element name="JWServiceSegmento" type="tns:JWServiceSegmento" />
+
+			<xs:element name="JWServiceSegmentoResponse" type="tns:JWServiceSegmentoResponse" />
+
+			<xs:complexType name="JWServiceAutentica">
+				<xs:sequence>
+					<xs:element name="arg0" type="tns:jwServiceAutenticaRequest"
+						minOccurs="0" />
+				</xs:sequence>
+			</xs:complexType>
+
+			<xs:complexType name="jwServiceAutenticaRequest">
+				<xs:sequence>
+					<xs:element name="ANI" type="xs:string" minOccurs="0" />
+					<xs:element name="callID" type="xs:string" minOccurs="0" />
+					<xs:element name="connID" type="xs:string" minOccurs="0" />
+					<xs:element name="idContacto" type="xs:string"
+						minOccurs="0" />
+					<xs:element name="NIP" type="xs:string" minOccurs="0" />
+					<xs:element name="NSS" type="xs:string" minOccurs="0" />
+				</xs:sequence>
+			</xs:complexType>
+
+			<xs:complexType name="JWServiceAutenticaResponse">
+				<xs:sequence>
+					<xs:element name="return" type="tns:jwServiceAutenticaResponse2"
+						minOccurs="0" />
+				</xs:sequence>
+			</xs:complexType>
+
+			<xs:complexType name="jwServiceAutenticaResponse2">
+				<xs:sequence>
+					<xs:element name="codigoError" type="xs:string"
+						minOccurs="0" />
+					<xs:element name="descTipoSegmento" type="xs:string"
+						minOccurs="0" />
+					<xs:element name="idTipoSegmento" type="xs:string"
+						minOccurs="0" />
+					<xs:element name="msjError" type="xs:string" minOccurs="0" />
+				</xs:sequence>
+			</xs:complexType>
+
+			<xs:complexType name="JWSPRCambioNip">
+				<xs:sequence>
+					<xs:element name="arg0" type="tns:jwsprCambioNipRequest"
+						minOccurs="0" />
+				</xs:sequence>
+			</xs:complexType>
+
+			<xs:complexType name="jwsprCambioNipRequest">
+				<xs:sequence>
+					<xs:element name="callID" type="xs:string" minOccurs="0" />
+					<xs:element name="connID" type="xs:string" minOccurs="0" />
+					<xs:element name="NIP" type="xs:string" minOccurs="0" />
+					<xs:element name="NSS" type="xs:string" minOccurs="0" />
+				</xs:sequence>
+			</xs:complexType>
+
+			<xs:complexType name="JWSPRCambioNipResponse">
+				<xs:sequence>
+					<xs:element name="return" type="tns:jwsprCambioNipResponse2"
+						minOccurs="0" />
+				</xs:sequence>
+			</xs:complexType>
+
+			<xs:complexType name="jwsprCambioNipResponse2">
+				<xs:sequence>
+					<xs:element name="codigoError" type="xs:string"
+						minOccurs="0" />
+					<xs:element name="msjError" type="xs:string" minOccurs="0" />
+				</xs:sequence>
+			</xs:complexType>
+
+			<xs:complexType name="JWSPRBalanceCheque">
+				<xs:sequence>
+					<xs:element name="arg0" type="tns:jwsprBalanceChequeRequest"
+						minOccurs="0" />
+				</xs:sequence>
+			</xs:complexType>
+
+			<xs:complexType name="jwsprBalanceChequeRequest">
+				<xs:sequence>
+					<xs:element name="callID" type="xs:string" minOccurs="0" />
+					<xs:element name="connID" type="xs:string" minOccurs="0" />
+					<xs:element name="numCtaCheques" type="xs:string"
+						minOccurs="0" />
+					<xs:element name="tipoCuenta" type="xs:string"
+						minOccurs="0" />
+				</xs:sequence>
+			</xs:complexType>
+
+			<xs:complexType name="JWSPRBalanceChequeResponse">
+				<xs:sequence>
+					<xs:element name="return" type="tns:jwsprBalanceChequeResponse2"
+						minOccurs="0" />
+				</xs:sequence>
+			</xs:complexType>
+
+			<xs:complexType name="jwsprBalanceChequeResponse2">
+				<xs:sequence>
+					<xs:element name="codigoError" type="xs:string"
+						minOccurs="0" />
+					<xs:element name="listaCheques" type="tns:listaCheques"
+						nillable="true" minOccurs="0" maxOccurs="unbounded" />
+					<xs:element name="listaDepositos" type="tns:listaDepositos"
+						nillable="true" minOccurs="0" maxOccurs="unbounded" />
+					<xs:element name="listaRetiros" type="tns:listaRetiros"
+						nillable="true" minOccurs="0" maxOccurs="unbounded" />
+					<xs:element name="msjError" type="xs:string" minOccurs="0" />
+					<xs:element name="saldoContable" type="xs:string"
+						minOccurs="0" />
+					<xs:element name="saldoDisponible" type="xs:string"
+						minOccurs="0" />
+					<xs:element name="saldoLineaReserva" type="xs:string"
+						minOccurs="0" />
+					<xs:element name="seqCheques" type="xs:string"
+						minOccurs="0" />
+					<xs:element name="seqDepositos" type="xs:string"
+						minOccurs="0" />
+					<xs:element name="seqRetiros" type="xs:string"
+						minOccurs="0" />
+					<xs:element name="statusCtaCheques" type="xs:string"
+						minOccurs="0" />
+				</xs:sequence>
+			</xs:complexType>
+
+			<xs:complexType name="listaCheques">
+				<xs:sequence>
+					<xs:element name="cantidad" type="xs:string" minOccurs="0" />
+					<xs:element name="fecCheques" type="xs:string"
+						minOccurs="0" />
+					<xs:element name="numCheque" type="xs:string" minOccurs="0" />
+				</xs:sequence>
+			</xs:complexType>
+
+			<xs:complexType name="listaDepositos">
+				<xs:sequence>
+					<xs:element name="cantidad" type="xs:string" minOccurs="0" />
+					<xs:element name="fecDeposito" type="xs:string"
+						minOccurs="0" />
+				</xs:sequence>
+			</xs:complexType>
+
+			<xs:complexType name="listaRetiros">
+				<xs:sequence>
+					<xs:element name="cantidad" type="xs:string" minOccurs="0" />
+					<xs:element name="fecRetiro" type="xs:string" minOccurs="0" />
+				</xs:sequence>
+			</xs:complexType>
+
+			<xs:complexType name="JWSPRTransferCtas">
+				<xs:sequence>
+					<xs:element name="arg0" type="tns:jwsprTransferCtaRequest"
+						minOccurs="0" />
+				</xs:sequence>
+			</xs:complexType>
+
+			<xs:complexType name="jwsprTransferCtaRequest">
+				<xs:sequence>
+					<xs:element name="callID" type="xs:string" minOccurs="0" />
+					<xs:element name="connID" type="xs:string" minOccurs="0" />
+					<xs:element name="cuentaDeposito" type="xs:string"
+						minOccurs="0" />
+					<xs:element name="cuentaRetiro" type="xs:string"
+						minOccurs="0" />
+					<xs:element name="montoTransfer" type="xs:string"
+						minOccurs="0" />
+					<xs:element name="tipoCtaDeposito" type="xs:string"
+						minOccurs="0" />
+					<xs:element name="tipoCtaRetiro" type="xs:string"
+						minOccurs="0" />
+				</xs:sequence>
+			</xs:complexType>
+
+			<xs:complexType name="JWSPRTransferCtasResponse">
+				<xs:sequence>
+					<xs:element name="return" type="tns:jwsprTransferCtaResponse2"
+						minOccurs="0" />
+				</xs:sequence>
+			</xs:complexType>
+
+			<xs:complexType name="jwsprTransferCtaResponse2">
+				<xs:sequence>
+					<xs:element name="codigoError" type="xs:string"
+						minOccurs="0" />
+					<xs:element name="msjError" type="xs:string" minOccurs="0" />
+					<xs:element name="numConfirmaTransfer" type="xs:string"
+						minOccurs="0" />
+				</xs:sequence>
+			</xs:complexType>
+
+			<xs:complexType name="JWSPRCertDepositos">
+				<xs:sequence>
+					<xs:element name="arg0" type="tns:jwsprCertDepositosRequest"
+						minOccurs="0" />
+				</xs:sequence>
+			</xs:complexType>
+
+			<xs:complexType name="jwsprCertDepositosRequest">
+				<xs:sequence>
+					<xs:element name="callID" type="xs:string" minOccurs="0" />
+					<xs:element name="connID" type="xs:string" minOccurs="0" />
+					<xs:element name="numCtaCDS" type="xs:string" minOccurs="0" />
+				</xs:sequence>
+			</xs:complexType>
+
+			<xs:complexType name="JWSPRCertDepositosResponse">
+				<xs:sequence>
+					<xs:element name="return" type="tns:jwsprCertDepositosResponse2"
+						minOccurs="0" />
+				</xs:sequence>
+			</xs:complexType>
+
+			<xs:complexType name="jwsprCertDepositosResponse2">
+				<xs:sequence>
+					<xs:element name="codigoError" type="xs:string"
+						minOccurs="0" />
+					<xs:element name="fecPagoUltIntCDS" type="xs:string"
+						minOccurs="0" />
+					<xs:element name="fecProxPagoCDS" type="xs:string"
+						minOccurs="0" />
+					<xs:element name="fecVencCDS" type="xs:string"
+						minOccurs="0" />
+					<xs:element name="montoUltPagoIntCDS" type="xs:string"
+						minOccurs="0" />
+					<xs:element name="msjError" type="xs:string" minOccurs="0" />
+				</xs:sequence>
+			</xs:complexType>
+
+			<xs:complexType name="JWSPRPortafolio">
+				<xs:sequence>
+					<xs:element name="arg0" type="tns:jwsprPortafolioRequest"
+						minOccurs="0" />
+				</xs:sequence>
+			</xs:complexType>
+
+			<xs:complexType name="jwsprPortafolioRequest">
+				<xs:sequence>
+					<xs:element name="callID" type="xs:string" minOccurs="0" />
+					<xs:element name="connID" type="xs:string" minOccurs="0" />
+					<xs:element name="idContacto" type="xs:string"
+						minOccurs="0" />
+					<xs:element name="NSS" type="xs:string" minOccurs="0" />
+				</xs:sequence>
+			</xs:complexType>
+
+			<xs:complexType name="JWSPRPortafolioResponse">
+				<xs:sequence>
+					<xs:element name="return" type="tns:jwsprPortafolioResponse2"
+						minOccurs="0" />
+				</xs:sequence>
+			</xs:complexType>
+
+			<xs:complexType name="jwsprPortafolioResponse2">
+				<xs:sequence>
+					<xs:element name="clientName" type="xs:string"
+						minOccurs="0" />
+					<xs:element name="codigoError" type="xs:string"
+						minOccurs="0" />
+					<xs:element name="listaCuentas" type="tns:listaCuentas"
+						nillable="true" minOccurs="0" maxOccurs="unbounded" />
+					<xs:element name="listaHipo" type="tns:listaHipo"
+						nillable="true" minOccurs="0" maxOccurs="unbounded" />
+					<xs:element name="listaTdc" type="tns:listaTdc"
+						nillable="true" minOccurs="0" maxOccurs="unbounded" />
+					<xs:element name="msjError" type="xs:string" minOccurs="0" />
+				</xs:sequence>
+			</xs:complexType>
+
+			<xs:complexType name="listaCuentas">
+				<xs:sequence>
+					<xs:element name="numCuenta" type="xs:string" minOccurs="0" />
+					<xs:element name="prodCuenta" type="xs:string"
+						minOccurs="0" />
+					<xs:element name="statusCuenta" type="xs:string"
+						minOccurs="0" />
+				</xs:sequence>
+			</xs:complexType>
+
+			<xs:complexType name="listaHipo">
+				<xs:sequence>
+					<xs:element name="fecVenceHipo" type="xs:string"
+						minOccurs="0" />
+					<xs:element name="hipoNum" type="xs:string" minOccurs="0" />
+					<xs:element name="montoProxPagoHipo" type="xs:string"
+						minOccurs="0" />
+					<xs:element name="origMontoHipo" type="xs:string"
+						minOccurs="0" />
+					<xs:element name="proxFecPagoHipo" type="xs:string"
+						minOccurs="0" />
+					<xs:element name="saldoHipo" type="xs:string" minOccurs="0" />
+				</xs:sequence>
+			</xs:complexType>
+
+			<xs:complexType name="listaTdc">
+				<xs:sequence>
+					<xs:element name="descTipoTdc" type="xs:string"
+						minOccurs="0" />
+					<xs:element name="pan" type="xs:string" minOccurs="0" />
+					<xs:element name="pecoden" type="xs:string" minOccurs="0" />
+					<xs:element name="pecodof" type="xs:string" minOccurs="0" />
+					<xs:element name="pecodpr" type="xs:string" minOccurs="0" />
+					<xs:element name="pecodsu" type="xs:string" minOccurs="0" />
+					<xs:element name="penumco" type="xs:string" minOccurs="0" />
+					<xs:element name="tipoTdc" type="xs:string" minOccurs="0" />
+				</xs:sequence>
+			</xs:complexType>
+
+			<xs:complexType name="JWSPRTarjetaCredito">
+				<xs:sequence>
+					<xs:element name="arg0" type="tns:jwsprTarjetaCreditoRequest"
+						minOccurs="0" />
+				</xs:sequence>
+			</xs:complexType>
+
+			<xs:complexType name="jwsprTarjetaCreditoRequest">
+				<xs:sequence>
+					<xs:element name="callID" type="xs:string" minOccurs="0" />
+					<xs:element name="connID" type="xs:string" minOccurs="0" />
+					<xs:element name="pecoden" type="xs:string" minOccurs="0" />
+					<xs:element name="pecodof" type="xs:string" minOccurs="0" />
+					<xs:element name="penumco" type="xs:string" minOccurs="0" />
+				</xs:sequence>
+			</xs:complexType>
+
+			<xs:complexType name="JWSPRTarjetaCreditoResponse">
+				<xs:sequence>
+					<xs:element name="return" type="tns:jwsprTarjetaCreditoResponse2"
+						minOccurs="0" />
+				</xs:sequence>
+			</xs:complexType>
+
+			<xs:complexType name="jwsprTarjetaCreditoResponse2">
+				<xs:sequence>
+					<xs:element name="balanceAdeudaTdc" type="xs:string"
+						minOccurs="0" />
+					<xs:element name="balanceDispTdc" type="xs:string"
+						minOccurs="0" />
+					<xs:element name="codigoError" type="xs:string"
+						minOccurs="0" />
+					<xs:element name="creditLimitTdc" type="xs:string"
+						minOccurs="0" />
+					<xs:element name="desmarca" type="xs:string" minOccurs="0" />
+					<xs:element name="destiptot" type="xs:string" minOccurs="0" />
+					<xs:element name="fecCargoTdc" type="xs:string"
+						minOccurs="0" />
+					<xs:element name="fecUltPago" type="xs:string"
+						minOccurs="0" />
+					<xs:element name="importeUltPagoTdc" type="xs:string"
+						minOccurs="0" />
+					<xs:element name="msjError" type="xs:string" minOccurs="0" />
+					<xs:element name="pagoMinTdc" type="xs:string"
+						minOccurs="0" />
+					<xs:element name="pan" type="xs:string" minOccurs="0" />
+				</xs:sequence>
+			</xs:complexType>
+
+			<xs:complexType name="JWSPRPagoTdc">
+				<xs:sequence>
+					<xs:element name="arg0" type="tns:jwsprPagoTdcRequest"
+						minOccurs="0" />
+				</xs:sequence>
+			</xs:complexType>
+
+			<xs:complexType name="jwsprPagoTdcRequest">
+				<xs:sequence>
+					<xs:element name="balanceAdeudaTdc" type="xs:string"
+						minOccurs="0" />
+					<xs:element name="balanceDispTdc" type="xs:string"
+						minOccurs="0" />
+					<xs:element name="callID" type="xs:string" minOccurs="0" />
+					<xs:element name="connID" type="xs:string" minOccurs="0" />
+					<xs:element name="creditLimitTdc" type="xs:string"
+						minOccurs="0" />
+					<xs:element name="importePagTdc" type="xs:string"
+						minOccurs="0" />
+					<xs:element name="numCtaCargo" type="xs:string"
+						minOccurs="0" />
+					<xs:element name="panTdc" type="xs:string" minOccurs="0" />
+				</xs:sequence>
+			</xs:complexType>
+
+			<xs:complexType name="JWSPRPagoTdcResponse">
+				<xs:sequence>
+					<xs:element name="return" type="tns:jwsprPagoTdcResponse2"
+						minOccurs="0" />
+				</xs:sequence>
+			</xs:complexType>
+
+			<xs:complexType name="jwsprPagoTdcResponse2">
+				<xs:sequence>
+					<xs:element name="codigoError" type="xs:string"
+						minOccurs="0" />
+					<xs:element name="msjError" type="xs:string" minOccurs="0" />
+					<xs:element name="referPagoTdc" type="xs:string"
+						minOccurs="0" />
+				</xs:sequence>
+			</xs:complexType>
+
+			<xs:complexType name="JWSPRLineaReserva">
+				<xs:sequence>
+					<xs:element name="arg0" type="tns:jwsprLineaReservaRequest"
+						minOccurs="0" />
+				</xs:sequence>
+			</xs:complexType>
+
+			<xs:complexType name="jwsprLineaReservaRequest">
+				<xs:sequence>
+					<xs:element name="callID" type="xs:string" minOccurs="0" />
+					<xs:element name="connID" type="xs:string" minOccurs="0" />
+					<xs:element name="numCtaLR" type="xs:string" minOccurs="0" />
+				</xs:sequence>
+			</xs:complexType>
+
+			<xs:complexType name="JWSPRLineaReservaResponse">
+				<xs:sequence>
+					<xs:element name="return" type="tns:jwsprLineaReservaResponse2"
+						minOccurs="0" />
+				</xs:sequence>
+			</xs:complexType>
+
+			<xs:complexType name="jwsprLineaReservaResponse2">
+				<xs:sequence>
+					<xs:element name="codigoError" type="xs:string"
+						minOccurs="0" />
+					<xs:element name="creditLimitLR" type="xs:string"
+						minOccurs="0" />
+					<xs:element name="fecProxPago" type="xs:string"
+						minOccurs="0" />
+					<xs:element name="montoAdeudadoLR" type="xs:string"
+						minOccurs="0" />
+					<xs:element name="montoDispoLR" type="xs:string"
+						minOccurs="0" />
+					<xs:element name="montoProxPago" type="xs:string"
+						minOccurs="0" />
+					<xs:element name="msjError" type="xs:string" minOccurs="0" />
+				</xs:sequence>
+			</xs:complexType>
+
+			<xs:complexType name="JWSPRBalancePrestamo">
+				<xs:sequence>
+					<xs:element name="arg0" type="tns:jwsprBalancePrestamoRequest"
+						minOccurs="0" />
+				</xs:sequence>
+			</xs:complexType>
+
+			<xs:complexType name="jwsprBalancePrestamoRequest">
+				<xs:sequence>
+					<xs:element name="callID" type="xs:string" minOccurs="0" />
+					<xs:element name="connID" type="xs:string" minOccurs="0" />
+					<xs:element name="numCtaPrestamo" type="xs:string"
+						minOccurs="0" />
+					<xs:element name="tipoCtaPrestamo" type="xs:string"
+						minOccurs="0" />
+				</xs:sequence>
+			</xs:complexType>
+
+			<xs:complexType name="JWSPRChequePagado">
+				<xs:sequence>
+					<xs:element name="arg0" type="tns:jwsprChequePagadoRequest"
+						minOccurs="0" />
+				</xs:sequence>
+			</xs:complexType>
+
+			<xs:complexType name="jwsprChequePagadoRequest">
+				<xs:sequence>
+					<xs:element name="callID" type="xs:string" minOccurs="0" />
+					<xs:element name="connID" type="xs:string" minOccurs="0" />
+					<xs:element name="numCheque" type="xs:string" minOccurs="0" />
+					<xs:element name="numCtaCheques" type="xs:string"
+						minOccurs="0" />
+				</xs:sequence>
+			</xs:complexType>
+
+			<xs:complexType name="JWSPRChequePagadoResponse">
+				<xs:sequence>
+					<xs:element name="return" type="tns:jwsprChequePagadoResponse2"
+						minOccurs="0" />
+				</xs:sequence>
+			</xs:complexType>
+
+			<xs:complexType name="jwsprChequePagadoResponse2">
+				<xs:sequence>
+					<xs:element name="codigoError" type="xs:string"
+						minOccurs="0" />
+					<xs:element name="fecCambio" type="xs:string" minOccurs="0" />
+					<xs:element name="msjError" type="xs:string" minOccurs="0" />
+				</xs:sequence>
+			</xs:complexType>
+
+			<xs:complexType name="JWSPRBalanceAhorro">
+				<xs:sequence>
+					<xs:element name="arg0" type="tns:jwsprBalanceAhorroRequest"
+						minOccurs="0" />
+				</xs:sequence>
+			</xs:complexType>
+
+			<xs:complexType name="jwsprBalanceAhorroRequest">
+				<xs:sequence>
+					<xs:element name="callID" type="xs:string" minOccurs="0" />
+					<xs:element name="connID" type="xs:string" minOccurs="0" />
+					<xs:element name="numCtaAhorros" type="xs:string"
+						minOccurs="0" />
+					<xs:element name="tipoCuenta" type="xs:string"
+						minOccurs="0" />
+				</xs:sequence>
+			</xs:complexType>
+
+			<xs:complexType name="JWSPRBalanceAhorroResponse">
+				<xs:sequence>
+					<xs:element name="return" type="tns:jwsprBalanceAhorroResponse2"
+						minOccurs="0" />
+				</xs:sequence>
+			</xs:complexType>
+
+			<xs:complexType name="jwsprBalanceAhorroResponse2">
+				<xs:sequence>
+					<xs:element name="codigoError" type="xs:string"
+						minOccurs="0" />
+					<xs:element name="fecIntAcred" type="xs:string"
+						minOccurs="0" />
+					<xs:element name="listaDepositos" type="tns:jwsprBalanceAhorroDeposito"
+						nillable="true" minOccurs="0" maxOccurs="unbounded" />
+					<xs:element name="listaRetiros" type="tns:jwsprBalanceAhorroRetiros"
+						nillable="true" minOccurs="0" maxOccurs="unbounded" />
+					<xs:element name="montoIntAcred" type="xs:string"
+						minOccurs="0" />
+					<xs:element name="msjError" type="xs:string" minOccurs="0" />
+					<xs:element name="saldoContable" type="xs:string"
+						minOccurs="0" />
+					<xs:element name="saldoDisponible" type="xs:string"
+						minOccurs="0" />
+					<xs:element name="seqDepositos" type="xs:string"
+						minOccurs="0" />
+					<xs:element name="seqRetiros" type="xs:string"
+						minOccurs="0" />
+					<xs:element name="statusCtaAhorro" type="xs:string"
+						minOccurs="0" />
+				</xs:sequence>
+			</xs:complexType>
+
+			<xs:complexType name="jwsprBalanceAhorroDeposito">
+				<xs:sequence>
+					<xs:element name="cantidad" type="xs:string" minOccurs="0" />
+					<xs:element name="fecDeposito" type="xs:string"
+						minOccurs="0" />
+				</xs:sequence>
+			</xs:complexType>
+
+			<xs:complexType name="jwsprBalanceAhorroRetiros">
+				<xs:sequence>
+					<xs:element name="cantidad" type="xs:string" minOccurs="0" />
+					<xs:element name="fecRetiro" type="xs:string" minOccurs="0" />
+				</xs:sequence>
+			</xs:complexType>
+
+			<xs:complexType name="JWServiceSegmento">
+				<xs:sequence>
+					<xs:element name="arg0" type="tns:jwServiceSegmentoRequest"
+						minOccurs="0" />
+				</xs:sequence>
+			</xs:complexType>
+
+			<xs:complexType name="jwServiceSegmentoRequest">
+				<xs:sequence>
+					<xs:element name="callID" type="xs:string" minOccurs="0" />
+					<xs:element name="connID" type="xs:string" minOccurs="0" />
+					<xs:element name="NSS" type="xs:string" minOccurs="0" />
+				</xs:sequence>
+			</xs:complexType>
+
+			<xs:complexType name="JWServiceSegmentoResponse">
+				<xs:sequence>
+					<xs:element name="return" type="tns:jwServiceSegmentoResponse2"
+						minOccurs="0" />
+				</xs:sequence>
+			</xs:complexType>
+
+			<xs:complexType name="jwServiceSegmentoResponse2">
+				<xs:sequence>
+					<xs:element name="codigoError" type="xs:string"
+						minOccurs="0" />
+					<xs:element name="descTipoSegmento" type="xs:string"
+						minOccurs="0" />
+					<xs:element name="idTipoSegmento" type="xs:string"
+						minOccurs="0" />
+					<xs:element name="msjError" type="xs:string" minOccurs="0" />
+				</xs:sequence>
+			</xs:complexType>
+
+			<xs:complexType name="JWSPRActivacionTdc">
+				<xs:sequence>
+					<xs:element name="arg0" type="tns:jwsprActivacionTdcRequest"
+						minOccurs="0" />
+				</xs:sequence>
+			</xs:complexType>
+
+			<xs:complexType name="jwsprActivacionTdcRequest">
+				<xs:sequence>
+					<xs:element name="ani" type="xs:string" minOccurs="0" />
+					<xs:element name="CVC2" type="xs:string" minOccurs="0" />
+					<xs:element name="callID" type="xs:string" minOccurs="0" />
+					<xs:element name="connID" type="xs:string" minOccurs="0" />
+					<xs:element name="NSS" type="xs:string" minOccurs="0" />
+					<xs:element name="pan" type="xs:string" minOccurs="0" />
+					<xs:element name="tipoAccion" type="xs:string"
+						minOccurs="0" />
+				</xs:sequence>
+			</xs:complexType>
+
+			<xs:complexType name="JWSPRActivacionTdcResponse">
+				<xs:sequence>
+					<xs:element name="return" type="tns:jwsprActivacionTdcResponse2"
+						minOccurs="0" />
+				</xs:sequence>
+			</xs:complexType>
+
+			<xs:complexType name="jwsprActivacionTdcResponse2">
+				<xs:sequence>
+					<xs:element name="aviso1" type="xs:string" minOccurs="0" />
+					<xs:element name="aviso2" type="xs:string" minOccurs="0" />
+					<xs:element name="codAviso1" type="xs:string" minOccurs="0" />
+					<xs:element name="codigoError" type="xs:string"
+						minOccurs="0" />
+					<xs:element name="msjError" type="xs:string" minOccurs="0" />
+				</xs:sequence>
+			</xs:complexType>
+
+			<xs:complexType name="JWSPRMovTdc">
+				<xs:sequence>
+					<xs:element name="arg0" type="tns:jwsprMovTdcRequest"
+						minOccurs="0" />
+				</xs:sequence>
+			</xs:complexType>
+
+			<xs:complexType name="jwsprMovTdcRequest">
+				<xs:sequence>
+					<xs:element name="callID" type="xs:string" minOccurs="0" />
+					<xs:element name="connID" type="xs:string" minOccurs="0" />
+					<xs:element name="fecFin" type="xs:string" minOccurs="0" />
+					<xs:element name="fecInicio" type="xs:string" minOccurs="0" />
+					<xs:element name="idMov" type="xs:string" minOccurs="0" />
+					<xs:element name="pecoden" type="xs:string" minOccurs="0" />
+					<xs:element name="pecodof" type="xs:string" minOccurs="0" />
+					<xs:element name="penumco" type="xs:string" minOccurs="0" />
+				</xs:sequence>
+			</xs:complexType>
+
+			<xs:complexType name="JWSPRMovTdcResponse">
+				<xs:sequence>
+					<xs:element name="return" type="tns:jwsprMovTdcResponse2"
+						minOccurs="0" />
+				</xs:sequence>
+			</xs:complexType>
+
+			<xs:complexType name="jwsprMovTdcResponse2">
+				<xs:sequence>
+					<xs:element name="codigoError" type="xs:string"
+						minOccurs="0" />
+					<xs:element name="destipt" type="xs:string" minOccurs="0" />
+					<xs:element name="idMovSal" type="xs:string" minOccurs="0" />
+					<xs:element name="listMovs" type="tns:dataMPV3"
+						nillable="true" minOccurs="0" maxOccurs="unbounded" />
+					<xs:element name="msjError" type="xs:string" minOccurs="0" />
+					<xs:element name="panTdc" type="xs:string" minOccurs="0" />
+				</xs:sequence>
+			</xs:complexType>
+
+			<xs:complexType name="dataMPV3">
+				<xs:sequence>
+					<xs:element name="debCredInd" type="xs:string"
+						minOccurs="0" />
+					<xs:element name="descMov" type="xs:string" minOccurs="0" />
+					<xs:element name="fecTranTdc" type="xs:string"
+						minOccurs="0" />
+					<xs:element name="importeMovTdc" type="xs:string"
+						minOccurs="0" />
+					<xs:element name="refer" type="xs:string" minOccurs="0" />
+				</xs:sequence>
+			</xs:complexType>
+
+			<xs:complexType name="JWServiceSPF">
+				<xs:sequence>
+					<xs:element name="arg0" type="tns:jwServiceSPFRequest"
+						minOccurs="0" />
+				</xs:sequence>
+			</xs:complexType>
+
+			<xs:complexType name="jwServiceSPFRequest">
+				<xs:sequence>
+					<xs:element name="ANI" type="xs:string" minOccurs="0" />
+					<xs:element name="callID" type="xs:string" minOccurs="0" />
+					<xs:element name="connID" type="xs:string" minOccurs="0" />
+					<xs:element name="NSS" type="xs:string" minOccurs="0" />
+				</xs:sequence>
+			</xs:complexType>
+
+			<xs:complexType name="JWServiceSPFResponse">
+				<xs:sequence>
+					<xs:element name="return" type="tns:jwServiceSPFResponse2"
+						minOccurs="0" />
+				</xs:sequence>
+			</xs:complexType>
+
+			<xs:complexType name="jwServiceSPFResponse2">
+				<xs:sequence>
+					<xs:element name="codigoError" type="xs:string"
+						minOccurs="0" />
+					<xs:element name="fecRegistro" type="xs:string"
+						minOccurs="0" />
+					<xs:element name="MSJERROR" type="xs:string" minOccurs="0" />
+				</xs:sequence>
+			</xs:complexType>
+
+			<xs:complexType name="JWSPRSuspendeCheques">
+				<xs:sequence>
+					<xs:element name="arg0" type="tns:jwsprSuspendeChequesRequest"
+						minOccurs="0" />
+				</xs:sequence>
+			</xs:complexType>
+
+			<xs:complexType name="jwsprSuspendeChequesRequest">
+				<xs:sequence>
+					<xs:element name="callID" type="xs:string" minOccurs="0" />
+					<xs:element name="connID" type="xs:string" minOccurs="0" />
+					<xs:element name="montoCheque" type="xs:string"
+						minOccurs="0" />
+					<xs:element name="numCtaCheques" type="xs:string"
+						minOccurs="0" />
+					<xs:element name="numSerieAltaCheque" type="xs:string"
+						minOccurs="0" />
+					<xs:element name="numSerieBajaCheque" type="xs:string"
+						minOccurs="0" />
+					<xs:element name="tipoCtaCheques" type="xs:string"
+						minOccurs="0" />
+				</xs:sequence>
+			</xs:complexType>
+
+			<xs:complexType name="JWSPRSuspendeChequesResponse">
+				<xs:sequence>
+					<xs:element name="return" type="tns:jwsprSuspendeChequesResponse2"
+						minOccurs="0" />
+				</xs:sequence>
+			</xs:complexType>
+
+			<xs:complexType name="jwsprSuspendeChequesResponse2">
+				<xs:sequence>
+					<xs:element name="codigoError" type="xs:string"
+						minOccurs="0" />
+					<xs:element name="msjError" type="xs:string" minOccurs="0" />
+					<xs:element name="refererenciaCheque" type="xs:string"
+						minOccurs="0" />
+				</xs:sequence>
+			</xs:complexType>
+
+			<xs:complexType name="JWSPRCtasIRA">
+				<xs:sequence>
+					<xs:element name="arg0" type="tns:jwsprCtasIRARequest"
+						minOccurs="0" />
+				</xs:sequence>
+			</xs:complexType>
+
+			<xs:complexType name="jwsprCtasIRARequest">
+				<xs:sequence>
+					<xs:element name="callID" type="xs:string" minOccurs="0" />
+					<xs:element name="connID" type="xs:string" minOccurs="0" />
+					<xs:element name="numCtaIRA" type="xs:string" minOccurs="0" />
+				</xs:sequence>
+			</xs:complexType>
+
+			<xs:complexType name="JWSPRCtasIRAResponse">
+				<xs:sequence>
+					<xs:element name="return" type="tns:jwsprCtasIRAResponse2"
+						minOccurs="0" />
+				</xs:sequence>
+			</xs:complexType>
+
+			<xs:complexType name="jwsprCtasIRAResponse2">
+				<xs:sequence>
+					<xs:element name="balanceIRA" type="xs:string"
+						minOccurs="0" />
+					<xs:element name="codigoError" type="xs:string"
+						minOccurs="0" />
+					<xs:element name="intNominalIRA" type="xs:string"
+						minOccurs="0" />
+					<xs:element name="msjError" type="xs:string" minOccurs="0" />
+				</xs:sequence>
+			</xs:complexType>
+
+			<xs:complexType name="JWSPRMovCtas">
+				<xs:sequence>
+					<xs:element name="arg0" type="tns:jwsprMovCtasRequest"
+						minOccurs="0" />
+				</xs:sequence>
+			</xs:complexType>
+
+			<xs:complexType name="jwsprMovCtasRequest">
+				<xs:sequence>
+					<xs:element name="callID" type="xs:string" minOccurs="0" />
+					<xs:element name="connID" type="xs:string" minOccurs="0" />
+					<xs:element name="contData" type="xs:string" minOccurs="0" />
+					<xs:element name="numCtaCheques" type="xs:string"
+						minOccurs="0" />
+					<xs:element name="sequencia" type="xs:string" minOccurs="0" />
+					<xs:element name="tipoCuenta" type="xs:string"
+						minOccurs="0" />
+					<xs:element name="tranType" type="xs:string" minOccurs="0" />
+				</xs:sequence>
+			</xs:complexType>
+
+			<xs:complexType name="JWSPRMovCtasResponse">
+				<xs:sequence>
+					<xs:element name="return" type="tns:jwsprMovCtasResponse2"
+						minOccurs="0" />
+				</xs:sequence>
+			</xs:complexType>
+
+			<xs:complexType name="jwsprMovCtasResponse2">
+				<xs:sequence>
+					<xs:element name="codigoError" type="xs:string"
+						minOccurs="0" />
+					<xs:element name="contSeq" type="xs:string" minOccurs="0" />
+					<xs:element name="listaMovs" type="tns:jwsprMovCtasMovimientos"
+						nillable="true" minOccurs="0" maxOccurs="unbounded" />
+					<xs:element name="movDevueltos" type="xs:string"
+						minOccurs="0" />
+					<xs:element name="msjError" type="xs:string" minOccurs="0" />
+				</xs:sequence>
+			</xs:complexType>
+
+			<xs:complexType name="jwsprMovCtasMovimientos">
+				<xs:sequence>
+					<xs:element name="cantidad" type="xs:string" minOccurs="0" />
+					<xs:element name="fecMov" type="xs:string" minOccurs="0" />
+					<xs:element name="numCheque" type="xs:string" minOccurs="0" />
+				</xs:sequence>
+			</xs:complexType>
+		</xs:schema>
+
+
+	</types>
+	<message name="JWSPRLineaReservaResponse">
+		<part name="parameters" element="tns:JWSPRLineaReservaResponse">
+		</part>
+	</message>
+	<message name="JWSPRCambioNip">
+		<part name="parameters" element="tns:JWSPRCambioNip">
+		</part>
+	</message>
+	<message name="JWServiceAutentica">
+		<part name="parameters" element="tns:JWServiceAutentica">
+		</part>
+	</message>
+	<message name="JWSPRTransferCtas">
+		<part name="parameters" element="tns:JWSPRTransferCtas">
+		</part>
+	</message>
+	<message name="JWSPRCertDepositos">
+		<part name="parameters" element="tns:JWSPRCertDepositos">
+		</part>
+	</message>
+	<message name="JWSPRBalanceChequeResponse">
+		<part name="parameters" element="tns:JWSPRBalanceChequeResponse">
+		</part>
+	</message>
+	<message name="JWSPRPortafolio">
+		<part name="parameters" element="tns:JWSPRPortafolio">
+		</part>
+	</message>
+	<message name="JWSPRMovCtasResponse">
+		<part name="parameters" element="tns:JWSPRMovCtasResponse">
+		</part>
+	</message>
+	<message name="JWSPRPagoTdcResponse">
+		<part name="parameters" element="tns:JWSPRPagoTdcResponse">
+		</part>
+	</message>
+	<message name="JWSPRBalancePrestamo">
+		<part name="parameters" element="tns:JWSPRBalancePrestamo">
+		</part>
+	</message>
+	<message name="JWSPRTarjetaCreditoResponse">
+		<part name="parameters" element="tns:JWSPRTarjetaCreditoResponse">
+		</part>
+	</message>
+	<message name="JWSPRBalanceAhorro">
+		<part name="parameters" element="tns:JWSPRBalanceAhorro">
+		</part>
+	</message>
+	<message name="JWServiceSegmento">
+		<part name="parameters" element="tns:JWServiceSegmento">
+		</part>
+	</message>
+	<message name="JWSPRActivacionTdc">
+		<part name="parameters" element="tns:JWSPRActivacionTdc">
+		</part>
+	</message>
+	<message name="JWServiceSPF">
+		<part name="parameters" element="tns:JWServiceSPF">
+		</part>
+	</message>
+	<message name="JWSPRSuspendeChequesResponse">
+		<part name="parameters" element="tns:JWSPRSuspendeChequesResponse">
+		</part>
+	</message>
+	<message name="JWSPRCtasIRA">
+		<part name="parameters" element="tns:JWSPRCtasIRA">
+		</part>
+	</message>
+	<message name="JWSPRMovTdcResponse">
+		<part name="parameters" element="tns:JWSPRMovTdcResponse">
+		</part>
+	</message>
+	<message name="JWSPRBalanceCheque">
+		<part name="parameters" element="tns:JWSPRBalanceCheque">
+		</part>
+	</message>
+	<message name="JWSPRCambioNipResponse">
+		<part name="parameters" element="tns:JWSPRCambioNipResponse">
+		</part>
+	</message>
+	<message name="JWServiceAutenticaResponse">
+		<part name="parameters" element="tns:JWServiceAutenticaResponse">
+		</part>
+	</message>
+	<message name="JWSPRTransferCtasResponse">
+		<part name="parameters" element="tns:JWSPRTransferCtasResponse">
+		</part>
+	</message>
+	<message name="JWSPRCertDepositosResponse">
+		<part name="parameters" element="tns:JWSPRCertDepositosResponse">
+		</part>
+	</message>
+	<message name="JWSPRTarjetaCredito">
+		<part name="parameters" element="tns:JWSPRTarjetaCredito">
+		</part>
+	</message>
+	<message name="JWSPRLineaReserva">
+		<part name="parameters" element="tns:JWSPRLineaReserva">
+		</part>
+	</message>
+	<message name="JWSPRPagoTdc">
+		<part name="parameters" element="tns:JWSPRPagoTdc">
+		</part>
+	</message>
+	<message name="JWSPRPortafolioResponse">
+		<part name="parameters" element="tns:JWSPRPortafolioResponse">
+		</part>
+	</message>
+	<message name="JWSPRBalanceAhorroResponse">
+		<part name="parameters" element="tns:JWSPRBalanceAhorroResponse">
+		</part>
+	</message>
+	<message name="JWSPRChequePagado">
+		<part name="parameters" element="tns:JWSPRChequePagado">
+		</part>
+	</message>
+	<message name="JWServiceSegmentoResponse">
+		<part name="parameters" element="tns:JWServiceSegmentoResponse">
+		</part>
+	</message>
+	<message name="JWSPRActivacionTdcResponse">
+		<part name="parameters" element="tns:JWSPRActivacionTdcResponse">
+		</part>
+	</message>
+	<message name="JWSPRMovTdc">
+		<part name="parameters" element="tns:JWSPRMovTdc">
+		</part>
+	</message>
+	<message name="JWSPRSuspendeCheques">
+		<part name="parameters" element="tns:JWSPRSuspendeCheques">
+		</part>
+	</message>
+	<message name="JWSPRChequePagadoResponse">
+		<part name="parameters" element="tns:JWSPRChequePagadoResponse">
+		</part>
+	</message>
+	<message name="JWServiceSPFResponse">
+		<part name="parameters" element="tns:JWServiceSPFResponse">
+		</part>
+	</message>
+	<message name="JWSPRMovCtas">
+		<part name="parameters" element="tns:JWSPRMovCtas">
+		</part>
+	</message>
+	<message name="JWSPRCtasIRAResponse">
+		<part name="parameters" element="tns:JWSPRCtasIRAResponse">
+		</part>
+	</message>
+	<portType name="WebServices">
+		<operation name="JWServiceAutentica">
+			<input message="tns:JWServiceAutentica"
+				wsam:Action="http://ws.ivrpr.com/WebServices/JWServiceAutenticaRequest">
+			</input>
+			<output message="tns:JWServiceAutenticaResponse"
+				wsam:Action="http://ws.ivrpr.com/WebServices/JWServiceAutenticaResponse">
+			</output>
+		</operation>
+		<operation name="JWSPRPortafolio">
+			<input message="tns:JWSPRPortafolio"
+				wsam:Action="http://ws.ivrpr.com/WebServices/JWSPRPortafolioRequest">
+			</input>
+			<output message="tns:JWSPRPortafolioResponse"
+				wsam:Action="http://ws.ivrpr.com/WebServices/JWSPRPortafolioResponse">
+			</output>
+		</operation>
+		<operation name="JWSPRCambioNip">
+			<input message="tns:JWSPRCambioNip"
+				wsam:Action="http://ws.ivrpr.com/WebServices/JWSPRCambioNipRequest">
+			</input>
+			<output message="tns:JWSPRCambioNipResponse"
+				wsam:Action="http://ws.ivrpr.com/WebServices/JWSPRCambioNipResponse">
+			</output>
+		</operation>
+		<operation name="JWSPRLineaReserva">
+			<input message="tns:JWSPRLineaReserva"
+				wsam:Action="http://ws.ivrpr.com/WebServices/JWSPRLineaReservaRequest">
+			</input>
+			<output message="tns:JWSPRLineaReservaResponse"
+				wsam:Action="http://ws.ivrpr.com/WebServices/JWSPRLineaReservaResponse">
+			</output>
+		</operation>
+		<operation name="JWSPRCertDepositos">
+			<input message="tns:JWSPRCertDepositos"
+				wsam:Action="http://ws.ivrpr.com/WebServices/JWSPRCertDepositosRequest">
+			</input>
+			<output message="tns:JWSPRCertDepositosResponse"
+				wsam:Action="http://ws.ivrpr.com/WebServices/JWSPRCertDepositosResponse">
+			</output>
+		</operation>
+		<operation name="JWSPRCtasIRA">
+			<input message="tns:JWSPRCtasIRA"
+				wsam:Action="http://ws.ivrpr.com/WebServices/JWSPRCtasIRARequest">
+			</input>
+			<output message="tns:JWSPRCtasIRAResponse"
+				wsam:Action="http://ws.ivrpr.com/WebServices/JWSPRCtasIRAResponse">
+			</output>
+		</operation>
+		<operation name="JWSPRBalanceCheque">
+			<input message="tns:JWSPRBalanceCheque"
+				wsam:Action="http://ws.ivrpr.com/WebServices/JWSPRBalanceChequeRequest">
+			</input>
+			<output message="tns:JWSPRBalanceChequeResponse"
+				wsam:Action="http://ws.ivrpr.com/WebServices/JWSPRBalanceChequeResponse">
+			</output>
+		</operation>
+		<operation name="JWSPRChequePagado">
+			<input message="tns:JWSPRChequePagado"
+				wsam:Action="http://ws.ivrpr.com/WebServices/JWSPRChequePagadoRequest">
+			</input>
+			<output message="tns:JWSPRChequePagadoResponse"
+				wsam:Action="http://ws.ivrpr.com/WebServices/JWSPRChequePagadoResponse">
+			</output>
+		</operation>
+		<operation name="JWSPRMovCtas">
+			<input message="tns:JWSPRMovCtas"
+				wsam:Action="http://ws.ivrpr.com/WebServices/JWSPRMovCtasRequest">
+			</input>
+			<output message="tns:JWSPRMovCtasResponse"
+				wsam:Action="http://ws.ivrpr.com/WebServices/JWSPRMovCtasResponse">
+			</output>
+		</operation>
+		<operation name="JWSPRBalanceAhorro">
+			<input message="tns:JWSPRBalanceAhorro"
+				wsam:Action="http://ws.ivrpr.com/WebServices/JWSPRBalanceAhorroRequest">
+			</input>
+			<output message="tns:JWSPRBalanceAhorroResponse"
+				wsam:Action="http://ws.ivrpr.com/WebServices/JWSPRBalanceAhorroResponse">
+			</output>
+		</operation>
+		<operation name="JWSPRTarjetaCredito">
+			<input message="tns:JWSPRTarjetaCredito"
+				wsam:Action="http://ws.ivrpr.com/WebServices/JWSPRTarjetaCreditoRequest">
+			</input>
+			<output message="tns:JWSPRTarjetaCreditoResponse"
+				wsam:Action="http://ws.ivrpr.com/WebServices/JWSPRTarjetaCreditoResponse">
+			</output>
+		</operation>
+		<operation name="JWSPRMovTdc">
+			<input message="tns:JWSPRMovTdc"
+				wsam:Action="http://ws.ivrpr.com/WebServices/JWSPRMovTdcRequest">
+			</input>
+			<output message="tns:JWSPRMovTdcResponse"
+				wsam:Action="http://ws.ivrpr.com/WebServices/JWSPRMovTdcResponse">
+			</output>
+		</operation>
+		<operation name="JWSPRTransferCtas">
+			<input message="tns:JWSPRTransferCtas"
+				wsam:Action="http://ws.ivrpr.com/WebServices/JWSPRTransferCtasRequest">
+			</input>
+			<output message="tns:JWSPRTransferCtasResponse"
+				wsam:Action="http://ws.ivrpr.com/WebServices/JWSPRTransferCtasResponse">
+			</output>
+		</operation>
+		<operation name="JWSPRSuspendeCheques">
+			<input message="tns:JWSPRSuspendeCheques"
+				wsam:Action="http://ws.ivrpr.com/WebServices/JWSPRSuspendeChequesRequest">
+			</input>
+			<output message="tns:JWSPRSuspendeChequesResponse"
+				wsam:Action="http://ws.ivrpr.com/WebServices/JWSPRSuspendeChequesResponse">
+			</output>
+		</operation>
+		<operation name="JWSPRPagoTdc">
+			<input message="tns:JWSPRPagoTdc"
+				wsam:Action="http://ws.ivrpr.com/WebServices/JWSPRPagoTdcRequest">
+			</input>
+			<output message="tns:JWSPRPagoTdcResponse"
+				wsam:Action="http://ws.ivrpr.com/WebServices/JWSPRPagoTdcResponse">
+			</output>
+		</operation>
+		<operation name="JWServiceSPF">
+			<input message="tns:JWServiceSPF"
+				wsam:Action="http://ws.ivrpr.com/WebServices/JWServiceSPFRequest">
+			</input>
+			<output message="tns:JWServiceSPFResponse"
+				wsam:Action="http://ws.ivrpr.com/WebServices/JWServiceSPFResponse">
+			</output>
+		</operation>
+		<operation name="JWSPRActivacionTdc">
+			<input message="tns:JWSPRActivacionTdc"
+				wsam:Action="http://ws.ivrpr.com/WebServices/JWSPRActivacionTdcRequest">
+			</input>
+			<output message="tns:JWSPRActivacionTdcResponse"
+				wsam:Action="http://ws.ivrpr.com/WebServices/JWSPRActivacionTdcResponse">
+			</output>
+		</operation>
+		<operation name="JWServiceSegmento">
+			<input message="tns:JWServiceSegmento"
+				wsam:Action="http://ws.ivrpr.com/WebServices/JWServiceSegmentoRequest">
+			</input>
+			<output message="tns:JWServiceSegmentoResponse"
+				wsam:Action="http://ws.ivrpr.com/WebServices/JWServiceSegmentoResponse">
+			</output>
+		</operation>
+	</portType>
+	<binding name="WebServicesPortBinding" type="tns:WebServices">
+		<soap:binding style="document"
+			transport="http://schemas.xmlsoap.org/soap/http" />
+		<operation name="JWServiceAutentica">
+			<soap:operation soapAction="" />
+			<input>
+				<soap:body use="literal" />
+			</input>
+			<output>
+				<soap:body use="literal" />
+			</output>
+		</operation>
+		<operation name="JWSPRPortafolio">
+			<soap:operation soapAction="" />
+			<input>
+				<soap:body use="literal" />
+			</input>
+			<output>
+				<soap:body use="literal" />
+			</output>
+		</operation>
+		<operation name="JWSPRCambioNip">
+			<soap:operation soapAction="" />
+			<input>
+				<soap:body use="literal" />
+			</input>
+			<output>
+				<soap:body use="literal" />
+			</output>
+		</operation>
+		<operation name="JWSPRLineaReserva">
+			<soap:operation soapAction="" />
+			<input>
+				<soap:body use="literal" />
+			</input>
+			<output>
+				<soap:body use="literal" />
+			</output>
+		</operation>
+		<operation name="JWSPRCertDepositos">
+			<soap:operation soapAction="" />
+			<input>
+				<soap:body use="literal" />
+			</input>
+			<output>
+				<soap:body use="literal" />
+			</output>
+		</operation>
+		<operation name="JWSPRCtasIRA">
+			<soap:operation soapAction="" />
+			<input>
+				<soap:body use="literal" />
+			</input>
+			<output>
+				<soap:body use="literal" />
+			</output>
+		</operation>
+		<operation name="JWSPRBalanceCheque">
+			<soap:operation soapAction="" />
+			<input>
+				<soap:body use="literal" />
+			</input>
+			<output>
+				<soap:body use="literal" />
+			</output>
+		</operation>
+		<operation name="JWSPRChequePagado">
+			<soap:operation soapAction="" />
+			<input>
+				<soap:body use="literal" />
+			</input>
+			<output>
+				<soap:body use="literal" />
+			</output>
+		</operation>
+		<operation name="JWSPRMovCtas">
+			<soap:operation soapAction="" />
+			<input>
+				<soap:body use="literal" />
+			</input>
+			<output>
+				<soap:body use="literal" />
+			</output>
+		</operation>
+		<operation name="JWSPRBalanceAhorro">
+			<soap:operation soapAction="" />
+			<input>
+				<soap:body use="literal" />
+			</input>
+			<output>
+				<soap:body use="literal" />
+			</output>
+		</operation>
+		<operation name="JWSPRTarjetaCredito">
+			<soap:operation soapAction="" />
+			<input>
+				<soap:body use="literal" />
+			</input>
+			<output>
+				<soap:body use="literal" />
+			</output>
+		</operation>
+		<operation name="JWSPRMovTdc">
+			<soap:operation soapAction="" />
+			<input>
+				<soap:body use="literal" />
+			</input>
+			<output>
+				<soap:body use="literal" />
+			</output>
+		</operation>
+		<operation name="JWSPRTransferCtas">
+			<soap:operation soapAction="" />
+			<input>
+				<soap:body use="literal" />
+			</input>
+			<output>
+				<soap:body use="literal" />
+			</output>
+		</operation>
+		<operation name="JWSPRSuspendeCheques">
+			<soap:operation soapAction="" />
+			<input>
+				<soap:body use="literal" />
+			</input>
+			<output>
+				<soap:body use="literal" />
+			</output>
+		</operation>
+		<operation name="JWSPRPagoTdc">
+			<soap:operation soapAction="" />
+			<input>
+				<soap:body use="literal" />
+			</input>
+			<output>
+				<soap:body use="literal" />
+			</output>
+		</operation>
+		<operation name="JWServiceSPF">
+			<soap:operation soapAction="" />
+			<input>
+				<soap:body use="literal" />
+			</input>
+			<output>
+				<soap:body use="literal" />
+			</output>
+		</operation>
+		<operation name="JWSPRActivacionTdc">
+			<soap:operation soapAction="" />
+			<input>
+				<soap:body use="literal" />
+			</input>
+			<output>
+				<soap:body use="literal" />
+			</output>
+		</operation>
+		<operation name="JWServiceSegmento">
+			<soap:operation soapAction="" />
+			<input>
+				<soap:body use="literal" />
+			</input>
+			<output>
+				<soap:body use="literal" />
+			</output>
+		</operation>
+	</binding>
+	<service name="WebServicesService">
+		<port name="WebServicesPort" binding="tns:WebServicesPortBinding">
+			<soap:address
+				location="http://CDES09100280.ids.com.mx:9080/WSIVRPuertoRicoWEB/WebServicesService" />
+		</port>
+	</service>
+</definitions>

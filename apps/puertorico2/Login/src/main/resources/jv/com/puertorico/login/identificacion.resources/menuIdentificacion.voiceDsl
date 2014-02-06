@@ -1,0 +1,40 @@
+input menuIdentificacion
+
+{
+	bargein true
+}
+grammars{
+	dtmf "builtin:dtmf/digits?length=9"
+ }
+audios{
+	main:
+		when("'attempts==0'") {
+			say src "puerto_rico-es-US-SAN-BC-MENU-IDENTIFICACION-PT1" wording "Por favor, presione los nueve dígitos de su número de seguro social ahora."
+		}
+		when("'attempts==1'") {
+			say src "puerto_rico-es-US-SAN-BC-MENU-IDENTIFICACION-PT2" wording "Por favor, vuelva a entrar su número de seguro social."
+		}
+		when("'attempts==2'") {
+			say src "puerto_rico-es-US-SAN-BC-MENU-IDENTIFICACION-PT3" wording "Por favor, vuelva a entrar su número de seguro social."
+		}
+	nomatch:
+		when("'attempts==1'") {
+			say src "puerto_rico-es-US-SAN-BC-IDENTIFICACION-NM-PT1" wording "El número de seguro social que especificó no es válido."
+		}
+		when("'attempts==2'") {
+			say src "puerto_rico-es-US-SAN-BC-IDENTIFICACION-NM-PT2" wording "El número de seguro social que especificó no es válido."
+		}
+		when("'attempts==3'") {
+			say src "puerto_rico-es-US-SAN-BC-IDENTIFICACION-NM-PT3" wording "El número de seguro social que especificó no es válido."
+		}
+	noinput:
+		when("'attempts==1'") {
+			say src "puerto_rico-es-US-SAN-BC-IDENTIFICACION-NI-PT1" wording "No recibimos los nueve dígitos de su número de seguro social."
+		}
+		when("'attempts==2'") {
+			say src "puerto_rico-es-US-SAN-BC-IDENTIFICACION-NI-PT2" wording "Una vez más, no recibimos los nueve dígitos de su número de seguro social."
+		}
+		when("'attempts==3'") {
+			say src "puerto_rico-es-US-SAN-BC-IDENTIFICACION-NI-PT3" wording "Una vez más, no recibimos los nueve dígitos de su número de seguro social."
+		}
+}

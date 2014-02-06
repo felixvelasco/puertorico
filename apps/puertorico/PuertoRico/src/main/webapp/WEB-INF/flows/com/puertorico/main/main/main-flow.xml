@@ -1,0 +1,63 @@
+<flow xmlns="http://www.springframework.org/schema/webflow"	
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"	
+xsi:schemaLocation="http://www.springframework.org/schema/webflow
+http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd"
+parent="Main/errorHandler"
+start-state= "_jVoiceCheckInit" >
+
+
+
+
+<action-state id="_jVoiceCheckInit">
+	<evaluate expression="jVoiceArchData.initialized" />
+		<transition on="no" to="_jVoiceInit"/>
+		<transition to="FueraHorario"/>
+	</action-state>
+
+<view-state id="_jVoiceInit" view="_init" model="jVoiceArchData">
+	<transition to="FueraHorario" >
+		<set name="jVoiceArchData.initialized" value="true"/>
+	</transition>
+</view-state>
+<end-state id="Final" view="#{flowProcessor.getRenderer().getView()}">
+	<output name="result" value="''" />
+</end-state>
+
+<action-state id="FueraHorario">
+	<evaluate expression="fueraHorario.isFueraHorario()" />
+	<transition on="yes" to="setCINIT_FUERAHORARIO"/>
+	<transition to="setCINIT_DENTROHORARIO"/>
+</action-state>
+<action-state id="setCINIT_DENTROHORARIO">
+   <evaluate expression="stats.setCINIT_DENTROHORARIO()"
+   />
+   
+
+	<transition to="Bienvenida"></transition>
+</action-state>
+<action-state id="setCINIT_FUERAHORARIO">
+   <evaluate expression="stats.setCINIT_FUERAHORARIO()"
+   />
+   
+
+	<transition to="Bienvenida"></transition>
+</action-state>
+<action-state id="Bienvenida">
+	<on-entry>
+		<evaluate expression="jVoiceArchOutput" result="flashScope.Bienvenida"></evaluate>
+		<evaluate expression="jVoiceArchAudioItem" result="flashScope.BienvenidaaudioItems1"/><evaluate expression="jVoiceArchWording" result="flashScope.BienvenidaaudioItems1.wording"/>
+		<set name="flashScope.BienvenidaaudioItems1.wording.text" value="'Bienvenido a OpenBank.'"/>
+		<evaluate expression="flashScope.Bienvenida.audioItems.add(flashScope.BienvenidaaudioItems1)"/><evaluate expression="jVoiceArchAudioItem" result="flashScope.BienvenidaaudioItems2"/><evaluate expression="jVoiceArchWording" result="flashScope.BienvenidaaudioItems2.wording"/>
+		<set name="flashScope.BienvenidaaudioItems2.wording.text" value="'Buenos días.'"/>
+		<set name="flashScope.BienvenidaaudioItems2.condition" value="fueraHorario.isMorning()"/><evaluate expression="flashScope.Bienvenida.audioItems.add(flashScope.BienvenidaaudioItems2)"/> 
+	</on-entry>
+	<evaluate expression="flowProcessor.process(flashScope.Bienvenida)"/>
+	<transition to="promocion"/>
+</action-state>
+
+<subflow-state id="promocion" subflow="com/puertorico/main/promocion">
+<transition to="Final">
+	<set name="flowScope.result" value="currentEvent.attributes.result" />
+</transition>
+</subflow-state>
+</flow> 

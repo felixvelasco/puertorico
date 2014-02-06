@@ -1,0 +1,38 @@
+input MenuTransPagos
+{
+	bargein true
+	maxAttempts 3
+	maxNoInput 2
+	maxNoMatch 2
+}
+grammars{
+	dtmf "builtin:dtmf/digits"
+}
+audios{
+ 	main: 
+	 	when("'attempts==0'") {
+	 		say src "puerto_rico-es-US-SAN-BC-MENU-TRANS-PAGOS-A-PT1" wording "Para realizar o verificar sus pagos, presione 1."
+	 		say src "puerto_rico-es-US-SAN-BC-MENU-TRANS-PAGOS-B-PT1" wording "Para realizar transferencias entre cuentas, presione 2."
+	 		say src "puerto_rico-es-US-SAN-BC-MENU-TRANS-PAGOS-C-PT1" wording "Para ordenar la suspensión de pago de uno o varios cheques, presione 3."
+	 		say src "puerto_rico-es-US-SAN-BC-MENU-TRANS-PAGOS-D-PT1" wording "Para regresar al menú anterior, presione 8. Para regresar al menú principal, presione 9. Para comunicarse con un representante de Servicio al Cliente, presione 0."
+	 	}
+	 	when("'attempts==1'") {
+	 		say src "puerto_rico-es-US-SAN-BC-MENU-TRANS-PAGOS-A-PT2" wording "Para realizar o verificar sus pagos, presione 1."
+	 		say src "puerto_rico-es-US-SAN-BC-MENU-TRANS-PAGOS-B-PT2" wording "Para realizar transferencias entre cuentas, presione 2."
+	 		say src "puerto_rico-es-US-SAN-BC-MENU-TRANS-PAGOS-C-PT2" wording "Para ordenar la suspensión de pago de uno o varios cheques, presione 3."
+	 		say src "puerto_rico-es-US-SAN-BC-MENU-TRANS-PAGOS-D-PT2" wording "Para regresar al menú anterior, presione 8. Para regresar al menú principal, presione 9. Para comunicarse con un representante de Servicio al Cliente, presione 0."
+	 	}
+	 	when("'attempts==2'") {
+	 		say src "puerto_rico-es-US-SAN-BC-MENU-TRANS-PAGOS-A-PT3" wording "Para realizar o verificar sus pagos, presione 1."
+	 		say src "puerto_rico-es-US-SAN-BC-MENU-TRANS-PAGOS-B-PT3" wording "Para realizar transferencias entre cuentas, presione 2."
+	 		say src "puerto_rico-es-US-SAN-BC-MENU-TRANS-PAGOS-C-PT3" wording "Para ordenar la suspensión de pago de uno o varios cheques, presione 3."
+	 		say src "puerto_rico-es-US-SAN-BC-MENU-TRANS-PAGOS-D-PT3" wording "Para regresar al menú anterior, presione 8. Para regresar al menú principal, presione 9. Para comunicarse con un representante de Servicio al Cliente, presione 0."
+	 	}
+	 	
+	nomatch:
+		say src "puerto_rico-es-US-SAN-BC-NI" wording "No ha seleccionado una opción."
+		
+	noinput:
+		say src "puerto_rico-es-US-SAN-BC-NM" wording "La opción que usted seleccionó no es válida."
+}
+

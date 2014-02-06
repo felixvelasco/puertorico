@@ -1,0 +1,40 @@
+<flow xmlns="http://www.springframework.org/schema/webflow"	
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"	
+xsi:schemaLocation="http://www.springframework.org/schema/webflow
+http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd"
+parent="Main/errorHandler"
+start-state= "_jVoiceCheckInit" >
+
+
+<action-state id="_jVoiceCheckInit">
+	<evaluate expression="jVoiceArchData.initialized" />
+		<transition on="no" to="_jVoiceInit"/>
+		<transition to="activePromo"/>
+	</action-state>
+
+<view-state id="_jVoiceInit" view="_init" model="jVoiceArchData">
+	<transition to="activePromo" >
+		<set name="jVoiceArchData.initialized" value="true"/>
+	</transition>
+</view-state>
+<end-state id="Final" view="#{flowProcessor.getRenderer().getView()}">
+	<output name="result" value="''" />
+</end-state>
+
+<action-state id="activePromo">
+	<evaluate expression="callData.promoActive" />
+	<transition on="yes" to="promocion"/>
+	<transition to="Final"/>
+</action-state>
+<action-state id="promocion">
+	<on-entry>
+		<evaluate expression="jVoiceArchOutput" result="flashScope.promocion"></evaluate>
+		<evaluate expression="jVoiceArchAudioItem" result="flashScope.promocionaudioItems1"/><evaluate expression="jVoiceArchWording" result="flashScope.promocionaudioItems1.wording"/>
+		<set name="flashScope.promocionaudioItems1.wording.text" value="'Le ofrecemos una oferta que no podrá rechazar. Llame al 8, 0, 6 2, 2, 2 3, 3, 3; e infórmese.'"/>
+		<evaluate expression="flashScope.promocion.audioItems.add(flashScope.promocionaudioItems1)"/> 
+	</on-entry>
+	<evaluate expression="flowProcessor.process(flashScope.promocion)"/>
+	<transition to="Final"/>
+</action-state>
+
+</flow> 

@@ -1,0 +1,41 @@
+input menuAutenticacion
+
+{
+	bargein true
+}
+grammars{
+	dtmf "builtin:dtmf/digits?length=4"
+ }
+audios{
+	main:
+		when("'attempts==0'") {
+			say src "puerto_rico-es-US-SAN-BC-MENU-AUTENTICACION-PT1" wording "Por favor presione su número secreto ahora."
+		}
+		when("'attempts==1'") {
+			say src "puerto_rico-es-US-SAN-BC-MENU-AUTENTICACION-PT2" wording "Por favor, vuelva a entrar su número secreto ahora."
+		}
+		when("'attempts==2'") {
+			say src "puerto_rico-es-US-SAN-BC-MENU-AUTENTICACION-PT3" wording "Por favor, vuelva a entrar su número secreto ahora."
+		}
+	nomatch:
+		when("'attempts==1'") {
+			say src "puerto_rico-es-US-SAN-BC-AUTENTICACION-NM-PT1" wording "El número secreto que especificó no es válido."
+		}
+		when("'attempts==2'") {
+			say src "puerto_rico-es-US-SAN-BC-AUTENTICACION-NM-PT2" wording "El número secreto que especificó no es válido."
+		}
+		when("'attempts==3'") {
+			say src "puerto_rico-es-US-SAN-BC-AUTENTICACION-NM-PT3" wording "El número secreto que especificó no es válido."
+		}
+	noinput:
+		when("'attempts==1'") {
+			say src "puerto_rico-es-US-SAN-BC-AUTENTICACION-NI-PT1" wording "No recibimos su número secreto."
+		}
+		when("'attempts==2'") {
+			say src "puerto_rico-es-US-SAN-BC-AUTENTICACION-NI-PT2" wording "Una vez más, no recibimos su número secreto."
+		}
+		when("'attempts==3'") {
+			say src "puerto_rico-es-US-SAN-BC-AUTENTICACION-NI-PT3" wording "Una vez más, no recibimos su número secreto."
+		}
+}
+

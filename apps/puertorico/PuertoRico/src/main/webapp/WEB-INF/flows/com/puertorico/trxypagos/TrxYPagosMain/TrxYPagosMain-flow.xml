@@ -1,0 +1,103 @@
+<flow xmlns="http://www.springframework.org/schema/webflow"	
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"	
+xsi:schemaLocation="http://www.springframework.org/schema/webflow
+http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd"
+parent="TrxYPagos/errorHandler"
+start-state= "_jVoiceCheckInit" >
+
+
+<action-state id="_jVoiceCheckInit">
+	<evaluate expression="jVoiceArchData.initialized" />
+		<transition on="no" to="_jVoiceInit"/>
+		<transition to="MenuTransPagos"/>
+	</action-state>
+
+<view-state id="_jVoiceInit" view="_init" model="jVoiceArchData">
+	<transition to="MenuTransPagos" >
+		<set name="jVoiceArchData.initialized" value="true"/>
+	</transition>
+</view-state>
+<end-state id="Final" view="#{flowProcessor.getRenderer().getView()}">
+	<output name="result" value="''" />
+</end-state>
+<action-state id="MenuTransPagos">
+	<on-entry>
+		<evaluate expression="jVoiceArchInput" result="flashScope.MenuTransPagos"></evaluate>
+		<set name="flashScope.MenuTransPagos.name" value="'MenuTransPagos'" />
+		<set name="flashScope.MenuTransPagos.bargein" value="true" />
+		<set name="flashScope.MenuTransPagos.maxAttempts" value="3" />
+		<set name="flashScope.MenuTransPagos.maxNoInput" value="2" />
+		<set name="flashScope.MenuTransPagos.maxNoMatch" value="2" />
+		
+		<evaluate expression="jVoiceArchGrammar" result="flashScope.grammar1" />
+		<set name="flashScope.grammar1.src" value="'builtin:dtmf/digits'"/>
+		<set name="flashScope.grammar1.mode" value="'dtmf'"/>
+		<set name="flashScope.grammar1.module" value="'TrxYPagos'"/>
+		<evaluate expression="flashScope.MenuTransPagos.grammars.add(flashScope.grammar1)" />
+		
+        <evaluate expression="jVoiceArchAudioItem" result="flashScope.MenuTransPagosmainAudios1"/><set name="flashScope.MenuTransPagosmainAudios1.src" value="locutionProvider.getAudioSrc('puerto_rico-es-US-SAN-BC-MENU-TRANS-PAGOS-A-PT1','TrxYPagos')"/>
+        <evaluate expression="jVoiceArchWording" result="flashScope.MenuTransPagosmainAudios1.wording"/>
+        <set name="flashScope.MenuTransPagosmainAudios1.wording.text" value="'Para realizar o verificar sus pagos, presione 1.'"/>
+        <set name="flashScope.MenuTransPagosmainAudios1.condition" value="'attempts==0'"/><evaluate expression="flashScope.MenuTransPagos.mainAudios.add(flashScope.MenuTransPagosmainAudios1)"/><evaluate expression="jVoiceArchAudioItem" result="flashScope.MenuTransPagosmainAudios2"/><set name="flashScope.MenuTransPagosmainAudios2.src" value="locutionProvider.getAudioSrc('puerto_rico-es-US-SAN-BC-MENU-TRANS-PAGOS-B-PT1','TrxYPagos')"/>
+        <evaluate expression="jVoiceArchWording" result="flashScope.MenuTransPagosmainAudios2.wording"/>
+        <set name="flashScope.MenuTransPagosmainAudios2.wording.text" value="'Para realizar transferencias entre cuentas, presione 2.'"/>
+        <set name="flashScope.MenuTransPagosmainAudios2.condition" value="'attempts==0'"/><evaluate expression="flashScope.MenuTransPagos.mainAudios.add(flashScope.MenuTransPagosmainAudios2)"/><evaluate expression="jVoiceArchAudioItem" result="flashScope.MenuTransPagosmainAudios3"/><set name="flashScope.MenuTransPagosmainAudios3.src" value="locutionProvider.getAudioSrc('puerto_rico-es-US-SAN-BC-MENU-TRANS-PAGOS-C-PT1','TrxYPagos')"/>
+        <evaluate expression="jVoiceArchWording" result="flashScope.MenuTransPagosmainAudios3.wording"/>
+        <set name="flashScope.MenuTransPagosmainAudios3.wording.text" value="'Para ordenar la suspensión de pago de uno o varios cheques, presione 3.'"/>
+        <set name="flashScope.MenuTransPagosmainAudios3.condition" value="'attempts==0'"/><evaluate expression="flashScope.MenuTransPagos.mainAudios.add(flashScope.MenuTransPagosmainAudios3)"/><evaluate expression="jVoiceArchAudioItem" result="flashScope.MenuTransPagosmainAudios4"/><set name="flashScope.MenuTransPagosmainAudios4.src" value="locutionProvider.getAudioSrc('puerto_rico-es-US-SAN-BC-MENU-TRANS-PAGOS-D-PT1','TrxYPagos')"/>
+        <evaluate expression="jVoiceArchWording" result="flashScope.MenuTransPagosmainAudios4.wording"/>
+        <set name="flashScope.MenuTransPagosmainAudios4.wording.text" value="'Para regresar al menú anterior, presione 8. Para regresar al menú principal, presione 9. Para comunicarse con un representante de Servicio al Cliente, presione 0.'"/>
+        <set name="flashScope.MenuTransPagosmainAudios4.condition" value="'attempts==0'"/><evaluate expression="flashScope.MenuTransPagos.mainAudios.add(flashScope.MenuTransPagosmainAudios4)"/><evaluate expression="jVoiceArchAudioItem" result="flashScope.MenuTransPagosmainAudios5"/><set name="flashScope.MenuTransPagosmainAudios5.src" value="locutionProvider.getAudioSrc('puerto_rico-es-US-SAN-BC-MENU-TRANS-PAGOS-A-PT2','TrxYPagos')"/>
+        <evaluate expression="jVoiceArchWording" result="flashScope.MenuTransPagosmainAudios5.wording"/>
+        <set name="flashScope.MenuTransPagosmainAudios5.wording.text" value="'Para realizar o verificar sus pagos, presione 1.'"/>
+        <set name="flashScope.MenuTransPagosmainAudios5.condition" value="'attempts==1'"/><evaluate expression="flashScope.MenuTransPagos.mainAudios.add(flashScope.MenuTransPagosmainAudios5)"/><evaluate expression="jVoiceArchAudioItem" result="flashScope.MenuTransPagosmainAudios6"/><set name="flashScope.MenuTransPagosmainAudios6.src" value="locutionProvider.getAudioSrc('puerto_rico-es-US-SAN-BC-MENU-TRANS-PAGOS-B-PT2','TrxYPagos')"/>
+        <evaluate expression="jVoiceArchWording" result="flashScope.MenuTransPagosmainAudios6.wording"/>
+        <set name="flashScope.MenuTransPagosmainAudios6.wording.text" value="'Para realizar transferencias entre cuentas, presione 2.'"/>
+        <set name="flashScope.MenuTransPagosmainAudios6.condition" value="'attempts==1'"/><evaluate expression="flashScope.MenuTransPagos.mainAudios.add(flashScope.MenuTransPagosmainAudios6)"/><evaluate expression="jVoiceArchAudioItem" result="flashScope.MenuTransPagosmainAudios7"/><set name="flashScope.MenuTransPagosmainAudios7.src" value="locutionProvider.getAudioSrc('puerto_rico-es-US-SAN-BC-MENU-TRANS-PAGOS-C-PT2','TrxYPagos')"/>
+        <evaluate expression="jVoiceArchWording" result="flashScope.MenuTransPagosmainAudios7.wording"/>
+        <set name="flashScope.MenuTransPagosmainAudios7.wording.text" value="'Para ordenar la suspensión de pago de uno o varios cheques, presione 3.'"/>
+        <set name="flashScope.MenuTransPagosmainAudios7.condition" value="'attempts==1'"/><evaluate expression="flashScope.MenuTransPagos.mainAudios.add(flashScope.MenuTransPagosmainAudios7)"/><evaluate expression="jVoiceArchAudioItem" result="flashScope.MenuTransPagosmainAudios8"/><set name="flashScope.MenuTransPagosmainAudios8.src" value="locutionProvider.getAudioSrc('puerto_rico-es-US-SAN-BC-MENU-TRANS-PAGOS-D-PT2','TrxYPagos')"/>
+        <evaluate expression="jVoiceArchWording" result="flashScope.MenuTransPagosmainAudios8.wording"/>
+        <set name="flashScope.MenuTransPagosmainAudios8.wording.text" value="'Para regresar al menú anterior, presione 8. Para regresar al menú principal, presione 9. Para comunicarse con un representante de Servicio al Cliente, presione 0.'"/>
+        <set name="flashScope.MenuTransPagosmainAudios8.condition" value="'attempts==1'"/><evaluate expression="flashScope.MenuTransPagos.mainAudios.add(flashScope.MenuTransPagosmainAudios8)"/><evaluate expression="jVoiceArchAudioItem" result="flashScope.MenuTransPagosmainAudios9"/><set name="flashScope.MenuTransPagosmainAudios9.src" value="locutionProvider.getAudioSrc('puerto_rico-es-US-SAN-BC-MENU-TRANS-PAGOS-A-PT3','TrxYPagos')"/>
+        <evaluate expression="jVoiceArchWording" result="flashScope.MenuTransPagosmainAudios9.wording"/>
+        <set name="flashScope.MenuTransPagosmainAudios9.wording.text" value="'Para realizar o verificar sus pagos, presione 1.'"/>
+        <set name="flashScope.MenuTransPagosmainAudios9.condition" value="'attempts==2'"/><evaluate expression="flashScope.MenuTransPagos.mainAudios.add(flashScope.MenuTransPagosmainAudios9)"/><evaluate expression="jVoiceArchAudioItem" result="flashScope.MenuTransPagosmainAudios10"/><set name="flashScope.MenuTransPagosmainAudios10.src" value="locutionProvider.getAudioSrc('puerto_rico-es-US-SAN-BC-MENU-TRANS-PAGOS-B-PT3','TrxYPagos')"/>
+        <evaluate expression="jVoiceArchWording" result="flashScope.MenuTransPagosmainAudios10.wording"/>
+        <set name="flashScope.MenuTransPagosmainAudios10.wording.text" value="'Para realizar transferencias entre cuentas, presione 2.'"/>
+        <set name="flashScope.MenuTransPagosmainAudios10.condition" value="'attempts==2'"/><evaluate expression="flashScope.MenuTransPagos.mainAudios.add(flashScope.MenuTransPagosmainAudios10)"/><evaluate expression="jVoiceArchAudioItem" result="flashScope.MenuTransPagosmainAudios11"/><set name="flashScope.MenuTransPagosmainAudios11.src" value="locutionProvider.getAudioSrc('puerto_rico-es-US-SAN-BC-MENU-TRANS-PAGOS-C-PT3','TrxYPagos')"/>
+        <evaluate expression="jVoiceArchWording" result="flashScope.MenuTransPagosmainAudios11.wording"/>
+        <set name="flashScope.MenuTransPagosmainAudios11.wording.text" value="'Para ordenar la suspensión de pago de uno o varios cheques, presione 3.'"/>
+        <set name="flashScope.MenuTransPagosmainAudios11.condition" value="'attempts==2'"/><evaluate expression="flashScope.MenuTransPagos.mainAudios.add(flashScope.MenuTransPagosmainAudios11)"/><evaluate expression="jVoiceArchAudioItem" result="flashScope.MenuTransPagosmainAudios12"/><set name="flashScope.MenuTransPagosmainAudios12.src" value="locutionProvider.getAudioSrc('puerto_rico-es-US-SAN-BC-MENU-TRANS-PAGOS-D-PT3','TrxYPagos')"/>
+        <evaluate expression="jVoiceArchWording" result="flashScope.MenuTransPagosmainAudios12.wording"/>
+        <set name="flashScope.MenuTransPagosmainAudios12.wording.text" value="'Para regresar al menú anterior, presione 8. Para regresar al menú principal, presione 9. Para comunicarse con un representante de Servicio al Cliente, presione 0.'"/>
+        <set name="flashScope.MenuTransPagosmainAudios12.condition" value="'attempts==2'"/><evaluate expression="flashScope.MenuTransPagos.mainAudios.add(flashScope.MenuTransPagosmainAudios12)"/>
+        <evaluate expression="jVoiceArchAudioItem" result="flashScope.MenuTransPagosnoMatchAudios1"/><set name="flashScope.MenuTransPagosnoMatchAudios1.src" value="locutionProvider.getAudioSrc('puerto_rico-es-US-SAN-BC-NI','TrxYPagos')"/>
+        <evaluate expression="jVoiceArchWording" result="flashScope.MenuTransPagosnoMatchAudios1.wording"/>
+        <set name="flashScope.MenuTransPagosnoMatchAudios1.wording.text" value="'No ha seleccionado una opción.'"/>
+        <evaluate expression="flashScope.MenuTransPagos.noMatchAudios.add(flashScope.MenuTransPagosnoMatchAudios1)"/>
+        <evaluate expression="jVoiceArchAudioItem" result="flashScope.MenuTransPagosnoInputAudios1"/><set name="flashScope.MenuTransPagosnoInputAudios1.src" value="locutionProvider.getAudioSrc('puerto_rico-es-US-SAN-BC-NM','TrxYPagos')"/>
+        <evaluate expression="jVoiceArchWording" result="flashScope.MenuTransPagosnoInputAudios1.wording"/>
+        <set name="flashScope.MenuTransPagosnoInputAudios1.wording.text" value="'La opción que usted seleccionó no es válida.'"/>
+        <evaluate expression="flashScope.MenuTransPagos.noInputAudios.add(flashScope.MenuTransPagosnoInputAudios1)"/>
+	</on-entry>
+	<evaluate expression="flowProcessor.process(flashScope.MenuTransPagos)"/>			
+	<transition to="render_MenuTransPagos"/>
+</action-state>
+
+<view-state id="render_MenuTransPagos" view="#{flowProcessor.getRenderer().getView()}" model="lastInputResult">
+	<transition on="match" to="MenuTransPagosOption"/>
+</view-state>
+
+<action-state id="MenuTransPagosOption">
+	<evaluate expression="lastInputResult.interpretation == '1'" />
+	<transition on="yes" to="PagoComercio"/>
+	<transition to="Final"/>
+</action-state>
+<subflow-state id="PagoComercio" subflow="com/puertorico/trxypagos/PagoComercio">
+ <transition to="Final">
+ 	<set name="flowScope.result" value="currentEvent.attributes.result" />
+ </transition>
+
+</subflow-state>
+</flow> 

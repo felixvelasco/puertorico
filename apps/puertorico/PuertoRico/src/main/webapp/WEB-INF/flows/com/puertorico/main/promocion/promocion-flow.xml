@@ -1,0 +1,49 @@
+<flow xmlns="http://www.springframework.org/schema/webflow"	
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"	
+xsi:schemaLocation="http://www.springframework.org/schema/webflow
+http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd"
+parent="Main/errorHandler"
+start-state= "_jVoiceCheckInit" >
+
+
+
+
+<action-state id="_jVoiceCheckInit">
+	<evaluate expression="jVoiceArchData.initialized" />
+		<transition on="no" to="_jVoiceInit"/>
+		<transition to="audioPublicitario"/>
+	</action-state>
+
+<view-state id="_jVoiceInit" view="_init" model="jVoiceArchData">
+	<transition to="audioPublicitario" >
+		<set name="jVoiceArchData.initialized" value="true"/>
+	</transition>
+</view-state>
+<end-state id="Final" view="#{flowProcessor.getRenderer().getView()}">
+	<output name="result" value="''" />
+</end-state>
+
+<action-state id="audioPublicitario">
+	<evaluate expression="true" />
+	<transition on="yes" to="setPROMO"/>
+	<transition to="Final"/>
+</action-state>
+<action-state id="setPROMO">
+   <evaluate expression="stats.setPROMO()"
+   />
+   
+
+	<transition to="promo"></transition>
+</action-state>
+<action-state id="promo">
+	<on-entry>
+		<evaluate expression="jVoiceArchOutput" result="flashScope.promo"></evaluate>
+		<evaluate expression="jVoiceArchAudioItem" result="flashScope.promoaudioItems1"/><evaluate expression="jVoiceArchWording" result="flashScope.promoaudioItems1.wording"/>
+		<set name="flashScope.promoaudioItems1.wording.text" value="'La Cuenta Nómina Open te devuelve el 1% de tus principales recibos y hasta un 3% de tus compras con la Visa Open. Infórmate ahora.'"/>
+		<evaluate expression="flashScope.promo.audioItems.add(flashScope.promoaudioItems1)"/> 
+	</on-entry>
+	<evaluate expression="flowProcessor.process(flashScope.promo)"/>
+	<transition to="Final"/>
+</action-state>
+
+</flow> 

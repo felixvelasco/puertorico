@@ -1,0 +1,14 @@
+output pinIncorrecto
+
+audios{
+main:
+		when("loginMain.loginAttempts == 0") {
+			say src "puerto_rico-es-US-SAN-BC-AUTENTICACION-NM-PT1" wording "El número secreto que especificó no es válido."
+		}
+		when("loginMain.loginAttempts == 1") {
+			say src "puerto_rico-es-US-SAN-BC-AUTENTICACION-NM-PT2" wording "El número secreto que especificó no es válido."
+		}
+		when("loginMain.loginAttempts == 2") {
+			say src "puerto_rico-es-US-SAN-BC-AUTENTICACION-NM-PT3" wording "El número secreto que especificó no es válido."
+		}
+}
