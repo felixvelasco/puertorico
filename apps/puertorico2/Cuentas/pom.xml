@@ -1,12 +1,10 @@
-<?xml version="1.0"?>
-<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>Cuentas</groupId>
   <artifactId>Cuentas</artifactId>
   <version>1.0.0-SNAPSHOT</version>
   <name>Cuentas</name>
-  <description></description>
+  <description/>
   <properties>
     <wsdlRoot>src/main/resources/META-INF/wsdl</wsdlRoot>
   </properties>
@@ -14,7 +12,7 @@
     <dependency>
       <groupId>com.vectorsf</groupId>
       <artifactId>jvoiceframework-flow</artifactId>
-      <version>1.0.1</version>
+      <version>1.0.2-SNAPSHOT</version>
     </dependency>
     <dependency>
       <groupId>SeleccionCuentas</groupId>
@@ -24,16 +22,16 @@
   </dependencies>
   <repositories>
     <repository>
-      <id>jvoice</id>
-      <name>JVoice repository</name>
-      <url>http://repository-felixvelasco.forge.cloudbees.com/release</url>
+      <id>jvoiceSnapshot</id>
+      <name>Jvoice snapshot repository</name>
+      <url>http://repository-felixvelasco.forge.cloudbees.com/snapshot</url>
     </repository>
   </repositories>
   <pluginRepositories>
     <pluginRepository>
-      <id>jvoice</id>
-      <name>JVoice repository</name>
-      <url>http://repository-felixvelasco.forge.cloudbees.com/release</url>
+      <id>jvoiceSnapshot</id>
+      <name>Jvoice snapshot repository</name>
+      <url>http://repository-felixvelasco.forge.cloudbees.com/snapshot</url>
     </pluginRepository>
   </pluginRepositories>
   <build>
@@ -41,7 +39,7 @@
       <plugin>
         <groupId>com.vectorsf.jvoice</groupId>
         <artifactId>dsl-builder</artifactId>
-        <version>1.0.0</version>
+        <version>1.0.1-SNAPSHOT</version>
         <executions>
           <execution>
             <phase>generate-sources</phase>
@@ -54,7 +52,7 @@
       <plugin>
         <groupId>com.vectorsf.jvoice</groupId>
         <artifactId>dsl-builder</artifactId>
-        <version>1.0.0</version>
+        <version>1.0.1-SNAPSHOT</version>
         <executions>
           <execution>
             <phase>initialize</phase>
