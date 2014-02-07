@@ -11,5 +11,10 @@
 											http://www.springframework.org/schema/context/spring-context.xsd">
 
 <!-- Application beans -->
+<context:component-scan base-package="com.isb.global.components" />
+<context:component-scan base-package="com.isb.login.components" />
+<context:component-scan base-package="com.isb.main.components" />
+<context:component-scan base-package="com.isb.seleccionCuentas.components" />
+<context:component-scan base-package="com.isb.trxYPagos.components" />
 
 </beans:beans>
