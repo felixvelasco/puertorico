@@ -1,0 +1,90 @@
+<flow xmlns="http://www.springframework.org/schema/webflow"	
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"	
+xsi:schemaLocation="http://www.springframework.org/schema/webflow
+http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd"
+parent="SeleccionCuentas/errorHandler"
+start-state= "_jVoiceCheckInit" >
+
+<on-start>
+<evaluate expression="manageCuentas" result="flowScope.manageCuentas"></evaluate>
+<evaluate expression="text" result="flowScope.texto"></evaluate>
+
+</on-start>
+
+
+<action-state id="_jVoiceCheckInit">
+	<evaluate expression="jVoiceArchData.initialized" />
+		<transition on="no" to="_jVoiceInit"/>
+		<transition to="invokeCtasCustPR"/>
+	</action-state>
+
+<view-state id="_jVoiceInit" view="_init" model="jVoiceArchData">
+	<transition to="invokeCtasCustPR" >
+		<set name="jVoiceArchData.initialized" value="true"/>
+	</transition>
+</view-state>
+<end-state id="OneAcc" view="#{flowProcessor.getRenderer().getView()}">
+	<output name="result" value="user.cuentasDebito[0]" />
+</end-state>
+<action-state id="invokeCtasCustPR">
+   <evaluate expression="jWServiceCtasCustPR.invokeCtasCustPR()"
+   />
+   
+
+	 <transition to="isOnlyOneAcc"></transition>
+	
+</action-state>
+
+<action-state id="isOnlyOneAcc">
+	<evaluate expression="cuentasDebito.size == 1" />
+	<transition on="yes" to="OneAcc"/>
+	<transition to="getDebitAccountsText"/>
+</action-state>
+<action-state id="getDebitAccountsText">
+   <evaluate expression="flowScope.manageCuentas.getDebitAccountsText()"
+   />
+   
+
+	 <transition to="selectDebitAccount"></transition>
+	
+</action-state>
+<action-state id="selectDebitAccount">
+	<on-entry>
+		<evaluate expression="jVoiceArchInput" result="flashScope.selectDebitAccount"></evaluate>
+		<set name="flashScope.selectDebitAccount.name" value="'selectDebitAccount'" />
+		
+		<evaluate expression="jVoiceArchGrammar" result="flashScope.grammar1" />
+		<set name="flashScope.grammar1.src" value="'builtin:dtmf/digits'"/>
+		<set name="flashScope.grammar1.mode" value="'dtmf'"/>
+		<set name="flashScope.grammar1.module" value="'SeleccionCuentas'"/>
+		<evaluate expression="flashScope.selectDebitAccount.grammars.add(flashScope.grammar1)" />
+		
+        <evaluate expression="jVoiceArchAudioItem" result="flashScope.selectDebitAccountmainAudios1"/><evaluate expression="jVoiceArchWording" result="flashScope.selectDebitAccountmainAudios1.wording"/>
+        <set name="flashScope.selectDebitAccountmainAudios1.wording.text" value="'' + texto.getTexto() + ''"/>
+        <evaluate expression="flashScope.selectDebitAccount.mainAudios.add(flashScope.selectDebitAccountmainAudios1)"/>
+        <evaluate expression="jVoiceArchAudioItem" result="flashScope.selectDebitAccountnoMatchAudios1"/><set name="flashScope.selectDebitAccountnoMatchAudios1.src" value="locutionProvider.getAudioSrc('puerto_rico-es-US-SAN-BC-NM','SeleccionCuentas')"/>
+        <evaluate expression="jVoiceArchWording" result="flashScope.selectDebitAccountnoMatchAudios1.wording"/>
+        <set name="flashScope.selectDebitAccountnoMatchAudios1.wording.text" value="'La opción que usted seleccionó no es válida.'"/>
+        <evaluate expression="flashScope.selectDebitAccount.noMatchAudios.add(flashScope.selectDebitAccountnoMatchAudios1)"/>
+        <evaluate expression="jVoiceArchAudioItem" result="flashScope.selectDebitAccountnoInputAudios1"/><set name="flashScope.selectDebitAccountnoInputAudios1.src" value="locutionProvider.getAudioSrc('puerto_rico-es-US-SAN-BC-NI','SeleccionCuentas')"/>
+        <evaluate expression="jVoiceArchWording" result="flashScope.selectDebitAccountnoInputAudios1.wording"/>
+        <set name="flashScope.selectDebitAccountnoInputAudios1.wording.text" value="'No ha seleccionado una opción.'"/>
+        <evaluate expression="flashScope.selectDebitAccount.noInputAudios.add(flashScope.selectDebitAccountnoInputAudios1)"/>
+	</on-entry>
+	<evaluate expression="flowProcessor.process(flashScope.selectDebitAccount)"/>			
+	<transition to="render_selectDebitAccount"/>
+</action-state>
+
+<view-state id="render_selectDebitAccount" view="#{flowProcessor.getRenderer().getView()}" model="lastInputResult">
+	<transition on="match" to="isListMoreAcc"/>
+</view-state>
+<end-state id="AccSelected" view="#{flowProcessor.getRenderer().getView()}">
+	<output name="result" value="user.cuentasDebito[lastInputResult.interpretation - 1]" />
+</end-state>
+
+<action-state id="isListMoreAcc">
+	<evaluate expression="lastInputResult.interpretation == '6'" />
+	<transition on="yes" to="getDebitAccountsText"/>
+	<transition to="AccSelected"/>
+</action-state>
+</flow> 

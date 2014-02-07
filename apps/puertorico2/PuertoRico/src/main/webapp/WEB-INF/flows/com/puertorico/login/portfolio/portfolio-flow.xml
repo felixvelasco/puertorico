@@ -2,7 +2,7 @@
 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"	
 xsi:schemaLocation="http://www.springframework.org/schema/webflow
 http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd"
-parent="Main/errorHandler"
+parent="Login/errorHandler"
 start-state= "_jVoiceCheckInit" >
 
 
@@ -11,19 +11,19 @@ start-state= "_jVoiceCheckInit" >
 <action-state id="_jVoiceCheckInit">
 	<evaluate expression="jVoiceArchData.initialized" />
 		<transition on="no" to="_jVoiceInit"/>
-		<transition to="initialize"/>
+		<transition to="callPortafolio"/>
 	</action-state>
 
 <view-state id="_jVoiceInit" view="_init" model="jVoiceArchData">
-	<transition to="initialize" >
+	<transition to="callPortafolio" >
 		<set name="jVoiceArchData.initialized" value="true"/>
 	</transition>
 </view-state>
 <end-state id="Final" view="#{flowProcessor.getRenderer().getView()}">
 	<output name="result" value="''" />
 </end-state>
-<action-state id="initialize">
-   <evaluate expression="init.init()"
+<action-state id="callPortafolio">
+   <evaluate expression="jwServicePortfolio.callPortafolio()"
    />
    
 

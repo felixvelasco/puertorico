@@ -1,0 +1,105 @@
+<flow xmlns="http://www.springframework.org/schema/webflow"	
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"	
+xsi:schemaLocation="http://www.springframework.org/schema/webflow
+http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd"
+parent="Login/errorHandler"
+start-state= "_jVoiceCheckInit" >
+
+
+
+
+<action-state id="_jVoiceCheckInit">
+	<evaluate expression="jVoiceArchData.initialized" />
+		<transition on="no" to="_jVoiceInit"/>
+		<transition to="autenticacion"/>
+	</action-state>
+
+<view-state id="_jVoiceInit" view="_init" model="jVoiceArchData">
+	<transition to="autenticacion" >
+		<set name="jVoiceArchData.initialized" value="true"/>
+	</transition>
+</view-state>
+<end-state id="Next" view="#{flowProcessor.getRenderer().getView()}">
+	<output name="result" value="''" />
+</end-state>
+
+<action-state id="WSResult">
+	<evaluate expression="jwsAutenticaSevice.result == 0" />
+	<transition on="yes" to="Next"/>
+	<transition to="WSResult_clienteNoExiste"/>
+</action-state>
+<action-state id="WSResult_clienteNoExiste">
+	<evaluate expression="jwsAutenticaSevice.result == 2" />
+	<transition on="yes" to="clienteNoExiste"/>
+	<transition to="WSResult_PinIncorrecto"/>
+</action-state>
+<action-state id="WSResult_PinIncorrecto">
+	<evaluate expression="jwsAutenticaSevice.result == 1" />
+	<transition on="yes" to="pinIncorrecto"/>
+	<transition to="incAttempts"/>
+</action-state>
+<action-state id="clienteNoExiste">
+	<on-entry>
+		<evaluate expression="jVoiceArchOutput" result="flashScope.clienteNoExiste"></evaluate>
+		<evaluate expression="jVoiceArchAudioItem" result="flashScope.clienteNoExisteaudioItems1"/><set name="flashScope.clienteNoExisteaudioItems1.src" value="locutionProvider.getAudioSrc('puerto_rico-es-US-SAN-BC-IDENTIFICACION-NM-PT1','Login')"/>
+		<evaluate expression="jVoiceArchWording" result="flashScope.clienteNoExisteaudioItems1.wording"/>
+		<set name="flashScope.clienteNoExisteaudioItems1.wording.text" value="'El número de seguro social que especificó no es válido'"/>
+		<set name="flashScope.clienteNoExisteaudioItems1.condition" value="loginMain.loginAttempts == 0"/><evaluate expression="flashScope.clienteNoExiste.audioItems.add(flashScope.clienteNoExisteaudioItems1)"/><evaluate expression="jVoiceArchAudioItem" result="flashScope.clienteNoExisteaudioItems2"/><set name="flashScope.clienteNoExisteaudioItems2.src" value="locutionProvider.getAudioSrc('puerto_rico-es-US-SAN-BC-IDENTIFICACION-NM-PT2','Login')"/>
+		<evaluate expression="jVoiceArchWording" result="flashScope.clienteNoExisteaudioItems2.wording"/>
+		<set name="flashScope.clienteNoExisteaudioItems2.wording.text" value="'El número de seguro social que especificó no es válido'"/>
+		<set name="flashScope.clienteNoExisteaudioItems2.condition" value="loginMain.loginAttempts == 1"/><evaluate expression="flashScope.clienteNoExiste.audioItems.add(flashScope.clienteNoExisteaudioItems2)"/><evaluate expression="jVoiceArchAudioItem" result="flashScope.clienteNoExisteaudioItems3"/><set name="flashScope.clienteNoExisteaudioItems3.src" value="locutionProvider.getAudioSrc('puerto_rico-es-US-SAN-BC-IDENTIFICACION-NM-PT3','Login')"/>
+		<evaluate expression="jVoiceArchWording" result="flashScope.clienteNoExisteaudioItems3.wording"/>
+		<set name="flashScope.clienteNoExisteaudioItems3.wording.text" value="'El número de seguro social que especificó no es válido'"/>
+		<set name="flashScope.clienteNoExisteaudioItems3.condition" value="loginMain.loginAttempts == 2"/><evaluate expression="flashScope.clienteNoExiste.audioItems.add(flashScope.clienteNoExisteaudioItems3)"/> 
+	</on-entry>
+	<evaluate expression="flowProcessor.process(flashScope.clienteNoExiste)"/>
+	<transition to="Relogin"/>
+</action-state>
+
+<action-state id="pinIncorrecto">
+	<on-entry>
+		<evaluate expression="jVoiceArchOutput" result="flashScope.pinIncorrecto"></evaluate>
+		<evaluate expression="jVoiceArchAudioItem" result="flashScope.pinIncorrectoaudioItems1"/><set name="flashScope.pinIncorrectoaudioItems1.src" value="locutionProvider.getAudioSrc('puerto_rico-es-US-SAN-BC-AUTENTICACION-NM-PT1','Login')"/>
+		<evaluate expression="jVoiceArchWording" result="flashScope.pinIncorrectoaudioItems1.wording"/>
+		<set name="flashScope.pinIncorrectoaudioItems1.wording.text" value="'El número secreto que especificó no es válido.'"/>
+		<set name="flashScope.pinIncorrectoaudioItems1.condition" value="loginMain.loginAttempts == 0"/><evaluate expression="flashScope.pinIncorrecto.audioItems.add(flashScope.pinIncorrectoaudioItems1)"/><evaluate expression="jVoiceArchAudioItem" result="flashScope.pinIncorrectoaudioItems2"/><set name="flashScope.pinIncorrectoaudioItems2.src" value="locutionProvider.getAudioSrc('puerto_rico-es-US-SAN-BC-AUTENTICACION-NM-PT2','Login')"/>
+		<evaluate expression="jVoiceArchWording" result="flashScope.pinIncorrectoaudioItems2.wording"/>
+		<set name="flashScope.pinIncorrectoaudioItems2.wording.text" value="'El número secreto que especificó no es válido.'"/>
+		<set name="flashScope.pinIncorrectoaudioItems2.condition" value="loginMain.loginAttempts == 1"/><evaluate expression="flashScope.pinIncorrecto.audioItems.add(flashScope.pinIncorrectoaudioItems2)"/><evaluate expression="jVoiceArchAudioItem" result="flashScope.pinIncorrectoaudioItems3"/><set name="flashScope.pinIncorrectoaudioItems3.src" value="locutionProvider.getAudioSrc('puerto_rico-es-US-SAN-BC-AUTENTICACION-NM-PT3','Login')"/>
+		<evaluate expression="jVoiceArchWording" result="flashScope.pinIncorrectoaudioItems3.wording"/>
+		<set name="flashScope.pinIncorrectoaudioItems3.wording.text" value="'El número secreto que especificó no es válido.'"/>
+		<set name="flashScope.pinIncorrectoaudioItems3.condition" value="loginMain.loginAttempts == 2"/><evaluate expression="flashScope.pinIncorrecto.audioItems.add(flashScope.pinIncorrectoaudioItems3)"/> 
+	</on-entry>
+	<evaluate expression="flowProcessor.process(flashScope.pinIncorrecto)"/>
+	<transition to="Relogin"/>
+</action-state>
+
+
+<action-state id="checkAttempts">
+	<evaluate expression="loginMain.loginAttempts &lt; 3" />
+	<transition on="yes" to="Relogin"/>
+	<transition to="Final"/>
+</action-state>
+<end-state id="Final" view="#{flowProcessor.getRenderer().getView()}">
+	<output name="result" value="''" />
+</end-state>
+<end-state id="Relogin" view="#{flowProcessor.getRenderer().getView()}">
+	<output name="result" value="''" />
+</end-state>
+<action-state id="autenticacion">
+   <evaluate expression="jwsAutenticaSevice.autenticacion()"
+   />
+   
+
+	 <transition to="WSResult"></transition>
+	
+</action-state>
+<action-state id="incAttempts">
+   <evaluate expression="loginMain.setLoginAttempts(loginMain.loginAttempts + 1)"
+   />
+   
+
+	 <transition to="checkAttempts"></transition>
+	
+</action-state>
+</flow> 

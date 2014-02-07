@@ -1,0 +1,56 @@
+<flow xmlns="http://www.springframework.org/schema/webflow"	
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"	
+xsi:schemaLocation="http://www.springframework.org/schema/webflow
+http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd"
+parent="Cuentas/errorHandler"
+start-state= "_jVoiceCheckInit" >
+
+
+<action-state id="_jVoiceCheckInit">
+	<evaluate expression="jVoiceArchData.initialized" />
+		<transition on="no" to="_jVoiceInit"/>
+		<transition to="menuCuentas"/>
+	</action-state>
+
+<view-state id="_jVoiceInit" view="_init" model="jVoiceArchData">
+	<transition to="menuCuentas" >
+		<set name="jVoiceArchData.initialized" value="true"/>
+	</transition>
+</view-state>
+<action-state id="menuCuentas">
+	<on-entry>
+		<evaluate expression="jVoiceArchInput" result="flashScope.menuCuentas"/>
+		<set name="flashScope.menuCuentas.name" value="'menuCuentas'" />
+		
+		<evaluate expression="jVoiceArchGrammar" result="flashScope.grammar1" />
+		<set name="flashScope.grammar1.src" value="'builtin:dtmf/digits'"/>
+		<set name="flashScope.grammar1.mode" value="'dtmf'"/>
+		<set name="flashScope.grammar1.module" value="'Cuentas'"/>
+		<evaluate expression="flashScope.menuCuentas.grammars.add(flashScope.grammar1)" />
+			        <evaluate expression="jVoiceArchAudioItem" result="flashScope.menuCuentasmainAudios1"/><evaluate expression="jVoiceArchWording" result="flashScope.menuCuentasmainAudios1.wording"/>
+			        <set name="flashScope.menuCuentasmainAudios1.wording.text" value="'Para cuentas de ahorro pulse dos, para otro tipo de cuenta pulse otro número'"/>
+			        <evaluate expression="flashScope.menuCuentas.mainAudios.add(flashScope.menuCuentasmainAudios1)"/>
+	</on-entry>
+	<evaluate expression="flowProcessor.process(flashScope.menuCuentas)"/>
+	<transition to="render_menuCuentas"></transition>
+</action-state>
+
+<view-state id="render_menuCuentas" view="#{flowProcessor.getRenderer().getView()}" model="lastInputResult">
+	<transition on="match" to="render_decision_menuCuentas"/>
+</view-state>
+	
+<action-state id="render_decision_menuCuentas">
+	<evaluate expression="lastInputResult.interpretation"></evaluate>
+	<transition on="cuentaAhorro" to="CuentasAhorro"/>
+	<transition on="transfer" to="Transfer"/>
+</action-state>
+<end-state id="Transfer" view="#{flowProcessor.getRenderer().getView()}">
+	<output name="result" value="''" />
+</end-state>
+<subflow-state id="CuentasAhorro" subflow="com/puertorico/cuentas/CuentasAhorro">
+ <transition to="menuCuentas">
+ 	<set name="flowScope.result" value="currentEvent.attributes.result" />
+ </transition>
+
+</subflow-state>
+</flow> 

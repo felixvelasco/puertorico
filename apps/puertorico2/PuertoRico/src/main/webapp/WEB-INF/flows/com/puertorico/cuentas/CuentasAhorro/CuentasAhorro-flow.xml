@@ -1,0 +1,52 @@
+<flow xmlns="http://www.springframework.org/schema/webflow"	
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"	
+xsi:schemaLocation="http://www.springframework.org/schema/webflow
+http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd"
+parent="Cuentas/errorHandler"
+start-state= "_jVoiceCheckInit" >
+
+
+
+
+<action-state id="_jVoiceCheckInit">
+	<evaluate expression="jVoiceArchData.initialized" />
+		<transition on="no" to="_jVoiceInit"/>
+		<transition to="SelCuentaAhorro"/>
+	</action-state>
+
+<view-state id="_jVoiceInit" view="_init" model="jVoiceArchData">
+	<transition to="SelCuentaAhorro" >
+		<set name="jVoiceArchData.initialized" value="true"/>
+	</transition>
+</view-state>
+<end-state id="Volver" view="#{flowProcessor.getRenderer().getView()}">
+	<output name="result" value="''" />
+</end-state>
+<subflow-state id="SelCuentaAhorro" subflow="com/puertorico/seleccioncuentas/SelCuentaAhorro">
+<transition on="Final" to="getAccountBalance">
+	<set name="flowScope.result" value="currentEvent.attributes.result" />
+</transition>
+<transition on="UnaCuenta" to="getAccountBalance">
+	<set name="flowScope.result" value="currentEvent.attributes.result" />
+</transition>
+</subflow-state>
+<action-state id="getAccountBalance">
+   <evaluate expression="jWServiceGetBalances.getAccountBalance(accounts)"
+   result="accounts"/>
+   
+
+	 <transition to="infoCAhorro"></transition>
+	
+</action-state>
+<action-state id="infoCAhorro">
+	<on-entry>
+		<evaluate expression="jVoiceArchOutput" result="flashScope.infoCAhorro"></evaluate>
+		<evaluate expression="jVoiceArchAudioItem" result="flashScope.infoCAhorroaudioItems1"/><evaluate expression="jVoiceArchWording" result="flashScope.infoCAhorroaudioItems1.wording"/>
+		<set name="flashScope.infoCAhorroaudioItems1.wording.text" value="'El balance disponible de su cuenta terminada en {$} es {$}'"/>
+		<evaluate expression="flashScope.infoCAhorro.audioItems.add(flashScope.infoCAhorroaudioItems1)"/> 
+	</on-entry>
+	<evaluate expression="flowProcessor.process(flashScope.infoCAhorro)"/>
+	<transition to="Volver"/>
+</action-state>
+
+</flow> 

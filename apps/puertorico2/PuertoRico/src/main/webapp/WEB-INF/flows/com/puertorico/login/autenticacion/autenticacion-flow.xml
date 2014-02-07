@@ -1,0 +1,83 @@
+<flow xmlns="http://www.springframework.org/schema/webflow"	
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"	
+xsi:schemaLocation="http://www.springframework.org/schema/webflow
+http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd"
+parent="Login/errorHandler"
+start-state= "_jVoiceCheckInit" >
+
+
+
+
+<action-state id="_jVoiceCheckInit">
+	<evaluate expression="jVoiceArchData.initialized" />
+		<transition on="no" to="_jVoiceInit"/>
+		<transition to="menuAutenticacion"/>
+	</action-state>
+
+<view-state id="_jVoiceInit" view="_init" model="jVoiceArchData">
+	<transition to="menuAutenticacion" >
+		<set name="jVoiceArchData.initialized" value="true"/>
+	</transition>
+</view-state>
+<end-state id="Final" view="#{flowProcessor.getRenderer().getView()}">
+	<output name="result" value="''" />
+</end-state>
+<action-state id="menuAutenticacion">
+	<on-entry>
+		<evaluate expression="jVoiceArchInput" result="flashScope.menuAutenticacion"></evaluate>
+		<set name="flashScope.menuAutenticacion.name" value="'menuAutenticacion'" />
+		<set name="flashScope.menuAutenticacion.bargein" value="true" />
+		
+		<evaluate expression="jVoiceArchGrammar" result="flashScope.grammar1" />
+		<set name="flashScope.grammar1.src" value="'builtin:dtmf/digits?length=4'"/>
+		<set name="flashScope.grammar1.mode" value="'dtmf'"/>
+		<set name="flashScope.grammar1.module" value="'Login'"/>
+		<evaluate expression="flashScope.menuAutenticacion.grammars.add(flashScope.grammar1)" />
+		
+        <evaluate expression="jVoiceArchAudioItem" result="flashScope.menuAutenticacionmainAudios1"/><set name="flashScope.menuAutenticacionmainAudios1.src" value="locutionProvider.getAudioSrc('puerto_rico-es-US-SAN-BC-MENU-AUTENTICACION-PT1','Login')"/>
+        <evaluate expression="jVoiceArchWording" result="flashScope.menuAutenticacionmainAudios1.wording"/>
+        <set name="flashScope.menuAutenticacionmainAudios1.wording.text" value="'Por favor presione su número secreto ahora.'"/>
+        <set name="flashScope.menuAutenticacionmainAudios1.condition" value="'attempts==0'"/><evaluate expression="flashScope.menuAutenticacion.mainAudios.add(flashScope.menuAutenticacionmainAudios1)"/><evaluate expression="jVoiceArchAudioItem" result="flashScope.menuAutenticacionmainAudios2"/><set name="flashScope.menuAutenticacionmainAudios2.src" value="locutionProvider.getAudioSrc('puerto_rico-es-US-SAN-BC-MENU-AUTENTICACION-PT2','Login')"/>
+        <evaluate expression="jVoiceArchWording" result="flashScope.menuAutenticacionmainAudios2.wording"/>
+        <set name="flashScope.menuAutenticacionmainAudios2.wording.text" value="'Por favor, vuelva a entrar su número secreto ahora.'"/>
+        <set name="flashScope.menuAutenticacionmainAudios2.condition" value="'attempts==1'"/><evaluate expression="flashScope.menuAutenticacion.mainAudios.add(flashScope.menuAutenticacionmainAudios2)"/><evaluate expression="jVoiceArchAudioItem" result="flashScope.menuAutenticacionmainAudios3"/><set name="flashScope.menuAutenticacionmainAudios3.src" value="locutionProvider.getAudioSrc('puerto_rico-es-US-SAN-BC-MENU-AUTENTICACION-PT3','Login')"/>
+        <evaluate expression="jVoiceArchWording" result="flashScope.menuAutenticacionmainAudios3.wording"/>
+        <set name="flashScope.menuAutenticacionmainAudios3.wording.text" value="'Por favor, vuelva a entrar su número secreto ahora.'"/>
+        <set name="flashScope.menuAutenticacionmainAudios3.condition" value="'attempts==2'"/><evaluate expression="flashScope.menuAutenticacion.mainAudios.add(flashScope.menuAutenticacionmainAudios3)"/>
+        <evaluate expression="jVoiceArchAudioItem" result="flashScope.menuAutenticacionnoMatchAudios1"/><set name="flashScope.menuAutenticacionnoMatchAudios1.src" value="locutionProvider.getAudioSrc('puerto_rico-es-US-SAN-BC-AUTENTICACION-NM-PT1','Login')"/>
+        <evaluate expression="jVoiceArchWording" result="flashScope.menuAutenticacionnoMatchAudios1.wording"/>
+        <set name="flashScope.menuAutenticacionnoMatchAudios1.wording.text" value="'El número secreto que especificó no es válido.'"/>
+        <set name="flashScope.menuAutenticacionnoMatchAudios1.condition" value="'attempts==1'"/><evaluate expression="flashScope.menuAutenticacion.noMatchAudios.add(flashScope.menuAutenticacionnoMatchAudios1)"/><evaluate expression="jVoiceArchAudioItem" result="flashScope.menuAutenticacionnoMatchAudios2"/><set name="flashScope.menuAutenticacionnoMatchAudios2.src" value="locutionProvider.getAudioSrc('puerto_rico-es-US-SAN-BC-AUTENTICACION-NM-PT2','Login')"/>
+        <evaluate expression="jVoiceArchWording" result="flashScope.menuAutenticacionnoMatchAudios2.wording"/>
+        <set name="flashScope.menuAutenticacionnoMatchAudios2.wording.text" value="'El número secreto que especificó no es válido.'"/>
+        <set name="flashScope.menuAutenticacionnoMatchAudios2.condition" value="'attempts==2'"/><evaluate expression="flashScope.menuAutenticacion.noMatchAudios.add(flashScope.menuAutenticacionnoMatchAudios2)"/><evaluate expression="jVoiceArchAudioItem" result="flashScope.menuAutenticacionnoMatchAudios3"/><set name="flashScope.menuAutenticacionnoMatchAudios3.src" value="locutionProvider.getAudioSrc('puerto_rico-es-US-SAN-BC-AUTENTICACION-NM-PT3','Login')"/>
+        <evaluate expression="jVoiceArchWording" result="flashScope.menuAutenticacionnoMatchAudios3.wording"/>
+        <set name="flashScope.menuAutenticacionnoMatchAudios3.wording.text" value="'El número secreto que especificó no es válido.'"/>
+        <set name="flashScope.menuAutenticacionnoMatchAudios3.condition" value="'attempts==3'"/><evaluate expression="flashScope.menuAutenticacion.noMatchAudios.add(flashScope.menuAutenticacionnoMatchAudios3)"/>
+        <evaluate expression="jVoiceArchAudioItem" result="flashScope.menuAutenticacionnoInputAudios1"/><set name="flashScope.menuAutenticacionnoInputAudios1.src" value="locutionProvider.getAudioSrc('puerto_rico-es-US-SAN-BC-AUTENTICACION-NI-PT1','Login')"/>
+        <evaluate expression="jVoiceArchWording" result="flashScope.menuAutenticacionnoInputAudios1.wording"/>
+        <set name="flashScope.menuAutenticacionnoInputAudios1.wording.text" value="'No recibimos su número secreto.'"/>
+        <set name="flashScope.menuAutenticacionnoInputAudios1.condition" value="'attempts==1'"/><evaluate expression="flashScope.menuAutenticacion.noInputAudios.add(flashScope.menuAutenticacionnoInputAudios1)"/><evaluate expression="jVoiceArchAudioItem" result="flashScope.menuAutenticacionnoInputAudios2"/><set name="flashScope.menuAutenticacionnoInputAudios2.src" value="locutionProvider.getAudioSrc('puerto_rico-es-US-SAN-BC-AUTENTICACION-NI-PT2','Login')"/>
+        <evaluate expression="jVoiceArchWording" result="flashScope.menuAutenticacionnoInputAudios2.wording"/>
+        <set name="flashScope.menuAutenticacionnoInputAudios2.wording.text" value="'Una vez más, no recibimos su número secreto.'"/>
+        <set name="flashScope.menuAutenticacionnoInputAudios2.condition" value="'attempts==2'"/><evaluate expression="flashScope.menuAutenticacion.noInputAudios.add(flashScope.menuAutenticacionnoInputAudios2)"/><evaluate expression="jVoiceArchAudioItem" result="flashScope.menuAutenticacionnoInputAudios3"/><set name="flashScope.menuAutenticacionnoInputAudios3.src" value="locutionProvider.getAudioSrc('puerto_rico-es-US-SAN-BC-AUTENTICACION-NI-PT3','Login')"/>
+        <evaluate expression="jVoiceArchWording" result="flashScope.menuAutenticacionnoInputAudios3.wording"/>
+        <set name="flashScope.menuAutenticacionnoInputAudios3.wording.text" value="'Una vez más, no recibimos su número secreto.'"/>
+        <set name="flashScope.menuAutenticacionnoInputAudios3.condition" value="'attempts==3'"/><evaluate expression="flashScope.menuAutenticacion.noInputAudios.add(flashScope.menuAutenticacionnoInputAudios3)"/>
+	</on-entry>
+	<evaluate expression="flowProcessor.process(flashScope.menuAutenticacion)"/>			
+	<transition to="render_menuAutenticacion"/>
+</action-state>
+
+<view-state id="render_menuAutenticacion" view="#{flowProcessor.getRenderer().getView()}" model="lastInputResult">
+	<transition on="match" to="setPin"/>
+</view-state>
+<action-state id="setPin">
+   <evaluate expression="autenticacion.setPin(lastInputResult.interpretation)"
+   />
+   
+
+	 <transition to="Final"></transition>
+	
+</action-state>
+</flow> 
