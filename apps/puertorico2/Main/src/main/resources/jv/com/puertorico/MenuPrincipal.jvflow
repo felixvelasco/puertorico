@@ -436,7 +436,7 @@
       <case eventName="default"/>
     </states>
     <states xsi:type="operations:CallFlowState" id="_ZP9_II8jEeOcRLZQ1ku6GQ" name="loginMain" incomingTransitions="_4ZUb4I2mEeOaHqABZZaIIw _4nNG4I2mEeOaHqABZZaIIw" outgoingTransitions="_mFI6wI8jEeOcRLZQ1ku6GQ">
-      <parameters></parameters>
+      <parameters>callData</parameters>
       <subflow href="vega://Login/com/puertorico/login/loginMain#_yf7yZI3BEeOoGs-iK9Y_5Q"/>
     </states>
     <transitions id="_TNWGxI2hEeOaHqABZZaIIw" source="_TNU4po2hEeOaHqABZZaIIw" target="_7t8LII2iEeOaHqABZZaIIw" eventName="Ok"/>
