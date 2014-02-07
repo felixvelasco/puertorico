@@ -2,5 +2,6 @@
 <configuration>
 
     <include resource="com/vectorsf/jvoiceframework/config/logger/logback-core.xml"/>
+    <include resource="com/vectorsf/jvoiceframework/config/logger/logback-isban-logger.xml"/>
 
 </configuration>
