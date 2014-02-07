@@ -4,24 +4,6 @@
         <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
-        <dependent-module archiveName="Main-1.0.0-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/Main/Main">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="Global-1.0.0-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/Global/Global">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="Login-1.0.0-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/Login/Login">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="SeleccionCuentas-1.0.0-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/SeleccionCuentas/SeleccionCuentas">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="Cuentas-1.0.0-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/Cuentas/Cuentas">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="TrxYPagos-1.0.0-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/TrxYPagos/TrxYPagos">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
         <property name="context-root" value="PuertoRico"/>
         <property name="java-output-path" value="/PuertoRico/target/classes"/>
     </wb-module>
