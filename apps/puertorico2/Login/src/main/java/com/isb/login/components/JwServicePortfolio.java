@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import com.isb.global.components.Account;
@@ -17,6 +18,7 @@ import com.ivrpr.ws.WebServices;
 import com.vectorsf.jvoiceframework.core.service.ws.WebServiceProvider;
 
 @Component()
+@Scope("session")
 public class JwServicePortfolio implements Serializable {
 
 	private static final long serialVersionUID = 6673215030467377034L;

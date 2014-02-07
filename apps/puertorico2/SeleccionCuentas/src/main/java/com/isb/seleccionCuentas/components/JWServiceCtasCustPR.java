@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 import org.tempuri.ArrayOfJWServiceCtasCustPRResponseCtaItem;
 import org.tempuri.JWServiceCtasCustPRResponse;
@@ -17,6 +18,7 @@ import com.isb.global.components.User;
 import com.vectorsf.jvoiceframework.core.service.ws.WebServiceProvider;
 
 @Component
+@Scope("session")
 public class JWServiceCtasCustPR {
 	
 	@Inject
