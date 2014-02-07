@@ -1,4 +1,6 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<?xml version="1.0"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <modelVersion>4.0.0</modelVersion>
   <groupId>SeleccionCuentas</groupId>
   <artifactId>SeleccionCuentas</artifactId>
@@ -15,9 +17,9 @@
       <version>1.0.1</version>
     </dependency>
     <dependency>
-    	<groupId>Global</groupId>
-    	<artifactId>Global</artifactId>
-    	<version>1.0.0-SNAPSHOT</version>
+      <groupId>Global</groupId>
+      <artifactId>Global</artifactId>
+      <version>1.0.0-SNAPSHOT</version>
     </dependency>
   </dependencies>
   <repositories>
@@ -91,7 +93,12 @@
                   <extraarg>-verbose</extraarg>
                 </extraargs>
               </defaultOptions>
-              <wsdlOptions/>
+              <wsdlOptions>
+                <wsdlOption>
+                  <wsdlLocation>http://localhost/wsdl/Services.wsdl</wsdlLocation>
+                  <wsdl>${wsdlRoot}/Services/Services.wsdl</wsdl>
+                </wsdlOption>
+              </wsdlOptions>
             </configuration>
           </execution>
         </executions>

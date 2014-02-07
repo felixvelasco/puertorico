@@ -1,0 +1,15 @@
+input selectDebitAccount
+
+grammars{
+	dtmf "builtin:dtmf/digits"
+}
+audios{
+ 	main: 
+ 		say wording "${texto.getTexto()}"
+ 	noinput:
+ 		say src "puerto_rico-es-US-SAN-BC-NI" wording "No ha seleccionado una opción."
+ 	nomatch:
+ 		say src "puerto_rico-es-US-SAN-BC-NM" wording "La opción que usted seleccionó no es válida."
+
+}
+

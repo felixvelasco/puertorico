@@ -1,6 +1,7 @@
 package com.isb.global.components;
 
 import java.io.Serializable;
+import java.util.List;
 
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
@@ -14,6 +15,8 @@ public class User implements Serializable {
 	private boolean logged;
 	private String ssid;
 	private String pin;
+	
+	private List<Account> cuentasDebito;
 
 	public boolean isLogged() {
 		return logged;
@@ -37,6 +40,14 @@ public class User implements Serializable {
 
 	public void setPin(String pin) {
 		this.pin = pin;
+	}
+
+	public List<Account> getCuentasDebito() {
+		return cuentasDebito;
+	}
+
+	public void setCuentasDebito(List<Account> cuentasDebito) {
+		this.cuentasDebito = cuentasDebito;
 	}
 	
 	
