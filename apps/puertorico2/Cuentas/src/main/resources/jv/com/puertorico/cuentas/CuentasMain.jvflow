@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="ASCII"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:al="http://eclipse.org/graphiti/mm/algorithms" xmlns:operations="http://jvoice.vectorsf.com/operations/1.0" xmlns:pi="http://eclipse.org/graphiti/mm/pictograms">
-  <pi:Diagram visible="true" gridUnit="10" diagramTypeId="jVoiceDiagram" name="CuentasMain" snapToGrid="true" pictogramLinks="/0/@link /0/@children.0/@link /0/@connections.0/@link /0/@children.1/@link /0/@children.2/@link /0/@connections.1/@link /0/@connections.2/@link /0/@children.3/@link" version="0.10.0">
+  <pi:Diagram visible="true" gridUnit="10" diagramTypeId="jVoiceDiagram" name="CuentasMain" snapToGrid="true" pictogramLinks="/0/@link /0/@children.0/@link /0/@connections.0/@link /0/@children.1/@link /0/@children.2/@link /0/@connections.1/@link /0/@children.3/@link /0/@connections.2/@link" version="0.10.0">
     <graphicsAlgorithm xsi:type="al:Rectangle" background="/0/@colors.1" foreground="/0/@colors.0" lineWidth="1" transparency="0.0" width="1000" height="1000"/>
     <link businessObjects="_8aDJYI2FEeO0_v2tdHNhnA"/>
     <children xsi:type="pi:ContainerShape" visible="true" active="true">
@@ -136,7 +136,7 @@
     </connections>
     <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="/0/@children.2/@anchors.1" end="/0/@children.3/@anchors.0">
       <graphicsAlgorithm xsi:type="al:Polyline" foreground="/0/@colors.7" lineWidth="2" filled="false" transparency="0.0"/>
-      <link businessObjects="_MGt5wI2KEeO0_v2tdHNhnA"/>
+      <link businessObjects="_aT8PoJJ7EeO-_fiQrMjJxA"/>
       <connectionDecorators visible="true" locationRelative="true" location="1.0">
         <graphicsAlgorithm xsi:type="al:Polygon" background="/0/@colors.7" foreground="/0/@colors.7" lineWidth="1" filled="true" transparency="0.0">
           <points x="-7" y="4"/>
@@ -169,12 +169,12 @@
     <states xsi:type="operations:MenuState" id="_N8wLII2GEeO0_v2tdHNhnA" name="menuCuentas" incomingTransitions="_8c8FUI2FEeO0_v2tdHNhnA" outgoingTransitions="_L1ow0I2KEeO0_v2tdHNhnA">
       <locution href="CuentasMain.resources/menuCuentas.voiceDsl#/"/>
     </states>
-    <states xsi:type="operations:CallFlowState" id="_LIPfUI2KEeO0_v2tdHNhnA" name="CuentasAhorro" incomingTransitions="_L1ow0I2KEeO0_v2tdHNhnA" outgoingTransitions="_MGt5wI2KEeO0_v2tdHNhnA">
+    <states xsi:type="operations:CallFlowState" id="_LIPfUI2KEeO0_v2tdHNhnA" name="CuentasAhorro" incomingTransitions="_L1ow0I2KEeO0_v2tdHNhnA" outgoingTransitions="_aT8PoJJ7EeO-_fiQrMjJxA">
       <subflow href="CuentasAhorro.jvflow#_aSZ5NI2GEeO0_v2tdHNhnA"/>
     </states>
-    <states xsi:type="operations:FinalState" id="_mISYgJJcEeO-_fiQrMjJxA" name="OK" incomingTransitions="_MGt5wI2KEeO0_v2tdHNhnA"/>
+    <states xsi:type="operations:FinalState" id="_mISYgJJcEeO-_fiQrMjJxA" name="OK" incomingTransitions="_aT8PoJJ7EeO-_fiQrMjJxA"/>
     <transitions id="_8c8FUI2FEeO0_v2tdHNhnA" source="_8c0JgI2FEeO0_v2tdHNhnA" target="_N8wLII2GEeO0_v2tdHNhnA" eventName="Ok"/>
     <transitions id="_L1ow0I2KEeO0_v2tdHNhnA" source="_N8wLII2GEeO0_v2tdHNhnA" target="_LIPfUI2KEeO0_v2tdHNhnA" eventName="cuentaAhorro"/>
-    <transitions id="_MGt5wI2KEeO0_v2tdHNhnA" source="_LIPfUI2KEeO0_v2tdHNhnA" target="_mISYgJJcEeO-_fiQrMjJxA" eventName="Volver"/>
+    <transitions id="_aT8PoJJ7EeO-_fiQrMjJxA" source="_LIPfUI2KEeO0_v2tdHNhnA" target="_mISYgJJcEeO-_fiQrMjJxA" eventName="Volver"/>
   </operations:Flow>
 </xmi:XMI>

@@ -1,5 +1,6 @@
 package com.isb.seleccionCuentas.components;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -12,15 +13,17 @@ import com.isb.global.components.User;
 
 @Component
 @Scope("prototype")
-public class ManageCuentas 
+public class ManageCuentas implements Serializable
 {
-	@Inject
-	Text text;
-	@Inject
-	AuxClass aux;
+
+	private static final long serialVersionUID = 836507688272067287L;
+	
 	@Inject
 	private User user;
 	
+	private String text;
+	
+	private int round = 1;
 	
 	public void manageTexts()
 	{		
@@ -29,8 +32,8 @@ public class ManageCuentas
 		
 		sbText.append(getTextFromAccounts(lCuen));
 		
-		aux.incVuelta();	
-		text.setTexto(sbText.toString());
+		round++;
+		setText(sbText.toString());
 	}
 	
 	public void getDebitAccountsText(){
@@ -41,8 +44,7 @@ public class ManageCuentas
 		sbText.append("Por favor, seleccione la cuenta desde la que desea hacer el pago.");
 		sbText.append(getTextFromAccounts(cuentasDebito));
 		
-		aux.incVuelta();	
-		text.setTexto(sbText.toString());
+		setText(sbText.toString());
 
 	}
 	
@@ -51,12 +53,17 @@ public class ManageCuentas
 		StringBuilder sbText = new StringBuilder();
 
 		// se listan las 5 primeras
-		if (aux.getVuelta().equals("1"))
+		if (round == 1)
 		{
 			for (int i = 0; i < accounts.size()&& i < 5; i++) 
 			{
 				Account accounti = accounts.get(i);
-				sbText.append("Para la cuenta que termina en "+accounti.getNumCuenta().substring(accounti.getNumCuenta().length()-4)+", presione "+(i+1)+". ");
+				sbText.append("Para la cuenta que termina en ");
+				String numCuentaLast4 = accounti.getNumCuenta().substring(accounti.getNumCuenta().length()-4);
+				for (int count=0;count<4;count++){
+					sbText.append(numCuentaLast4.charAt(count) + " ");
+				}
+				sbText.append(", presione "+(i+1)+". ");
 			}
 			if (accounts.size()>5)
 			{
@@ -69,12 +76,26 @@ public class ManageCuentas
 			for (int i = 5; i < accounts.size()&& i < 10; i++) 
 			{
 				Account accounti = accounts.get(i);
-				sbText.append("Para la cuenta que termina en "+accounti.getNumCuenta().substring(accounti.getNumCuenta().length()-4)+", presione "+(i+1)+". ");
+				sbText.append("Para la cuenta que termina en ");
+				String numCuentaLast4 = accounti.getNumCuenta().substring(accounti.getNumCuenta().length()-4);
+				for (int count=0;count<4;count++){
+					sbText.append(numCuentaLast4.charAt(count) + " ");
+				}
+				sbText.append(", presione "+(i+1)+". ");
 			}			
 		}
-
 		
 		return sbText;
 		
 	}
+
+	public String getText() {
+		return text;
+	}
+
+	public void setText(String text) {
+		this.text = text;
+	}
+	
+	
 }

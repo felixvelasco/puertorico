@@ -1,16 +1,11 @@
 input inputNumCuenta
-{
-	bargein true
-	maxAttempts 1
-	maxNoInput 1
-	maxNoMatch 1
-}
+
 grammars{
 	dtmf "builtin:dtmf/digits"
 }
 audios{
  	main: 
- 		say wording "${texto.getTexto()}"
+ 		say wording "${flowScope.manageTexts.text}" 
  	noinput:
  		say src "puerto_rico-es-US-SAN-BC-NI" wording "No ha seleccionado una opción."
  	nomatch:
