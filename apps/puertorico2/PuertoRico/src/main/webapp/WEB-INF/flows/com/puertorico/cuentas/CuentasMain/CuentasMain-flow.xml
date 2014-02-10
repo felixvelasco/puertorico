@@ -28,7 +28,7 @@ start-state= "_jVoiceCheckInit" >
 		<set name="flashScope.grammar1.module" value="'Cuentas'"/>
 		<evaluate expression="flashScope.menuCuentas.grammars.add(flashScope.grammar1)" />
 			        <evaluate expression="jVoiceArchAudioItem" result="flashScope.menuCuentasmainAudios1"/><evaluate expression="jVoiceArchWording" result="flashScope.menuCuentasmainAudios1.wording"/>
-			        <set name="flashScope.menuCuentasmainAudios1.wording.text" value="'Para cuentas de ahorro pulse dos, para otro tipo de cuenta pulse otro número'"/>
+			        <set name="flashScope.menuCuentasmainAudios1.wording.text" value="'Para cuentas de ahorro pulse dos, para otro tipo de cuenta pulse otro n�mero'"/>
 			        <evaluate expression="flashScope.menuCuentas.mainAudios.add(flashScope.menuCuentasmainAudios1)"/>
 	</on-entry>
 	<evaluate expression="flowProcessor.process(flashScope.menuCuentas)"/>
@@ -41,15 +41,16 @@ start-state= "_jVoiceCheckInit" >
 	
 <action-state id="render_decision_menuCuentas">
 	<evaluate expression="lastInputResult.interpretation"></evaluate>
-	<transition on="2" to="CuentasAhorro"/>
+	<transition on="cuentaAhorro" to="CuentasAhorro"/>
+	<transition on="transfer" to="Transfer"/>
 </action-state>
+<end-state id="Transfer" view="#{flowProcessor.getRenderer().getView()}">
+	<output name="result" value="''" />
+</end-state>
 <subflow-state id="CuentasAhorro" subflow="com/puertorico/cuentas/CuentasAhorro">
- <transition to="OK">
+ <transition to="menuCuentas">
  	<set name="flowScope.result" value="currentEvent.attributes.result" />
  </transition>
 
 </subflow-state>
-<end-state id="OK" view="#{flowProcessor.getRenderer().getView()}">
-	<output name="result" value="''" />
-</end-state>
 </flow> 

@@ -22,14 +22,27 @@ start-state= "_jVoiceCheckInit" >
 		<set name="jVoiceArchData.initialized" value="true"/>
 	</transition>
 </view-state>
+<<<<<<< Upstream, based on master
 <end-state id="AccSelected" view="#{flowProcessor.getRenderer().getView()}">
 	<output name="result" value="user.listaCuentas[lastInputResult.interpretation - 1]" />
+=======
+<end-state id="Final" view="#{flowProcessor.getRenderer().getView()}">
+	<output name="result" value="callData.listaCuentas[lastInputResult.interpretation - 1]" />
+>>>>>>> b64db13 Cambios sin importancia
 </end-state>
 
+<<<<<<< Upstream, based on master
 <action-state id="isOneAccount">
 	<evaluate expression="user.listaCuentas.size() == 1" />
 	<transition on="yes" to="OnlyOneAcc"/>
 	<transition to="setTextForInput"/>
+=======
+
+<action-state id="Switch">
+	<evaluate expression="callData.listaCuentas.size == 1" />
+	<transition on="yes" to="UnaCuenta"/>
+	<transition to="manage_Texts"/>
+>>>>>>> b64db13 Cambios sin importancia
 </action-state>
 <action-state id="setTextForInput">
    <evaluate expression="flowScope.manageTexts.manageTexts()"
@@ -75,7 +88,12 @@ start-state= "_jVoiceCheckInit" >
 	<transition on="yes" to="setTextForInput"/>
 	<transition to="AccSelected"/>
 </action-state>
+<<<<<<< Upstream, based on master
 <end-state id="OnlyOneAcc" view="#{flowProcessor.getRenderer().getView()}">
 	<output name="result" value="user.listaCuentas[0]" />
+=======
+<end-state id="UnaCuenta" view="#{flowProcessor.getRenderer().getView()}">
+	<output name="result" value="callData.listaCuentas[0]" />
+>>>>>>> b64db13 Cambios sin importancia
 </end-state>
 </flow> 
