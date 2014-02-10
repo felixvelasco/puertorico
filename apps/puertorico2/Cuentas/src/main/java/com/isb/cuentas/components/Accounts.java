@@ -12,16 +12,21 @@ public class Accounts implements Serializable {
 	private String numCuenta;
 	private String saldo;
 	
+	public Accounts() {	}
+	
 	public Accounts(String numCuenta2) 
 	{
 		numCuenta=numCuenta2;
 	}
+	
 	public String getNumCuenta() {
 		return numCuenta;
 	}
+	
 	public void setNumCuenta(String numCuenta) {
 		this.numCuenta = numCuenta;
 	}
+	
 	public String getSaldo() {
 		return saldo;
 	}
