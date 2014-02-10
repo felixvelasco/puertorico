@@ -22,7 +22,7 @@
     <dependency>
     	<groupId>com.vectorsf</groupId>
     	<artifactId>jvoiceframework-isban-logger</artifactId>
-    	<version>1.0.2-SNAPSHOT</version>
+    	<version>1.0.2</version>
     </dependency>
   </dependencies>
   <repositories>

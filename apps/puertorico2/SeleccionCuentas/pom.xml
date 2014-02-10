@@ -19,6 +19,11 @@
       <artifactId>Global</artifactId>
       <version>1.0.0-SNAPSHOT</version>
     </dependency>
+    <dependency>
+    	<groupId>com.vectorsf</groupId>
+    	<artifactId>jvoiceframework-isban-logger</artifactId>
+    	<version>1.0.2</version>
+    </dependency>
   </dependencies>
   <repositories>
     <repository>
