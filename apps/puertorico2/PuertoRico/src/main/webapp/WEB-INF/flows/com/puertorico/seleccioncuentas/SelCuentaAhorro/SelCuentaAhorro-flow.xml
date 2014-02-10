@@ -24,7 +24,7 @@ start-state= "_jVoiceCheckInit" >
 	</transition>
 </view-state>
 <end-state id="Final" view="#{flowProcessor.getRenderer().getView()}">
-	<output name="result" value="callData.listaCuentas[lastInputResult.interpretation - 1]" />
+	<output name="result" value="user.listaCuentas[lastInputResult.interpretation - 1]" />
 </end-state>
 <action-state id="outRobos">
 	<on-entry>
@@ -39,7 +39,7 @@ start-state= "_jVoiceCheckInit" >
 
 
 <action-state id="Switch">
-	<evaluate expression="callData.listaCuentas.size == 1" />
+	<evaluate expression="user.listaCuentas.size() == 1" />
 	<transition on="yes" to="UnaCuenta"/>
 	<transition to="manage_Texts"/>
 </action-state>
@@ -92,6 +92,6 @@ start-state= "_jVoiceCheckInit" >
 	<transition to="Final"/>
 </action-state>
 <end-state id="UnaCuenta" view="#{flowProcessor.getRenderer().getView()}">
-	<output name="result" value="callData.listaCuentas[0]" />
+	<output name="result" value="user.listaCuentas[0]" />
 </end-state>
 </flow> 

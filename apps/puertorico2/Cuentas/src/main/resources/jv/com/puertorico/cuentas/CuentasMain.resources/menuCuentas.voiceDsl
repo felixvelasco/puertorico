@@ -6,10 +6,9 @@ grammars{
 audios{
 
 	main:
-		say wording "Para cuentas de ahorro pulse dos, para otro tipo de cuenta pulse otro número"  
+		say wording "Para cuentas de ahorro pulse dos, para otro tipo de cuenta pulse otro nÃºmero"  
 }
 
 options{
-	cuentaAhorro : "cuentaAhorro"
-	transfer : "transfer"	
+	cuentaAhorro : "2"
 }

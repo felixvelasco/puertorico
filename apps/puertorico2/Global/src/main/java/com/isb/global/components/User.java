@@ -1,6 +1,7 @@
 package com.isb.global.components;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.context.annotation.Scope;
@@ -16,6 +17,7 @@ public class User implements Serializable {
 	private String ssid;
 	private String pin;
 	
+	private List<Account> listaCuentas = new ArrayList<Account>();
 	private List<Account> cuentasDebito;
 
 	public boolean isLogged() {
@@ -40,6 +42,14 @@ public class User implements Serializable {
 
 	public void setPin(String pin) {
 		this.pin = pin;
+	}
+
+	public List<Account> getListaCuentas() {
+		return listaCuentas;
+	}
+
+	public void setListaCuentas(List<Account> listaCuentas) {
+		this.listaCuentas = listaCuentas;
 	}
 
 	public List<Account> getCuentasDebito() {

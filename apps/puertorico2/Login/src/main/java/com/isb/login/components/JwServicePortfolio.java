@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
 
 import com.isb.global.components.Account;
 import com.isb.global.components.CallData;
+import com.isb.global.components.User;
 import com.ivrpr.ws.JwsprPortafolioRequest;
 import com.ivrpr.ws.JwsprPortafolioResponse2;
 import com.ivrpr.ws.ListaCuentas;
@@ -27,7 +28,9 @@ public class JwServicePortfolio implements Serializable {
 	private WebServiceProvider webServiceProvider;
 	@Inject
 	private CallData callData;
-	
+	@Inject
+	private User user;
+
 	public void callPortafolio() {
 		try
 		{
@@ -46,7 +49,7 @@ public class JwServicePortfolio implements Serializable {
 			System.out.println("########### listaCuentas[0]############### " + listaCuentas.get(0).getNumCuenta());
 			for (ListaCuentas cueni : listaCuentas) 
 			{
-				callData.getListaCuentas().add(new Account(cueni.getNumCuenta()));
+				user.getListaCuentas().add(new Account(cueni.getNumCuenta()));
 			}
 
 		}

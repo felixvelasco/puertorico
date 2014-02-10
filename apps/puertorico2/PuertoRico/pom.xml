@@ -30,9 +30,9 @@
       <version>1.0.2</version>
     </dependency>
     <dependency>
-    	<groupId>Cuentas</groupId>
-    	<artifactId>Cuentas</artifactId>
-    	<version>1.0.0-SNAPSHOT</version>
+      <groupId>Cuentas</groupId>
+      <artifactId>Cuentas</artifactId>
+      <version>1.0.0-SNAPSHOT</version>
     </dependency>
   </dependencies>
   <repositories>

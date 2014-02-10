@@ -8,7 +8,6 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import com.isb.global.components.Account;
-import com.isb.global.components.CallData;
 import com.isb.global.components.User;
 
 @Component
@@ -19,7 +18,6 @@ public class ManageCuentas
 	Text text;
 	@Inject
 	AuxClass aux;
-	CallData data;
 	@Inject
 	private User user;
 	
@@ -27,7 +25,7 @@ public class ManageCuentas
 	public void manageTexts()
 	{		
 		StringBuilder sbText = new StringBuilder();
-		List<Account> lCuen = data.getListaCuentas();
+		List<Account> lCuen = user.getListaCuentas();
 		
 		sbText.append(getTextFromAccounts(lCuen));
 		

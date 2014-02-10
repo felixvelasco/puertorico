@@ -391,13 +391,13 @@
   </pi:Diagram>
   <operations:Flow id="_wH4XtI2GEeO0_v2tdHNhnA" name="SelCuentaAhorro" description="SelCuentaAhorro">
     <states xsi:type="operations:InitialState" id="_wH4Xto2GEeO0_v2tdHNhnA" name="Initial" outgoingTransitions="_wH5l2Y2GEeO0_v2tdHNhnA"/>
-    <states xsi:type="operations:FinalState" id="_wH4-w42GEeO0_v2tdHNhnA" name="Final" incomingTransitions="_IJ44AI2vEeO7upgp4bMHbA" returnExpression="callData.listaCuentas[lastInputResult.interpretation - 1]"/>
+    <states xsi:type="operations:FinalState" id="_wH4-w42GEeO0_v2tdHNhnA" name="Final" incomingTransitions="_IJ44AI2vEeO7upgp4bMHbA" returnExpression="user.listaCuentas[lastInputResult.interpretation - 1]"/>
     <states xsi:type="operations:PromptState" id="_rDUp8I2MEeO0_v2tdHNhnA" name="outRobos" incomingTransitions="_wH5l2Y2GEeO0_v2tdHNhnA" outgoingTransitions="_syEOQI2NEeO0_v2tdHNhnA">
       <fireableEvents>ok</fireableEvents>
       <locution href="SelCuentaAhorro.resources/outRobos.voiceDsl#/"/>
     </states>
     <states xsi:type="operations:SwitchState" id="_sTxvwI2NEeO0_v2tdHNhnA" name="Switch" incomingTransitions="_syEOQI2NEeO0_v2tdHNhnA" outgoingTransitions="_mB4ecI2OEeO0_v2tdHNhnA _S8NxII26EeO7upgp4bMHbA">
-      <case condition="callData.listaCuentas.size == 1" eventName="SoloUnaCuenta"/>
+      <case condition="user.listaCuentas.size() == 1" eventName="SoloUnaCuenta"/>
       <case eventName="default"/>
     </states>
     <states xsi:type="operations:CallState" id="_lA1RII2OEeO0_v2tdHNhnA" name="manage_Texts" description="manageTexts" incomingTransitions="_mB4ecI2OEeO0_v2tdHNhnA _ONRWwI2vEeO7upgp4bMHbA" outgoingTransitions="_0AWMUI2tEeO7upgp4bMHbA" methodName="manageTexts" bean="_ius2cI2OEeO0_v2tdHNhnA">
@@ -411,7 +411,7 @@
       <case condition="lastInputResult.interpretation == '6'" eventName="masCuentas"/>
       <case eventName="default"/>
     </states>
-    <states xsi:type="operations:FinalState" id="_O1fMUI26EeO7upgp4bMHbA" name="UnaCuenta" incomingTransitions="_S8NxII26EeO7upgp4bMHbA" returnExpression="callData.listaCuentas[0]"/>
+    <states xsi:type="operations:FinalState" id="_O1fMUI26EeO7upgp4bMHbA" name="UnaCuenta" incomingTransitions="_S8NxII26EeO7upgp4bMHbA" returnExpression="user.listaCuentas[0]"/>
     <transitions id="_wH5l2Y2GEeO0_v2tdHNhnA" source="_wH4Xto2GEeO0_v2tdHNhnA" target="_rDUp8I2MEeO0_v2tdHNhnA" eventName="Ok"/>
     <transitions id="_syEOQI2NEeO0_v2tdHNhnA" source="_rDUp8I2MEeO0_v2tdHNhnA" target="_sTxvwI2NEeO0_v2tdHNhnA" eventName="ok"/>
     <transitions id="_mB4ecI2OEeO0_v2tdHNhnA" source="_sTxvwI2NEeO0_v2tdHNhnA" target="_lA1RII2OEeO0_v2tdHNhnA" eventName="default"/>
