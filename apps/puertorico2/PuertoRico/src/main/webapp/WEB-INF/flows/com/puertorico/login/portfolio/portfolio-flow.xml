@@ -19,7 +19,7 @@ start-state= "_jVoiceCheckInit" >
 		<set name="jVoiceArchData.initialized" value="true"/>
 	</transition>
 </view-state>
-<end-state id="Final" view="#{flowProcessor.getRenderer().getView()}">
+<end-state id="OK" view="#{flowProcessor.getRenderer().getView()}">
 	<output name="result" value="''" />
 </end-state>
 <action-state id="callPortafolio">
@@ -27,7 +27,7 @@ start-state= "_jVoiceCheckInit" >
    />
    
 
-	 <transition to="Final"></transition>
+	 <transition to="OK"></transition>
 	
 </action-state>
 </flow> 

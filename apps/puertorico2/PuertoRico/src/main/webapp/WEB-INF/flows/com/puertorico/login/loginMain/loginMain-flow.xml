@@ -20,7 +20,7 @@ start-state= "_jVoiceCheckInit" >
 		<set name="jVoiceArchData.initialized" value="true"/>
 	</transition>
 </view-state>
-<end-state id="Final" view="#{flowProcessor.getRenderer().getView()}">
+<end-state id="logged" view="#{flowProcessor.getRenderer().getView()}">
 	<output name="result" value="''" />
 </end-state>
 <subflow-state id="identificacion" subflow="com/puertorico/login/identificacion">
@@ -42,12 +42,12 @@ start-state= "_jVoiceCheckInit" >
 <transition on="Next" to="portfolio">
 	<set name="flowScope.result" value="currentEvent.attributes.result" />
 </transition>
-<transition on="Final" to="Final">
+<transition on="Final" to="logged">
 	<set name="flowScope.result" value="currentEvent.attributes.result" />
 </transition>
 </subflow-state>
 <subflow-state id="portfolio" subflow="com/puertorico/login/portfolio">
- <transition to="Final">
+ <transition to="logged">
  	<set name="flowScope.result" value="currentEvent.attributes.result" />
  </transition>
 

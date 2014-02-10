@@ -11,6 +11,7 @@
 											http://www.springframework.org/schema/context/spring-context.xsd">
 
 <!-- Application beans -->
+<context:component-scan base-package="com.isb.cuentas.components" />
 <context:component-scan base-package="com.isb.global.components" />
 <context:component-scan base-package="com.isb.login.components" />
 <context:component-scan base-package="com.isb.main.components" />

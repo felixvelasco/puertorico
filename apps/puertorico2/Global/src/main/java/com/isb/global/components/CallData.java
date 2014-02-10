@@ -1,5 +1,7 @@
 package com.isb.global.components;
 
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -9,13 +11,15 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Scope("session")
-public class CallData {
+public class CallData implements Serializable{
 
+	private static final long serialVersionUID = -4146333436637709685L;
+	
 	private String application;
 	private boolean promoActive;
 	@Inject
 	private User user;
-	private List<Account> listaCuentas;
+	private List<Account> listaCuentas = new ArrayList<Account>();
 	
 	public void init() {
 		this.application = "retail";

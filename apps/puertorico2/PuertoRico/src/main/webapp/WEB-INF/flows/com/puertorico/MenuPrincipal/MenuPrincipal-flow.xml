@@ -87,6 +87,12 @@ start-state= "_jVoiceCheckInit" >
 </action-state>
 <subflow-state id="loginMain" subflow="com/puertorico/login/loginMain">
 <input name="callData" value="callData" />
+ <transition to="CuentasMain">
+ 	<set name="flowScope.result" value="currentEvent.attributes.result" />
+ </transition>
+
+</subflow-state>
+<subflow-state id="CuentasMain" subflow="com/puertorico/cuentas/CuentasMain">
  <transition to="Final">
  	<set name="flowScope.result" value="currentEvent.attributes.result" />
  </transition>

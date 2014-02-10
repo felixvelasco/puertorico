@@ -35,7 +35,7 @@
           <points x="45" y="28"/>
           <points y="28"/>
         </graphicsAlgorithmChildren>
-        <graphicsAlgorithmChildren xsi:type="al:Text" lineStyle="UNSPECIFIED" width="101" height="28" x="45" style="/0/@styles.2" horizontalAlignment="UNSPECIFIED" verticalAlignment="UNSPECIFIED" value="Final">
+        <graphicsAlgorithmChildren xsi:type="al:Text" lineStyle="UNSPECIFIED" width="101" height="28" x="45" style="/0/@styles.2" horizontalAlignment="UNSPECIFIED" verticalAlignment="UNSPECIFIED" value="OK">
           <properties key="org.eclipse.graphiti.pattern.id.id" value="nameText"/>
         </graphicsAlgorithmChildren>
       </graphicsAlgorithm>
@@ -183,7 +183,7 @@
   </pi:Diagram>
   <operations:Flow id="_i5EhUI24EeOoGs-iK9Y_5Q" name="portfolio" description="portfolio">
     <states xsi:type="operations:InitialState" id="_i6e2kI24EeOoGs-iK9Y_5Q" name="Initial" outgoingTransitions="_i6uHII24EeOoGs-iK9Y_5Q"/>
-    <states xsi:type="operations:FinalState" id="_i6sR8I24EeOoGs-iK9Y_5Q" name="Final" incomingTransitions="_Zcrp8I25EeOoGs-iK9Y_5Q"/>
+    <states xsi:type="operations:FinalState" id="_i6sR8I24EeOoGs-iK9Y_5Q" name="OK" incomingTransitions="_Zcrp8I25EeOoGs-iK9Y_5Q"/>
     <states xsi:type="operations:CallState" id="_XPuDII25EeOoGs-iK9Y_5Q" name="callPortafolio" description="callPortafolio" incomingTransitions="_i6uHII24EeOoGs-iK9Y_5Q" outgoingTransitions="_Zcrp8I25EeOoGs-iK9Y_5Q" notes="_bLNoUI25EeOoGs-iK9Y_5Q" methodName="callPortafolio" bean="_V-5UcI25EeOoGs-iK9Y_5Q">
       <fireableEvents>ok</fireableEvents>
     </states>

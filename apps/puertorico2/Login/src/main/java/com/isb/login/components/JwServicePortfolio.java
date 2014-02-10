@@ -43,6 +43,7 @@ public class JwServicePortfolio implements Serializable {
 			JwsprPortafolioResponse2 res = webService.jwsprPortafolio(req);
 			List<ListaCuentas> listaCuentas = res.getListaCuentas();
 			System.out.println("########### listaCuentas ############### " + listaCuentas);
+			System.out.println("########### listaCuentas[0]############### " + listaCuentas.get(0).getNumCuenta());
 			for (ListaCuentas cueni : listaCuentas) 
 			{
 				callData.getListaCuentas().add(new Account(cueni.getNumCuenta()));

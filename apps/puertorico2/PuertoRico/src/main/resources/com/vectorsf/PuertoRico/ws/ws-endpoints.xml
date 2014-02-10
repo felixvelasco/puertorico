@@ -16,5 +16,9 @@
 		url="http://localhost:8080/ws/otherSayHello" />
 	-->
 
+	 <endpoint namespace="http://ws.ivrpr.com/" 
+		name="WebServicesPort"
+		url="http://localhost:8088/mockWebServicesPortBinding" />
+
 </endpoints>
 
