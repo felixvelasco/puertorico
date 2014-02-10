@@ -1,0 +1,10 @@
+input MenuSelComercio
+
+grammars{
+	dtmf "builtin:dtmf/digits"
+}
+audios{
+ 	main: 
+ 		say wording "TTS text" 
+}
+

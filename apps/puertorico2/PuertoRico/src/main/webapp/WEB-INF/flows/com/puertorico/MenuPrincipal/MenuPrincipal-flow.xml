@@ -76,14 +76,14 @@ start-state= "_jVoiceCheckInit" >
 
 <action-state id="isLogged1">
 	<evaluate expression="callData.user.logged" />
-	<transition on="yes" to="Final"/>
+	<transition on="yes" to="CuentasMain"/>
 	<transition to="loginMain"/>
 </action-state>
 
 <action-state id="isLogged2">
 	<evaluate expression="callData.user.logged" />
-	<transition on="yes" to="Final"/>
-	<transition to="loginMain"/>
+	<transition on="yes" to="TrxYPagosMain"/>
+	<transition to="loginMain2"/>
 </action-state>
 <subflow-state id="loginMain" subflow="com/puertorico/login/loginMain">
 <input name="callData" value="callData" />
@@ -93,6 +93,19 @@ start-state= "_jVoiceCheckInit" >
 
 </subflow-state>
 <subflow-state id="CuentasMain" subflow="com/puertorico/cuentas/CuentasMain">
+ <transition to="Final">
+ 	<set name="flowScope.result" value="currentEvent.attributes.result" />
+ </transition>
+
+</subflow-state>
+<subflow-state id="loginMain2" subflow="com/puertorico/login/loginMain">
+<input name="callData" value="callData" />
+ <transition to="TrxYPagosMain">
+ 	<set name="flowScope.result" value="currentEvent.attributes.result" />
+ </transition>
+
+</subflow-state>
+<subflow-state id="TrxYPagosMain" subflow="com/puertorico/trxypagos/TrxYPagosMain">
  <transition to="Final">
  	<set name="flowScope.result" value="currentEvent.attributes.result" />
  </transition>

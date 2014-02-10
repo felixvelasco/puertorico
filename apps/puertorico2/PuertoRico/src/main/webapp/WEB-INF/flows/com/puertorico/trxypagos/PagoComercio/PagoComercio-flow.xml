@@ -1,0 +1,61 @@
+<flow xmlns="http://www.springframework.org/schema/webflow"	
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"	
+xsi:schemaLocation="http://www.springframework.org/schema/webflow
+http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd"
+parent="TrxYPagos/errorHandler"
+start-state= "_jVoiceCheckInit" >
+
+
+
+
+<action-state id="_jVoiceCheckInit">
+	<evaluate expression="jVoiceArchData.initialized" />
+		<transition on="no" to="_jVoiceInit"/>
+		<transition to="wsMerchantList"/>
+	</action-state>
+
+<view-state id="_jVoiceInit" view="_init" model="jVoiceArchData">
+	<transition to="wsMerchantList" >
+		<set name="jVoiceArchData.initialized" value="true"/>
+	</transition>
+</view-state>
+<end-state id="Final" view="#{flowProcessor.getRenderer().getView()}">
+	<output name="result" value="''" />
+</end-state>
+<action-state id="wsMerchantList">
+   <evaluate expression="pagoComercio.wsMerchantList()"
+   />
+   
+
+	 <transition to="wsMerchantListResult"></transition>
+	
+</action-state>
+
+<action-state id="wsMerchantListResult">
+	<evaluate expression="pagoComercio.isMerchantListOk()" />
+	<transition on="yes" to="MenuSelComercio"/>
+	<transition to="Final"/>
+</action-state>
+<subflow-state id="MenuSelComercio" subflow="com/puertorico/trxypagos/MenuSelComercio">
+ <transition to="setComercioSel">
+ 	<set name="flowScope.result" value="currentEvent.attributes.result" />
+ </transition>
+
+</subflow-state>
+<action-state id="setComercioSel">
+   <evaluate expression="pagoComercio.setComercioSel(flowScope.result)"
+   />
+   
+
+	 <transition to="MenuConfComercio"></transition>
+	
+</action-state>
+<subflow-state id="MenuConfComercio" subflow="com/puertorico/trxypagos/MenuConfComercio">
+<transition on="Otro" to="MenuSelComercio">
+	<set name="flowScope.result" value="currentEvent.attributes.result" />
+</transition>
+<transition on="Ok" to="Final">
+	<set name="flowScope.result" value="currentEvent.attributes.result" />
+</transition>
+</subflow-state>
+</flow> 

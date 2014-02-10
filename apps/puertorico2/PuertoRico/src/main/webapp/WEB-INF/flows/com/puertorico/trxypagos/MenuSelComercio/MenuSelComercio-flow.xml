@@ -1,0 +1,92 @@
+<flow xmlns="http://www.springframework.org/schema/webflow"	
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"	
+xsi:schemaLocation="http://www.springframework.org/schema/webflow
+http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd"
+parent="TrxYPagos/errorHandler"
+start-state= "_jVoiceCheckInit" >
+
+
+
+
+<action-state id="_jVoiceCheckInit">
+	<evaluate expression="jVoiceArchData.initialized" />
+		<transition on="no" to="_jVoiceInit"/>
+		<transition to="setPaginaSel"/>
+	</action-state>
+
+<view-state id="_jVoiceInit" view="_init" model="jVoiceArchData">
+	<transition to="setPaginaSel" >
+		<set name="jVoiceArchData.initialized" value="true"/>
+	</transition>
+</view-state>
+<end-state id="Final" view="#{flowProcessor.getRenderer().getView()}">
+	<output name="result" value="menuSelComercio.getSelectedComercio( lastInputResult.interpretation )" />
+</end-state>
+<action-state id="setPaginaSel">
+   <evaluate expression="menuSelComercio.setPaginaSel(0)"
+   />
+   
+
+	 <transition to="Menu"></transition>
+	
+</action-state>
+<action-state id="Menu">
+	<on-entry>
+		<evaluate expression="jVoiceArchInput" result="flashScope.Menu"></evaluate>
+		<set name="flashScope.Menu.name" value="'Menu'" />
+		<set name="flashScope.Menu.bargein" value="true" />
+		<set name="flashScope.Menu.maxAttempts" value="1" />
+		<set name="flashScope.Menu.maxNoInput" value="1" />
+		<set name="flashScope.Menu.maxNoMatch" value="1" />
+		
+		<evaluate expression="jVoiceArchGrammar" result="flashScope.grammar1" />
+		<set name="flashScope.grammar1.src" value="'builtin:dtmf/digits'"/>
+		<set name="flashScope.grammar1.mode" value="'dtmf'"/>
+		<set name="flashScope.grammar1.module" value="'TrxYPagos'"/>
+		<evaluate expression="flashScope.Menu.grammars.add(flashScope.grammar1)" />
+		
+        <evaluate expression="jVoiceArchAudioItem" result="flashScope.MenumainAudios1"/><evaluate expression="jVoiceArchWording" result="flashScope.MenumainAudios1.wording"/>
+        <set name="flashScope.MenumainAudios1.wording.text" value="'' + menuSelComercio.getTts() + ''"/>
+        <evaluate expression="flashScope.Menu.mainAudios.add(flashScope.MenumainAudios1)"/>
+        <evaluate expression="jVoiceArchAudioItem" result="flashScope.MenunoMatchAudios1"/><set name="flashScope.MenunoMatchAudios1.src" value="locutionProvider.getAudioSrc('puerto_rico-es-US-SAN-BC-NM','TrxYPagos')"/>
+        <evaluate expression="jVoiceArchWording" result="flashScope.MenunoMatchAudios1.wording"/>
+        <set name="flashScope.MenunoMatchAudios1.wording.text" value="'La opción que usted seleccionó no es válida.'"/>
+        <evaluate expression="flashScope.Menu.noMatchAudios.add(flashScope.MenunoMatchAudios1)"/>
+        <evaluate expression="jVoiceArchAudioItem" result="flashScope.MenunoInputAudios1"/><set name="flashScope.MenunoInputAudios1.src" value="locutionProvider.getAudioSrc('puerto_rico-es-US-SAN-BC-NI','TrxYPagos')"/>
+        <evaluate expression="jVoiceArchWording" result="flashScope.MenunoInputAudios1.wording"/>
+        <set name="flashScope.MenunoInputAudios1.wording.text" value="'No ha seleccionado una opción.'"/>
+        <evaluate expression="flashScope.Menu.noInputAudios.add(flashScope.MenunoInputAudios1)"/>
+	</on-entry>
+	<evaluate expression="flowProcessor.process(flashScope.Menu)"/>			
+	<transition to="render_Menu"/>
+</action-state>
+
+<view-state id="render_Menu" view="#{flowProcessor.getRenderer().getView()}" model="lastInputResult">
+	<transition on="match" to="MenuOptions"/>
+</view-state>
+
+<action-state id="MenuOptions">
+	<evaluate expression="menuSelComercio.isValidOption( lastInputResult.interpretation )" />
+	<transition on="yes" to="Final"/>
+	<transition to="MenuOptions_Mas"/>
+</action-state>
+<action-state id="MenuOptions_Mas">
+	<evaluate expression="lastInputResult.interpretation == '6' and menuSelComercio.hasMore5Options()" />
+	<transition on="yes" to="incPaginaSel"/>
+	<transition to="Menu"/>
+</action-state>
+<action-state id="incPaginaSel">
+   <evaluate expression="menuSelComercio.incPaginaSel()"
+   />
+   
+
+	 <transition to="masPaginas"></transition>
+	
+</action-state>
+
+<action-state id="masPaginas">
+	<evaluate expression="menuSelComercio.hasMorePages()" />
+	<transition on="yes" to="Menu"/>
+	<transition to="setPaginaSel"/>
+</action-state>
+</flow> 

@@ -1,0 +1,422 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="JWServiceMerchListPR">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="connID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="callID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="NSS" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="JWServiceMerchListPRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="JWServiceMerchListPRResult" type="tns:JWServiceMerchListPR_Response2" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="JWServiceMerchListPR_Response2">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:JWService_Response">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="customerId" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="MerchantL" type="tns:ArrayOfJWServiceMerchListPR_Response_MerchantItem" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="JWService_Response">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="codigoError" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MSJERROR" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfJWServiceMerchListPR_Response_MerchantItem">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="JWServiceMerchListPR_Response_MerchantItem" nillable="true" type="tns:JWServiceMerchListPR_Response_MerchantItem" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="JWServiceMerchListPR_Response_MerchantItem">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="merchantId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="merchantName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="VRUNumber" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="JWServiceCtasMerchPR">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="connID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="callID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="customerId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="merchantId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="JWServiceCtasMerchPRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="JWServiceCtasMerchPRResult" type="tns:JWServiceCtasMerchPR_Response2" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="JWServiceCtasMerchPR_Response2">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:JWService_Response">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="merchantCtaL" type="tns:ArrayOfJWServiceCtasMerchPR_Response_MerchantItem" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ArrayOfJWServiceCtasMerchPR_Response_MerchantItem">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="JWServiceCtasMerchPR_Response_MerchantItem" nillable="true" type="tns:JWServiceCtasMerchPR_Response_MerchantItem" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="JWServiceCtasMerchPR_Response_MerchantItem">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="idMerchantCta" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="merchantCta" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="JWServiceCtasCustPR">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="connID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="callID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="customerId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="idMerchantCta" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="JWServiceCtasCustPRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="JWServiceCtasCustPRResult" type="tns:JWServiceCtasCustPR_Response2" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="JWServiceCtasCustPR_Response2">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:JWService_Response">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="CuentasL" type="tns:ArrayOfJWServiceCtasCustPR_Response_CtaItem" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ArrayOfJWServiceCtasCustPR_Response_CtaItem">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="JWServiceCtasCustPR_Response_CtaItem" nillable="true" type="tns:JWServiceCtasCustPR_Response_CtaItem" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="JWServiceCtasCustPR_Response_CtaItem">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="numCuenta" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IdCuenta" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="tipoProduct" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FecProcPay" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="JWServiceMerchantPay">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="connID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="callID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="customerId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="numCuenta" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="merchantId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="idMerchantCta" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="montoPay" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FechProcPay" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="JWServiceMerchantPayResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="JWServiceMerchantPayResult" type="tns:JWServiceMerchantPay_Response2" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="JWServiceMerchantPay_Response2">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:JWService_Response">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="numConfirmacion" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="JWServiceUlt5PagosProcPR">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="connID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="callID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="NSS" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="customerId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="JWServiceUlt5PagosProcPRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="JWServiceUlt5PagosProcPRResult" type="tns:JWServiceUlt5PagosProcPR_Response2" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="JWServiceUlt5PagosProcPR_Response2">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:JWService_Response">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="ListPayProc" type="tns:ArrayOfJWServiceUlt5PagosProcPR_Response_PagoItem" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ArrayOfJWServiceUlt5PagosProcPR_Response_PagoItem">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="JWServiceUlt5PagosProcPR_Response_PagoItem" nillable="true" type="tns:JWServiceUlt5PagosProcPR_Response_PagoItem" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="JWServiceUlt5PagosProcPR_Response_PagoItem">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="numConfirmacion" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="merchantId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="montoPay" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FechProcPay" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="VRUNumber" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="JWServicePagosPendPR">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="connID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="callID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="NSS" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="customerId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="JWServicePagosPendPRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="JWServicePagosPendPRResult" type="tns:JWServicePagosPendPR_Response2" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="JWServicePagosPendPR_Response2">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:JWService_Response">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="ListPayPend" type="tns:ArrayOfJWServicePagosPendPR_Response_PagoItem" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ArrayOfJWServicePagosPendPR_Response_PagoItem">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="JWServicePagosPendPR_Response_PagoItem" nillable="true" type="tns:JWServicePagosPendPR_Response_PagoItem" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="JWServicePagosPendPR_Response_PagoItem">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="numConfirmacion" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="statusPago" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="merchantId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="montoPay" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FechPay" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="VRUNumber" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="JWServiceMerchListPRSoapIn">
+    <wsdl:part name="parameters" element="tns:JWServiceMerchListPR" />
+  </wsdl:message>
+  <wsdl:message name="JWServiceMerchListPRSoapOut">
+    <wsdl:part name="parameters" element="tns:JWServiceMerchListPRResponse" />
+  </wsdl:message>
+  <wsdl:message name="JWServiceCtasMerchPRSoapIn">
+    <wsdl:part name="parameters" element="tns:JWServiceCtasMerchPR" />
+  </wsdl:message>
+  <wsdl:message name="JWServiceCtasMerchPRSoapOut">
+    <wsdl:part name="parameters" element="tns:JWServiceCtasMerchPRResponse" />
+  </wsdl:message>
+  <wsdl:message name="JWServiceCtasCustPRSoapIn">
+    <wsdl:part name="parameters" element="tns:JWServiceCtasCustPR" />
+  </wsdl:message>
+  <wsdl:message name="JWServiceCtasCustPRSoapOut">
+    <wsdl:part name="parameters" element="tns:JWServiceCtasCustPRResponse" />
+  </wsdl:message>
+  <wsdl:message name="JWServiceMerchantPaySoapIn">
+    <wsdl:part name="parameters" element="tns:JWServiceMerchantPay" />
+  </wsdl:message>
+  <wsdl:message name="JWServiceMerchantPaySoapOut">
+    <wsdl:part name="parameters" element="tns:JWServiceMerchantPayResponse" />
+  </wsdl:message>
+  <wsdl:message name="JWServiceUlt5PagosProcPRSoapIn">
+    <wsdl:part name="parameters" element="tns:JWServiceUlt5PagosProcPR" />
+  </wsdl:message>
+  <wsdl:message name="JWServiceUlt5PagosProcPRSoapOut">
+    <wsdl:part name="parameters" element="tns:JWServiceUlt5PagosProcPRResponse" />
+  </wsdl:message>
+  <wsdl:message name="JWServicePagosPendPRSoapIn">
+    <wsdl:part name="parameters" element="tns:JWServicePagosPendPR" />
+  </wsdl:message>
+  <wsdl:message name="JWServicePagosPendPRSoapOut">
+    <wsdl:part name="parameters" element="tns:JWServicePagosPendPRResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ServicesSoap">
+    <wsdl:operation name="JWServiceMerchListPR">
+      <wsdl:input message="tns:JWServiceMerchListPRSoapIn" />
+      <wsdl:output message="tns:JWServiceMerchListPRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="JWServiceCtasMerchPR">
+      <wsdl:input message="tns:JWServiceCtasMerchPRSoapIn" />
+      <wsdl:output message="tns:JWServiceCtasMerchPRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="JWServiceCtasCustPR">
+      <wsdl:input message="tns:JWServiceCtasCustPRSoapIn" />
+      <wsdl:output message="tns:JWServiceCtasCustPRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="JWServiceMerchantPay">
+      <wsdl:input message="tns:JWServiceMerchantPaySoapIn" />
+      <wsdl:output message="tns:JWServiceMerchantPaySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="JWServiceUlt5PagosProcPR">
+      <wsdl:input message="tns:JWServiceUlt5PagosProcPRSoapIn" />
+      <wsdl:output message="tns:JWServiceUlt5PagosProcPRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="JWServicePagosPendPR">
+      <wsdl:input message="tns:JWServicePagosPendPRSoapIn" />
+      <wsdl:output message="tns:JWServicePagosPendPRSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ServicesSoap" type="tns:ServicesSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="JWServiceMerchListPR">
+      <soap:operation soapAction="http://tempuri.org/JWServiceMerchListPR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="JWServiceCtasMerchPR">
+      <soap:operation soapAction="http://tempuri.org/JWServiceCtasMerchPR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="JWServiceCtasCustPR">
+      <soap:operation soapAction="http://tempuri.org/JWServiceCtasCustPR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="JWServiceMerchantPay">
+      <soap:operation soapAction="http://tempuri.org/JWServiceMerchantPay" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="JWServiceUlt5PagosProcPR">
+      <soap:operation soapAction="http://tempuri.org/JWServiceUlt5PagosProcPR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="JWServicePagosPendPR">
+      <soap:operation soapAction="http://tempuri.org/JWServicePagosPendPR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ServicesSoap12" type="tns:ServicesSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="JWServiceMerchListPR">
+      <soap12:operation soapAction="http://tempuri.org/JWServiceMerchListPR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="JWServiceCtasMerchPR">
+      <soap12:operation soapAction="http://tempuri.org/JWServiceCtasMerchPR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="JWServiceCtasCustPR">
+      <soap12:operation soapAction="http://tempuri.org/JWServiceCtasCustPR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="JWServiceMerchantPay">
+      <soap12:operation soapAction="http://tempuri.org/JWServiceMerchantPay" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="JWServiceUlt5PagosProcPR">
+      <soap12:operation soapAction="http://tempuri.org/JWServiceUlt5PagosProcPR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="JWServicePagosPendPR">
+      <soap12:operation soapAction="http://tempuri.org/JWServicePagosPendPR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Services">
+    <wsdl:port name="ServicesSoap" binding="tns:ServicesSoap">
+      <soap:address location="http://180.178.9.133:81/PaymentPlatform.IVRServices/Services.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ServicesSoap12" binding="tns:ServicesSoap12">
+      <soap12:address location="http://180.178.9.133:81/PaymentPlatform.IVRServices/Services.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

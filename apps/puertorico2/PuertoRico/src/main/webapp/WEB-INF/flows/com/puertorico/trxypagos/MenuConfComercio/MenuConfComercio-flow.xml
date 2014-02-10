@@ -1,0 +1,87 @@
+<flow xmlns="http://www.springframework.org/schema/webflow"	
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"	
+xsi:schemaLocation="http://www.springframework.org/schema/webflow
+http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd"
+parent="TrxYPagos/errorHandler"
+start-state= "_jVoiceCheckInit" >
+
+
+<action-state id="_jVoiceCheckInit">
+	<evaluate expression="jVoiceArchData.initialized" />
+		<transition on="no" to="_jVoiceInit"/>
+		<transition to="MenuConfirmacion"/>
+	</action-state>
+
+<view-state id="_jVoiceInit" view="_init" model="jVoiceArchData">
+	<transition to="MenuConfirmacion" >
+		<set name="jVoiceArchData.initialized" value="true"/>
+	</transition>
+</view-state>
+<end-state id="Ok" view="#{flowProcessor.getRenderer().getView()}">
+	<output name="result" value="''" />
+</end-state>
+<action-state id="MenuConfirmacion">
+	<on-entry>
+		<evaluate expression="jVoiceArchInput" result="flashScope.MenuConfirmacion"/>
+		<set name="flashScope.MenuConfirmacion.name" value="'MenuConfirmacion'" />
+		<set name="flashScope.MenuConfirmacion.bargein" value="true" />
+		<set name="flashScope.MenuConfirmacion.maxAttempts" value="3" />
+		<set name="flashScope.MenuConfirmacion.maxNoInput" value="2" />
+		<set name="flashScope.MenuConfirmacion.maxNoMatch" value="2" />
+		
+		<evaluate expression="jVoiceArchGrammar" result="flashScope.grammar1" />
+		<set name="flashScope.grammar1.src" value="'builtin:dtmf/digits'"/>
+		<set name="flashScope.grammar1.mode" value="'dtmf'"/>
+		<set name="flashScope.grammar1.module" value="'TrxYPagos'"/>
+		<evaluate expression="flashScope.MenuConfirmacion.grammars.add(flashScope.grammar1)" />
+			        <evaluate expression="jVoiceArchAudioItem" result="flashScope.MenuConfirmacionmainAudios1"/><set name="flashScope.MenuConfirmacionmainAudios1.src" value="locutionProvider.getAudioSrc('puerto_rico-es-US-SAN-BC-MENU-CONFIRMACION-COMERCIO-A-PT1','TrxYPagos')"/>
+			        <evaluate expression="jVoiceArchWording" result="flashScope.MenuConfirmacionmainAudios1.wording"/>
+			        <set name="flashScope.MenuConfirmacionmainAudios1.wording.text" value="'Usted ha seleccionado realizar un pago a'"/>
+			        <set name="flashScope.MenuConfirmacionmainAudios1.condition" value="'attempts==0'"/><evaluate expression="flashScope.MenuConfirmacion.mainAudios.add(flashScope.MenuConfirmacionmainAudios1)"/><evaluate expression="jVoiceArchAudioItem" result="flashScope.MenuConfirmacionmainAudios2"/><evaluate expression="jVoiceArchWording" result="flashScope.MenuConfirmacionmainAudios2.wording"/>
+			        <set name="flashScope.MenuConfirmacionmainAudios2.wording.text" value="'' + pagoComercio.comercioSel.merchantName + ''"/>
+			        <set name="flashScope.MenuConfirmacionmainAudios2.condition" value="'attempts==0'"/><evaluate expression="flashScope.MenuConfirmacion.mainAudios.add(flashScope.MenuConfirmacionmainAudios2)"/><evaluate expression="jVoiceArchAudioItem" result="flashScope.MenuConfirmacionmainAudios3"/><set name="flashScope.MenuConfirmacionmainAudios3.src" value="locutionProvider.getAudioSrc('puerto_rico-es-US-SAN-BC-MENU-CONFIRMACION-COMERCIO-C-PT1','TrxYPagos')"/>
+			        <evaluate expression="jVoiceArchWording" result="flashScope.MenuConfirmacionmainAudios3.wording"/>
+			        <set name="flashScope.MenuConfirmacionmainAudios3.wording.text" value="'si es correcto, presione 1. Para selecionar otro comercio, presione 2.'"/>
+			        <set name="flashScope.MenuConfirmacionmainAudios3.condition" value="'attempts==0'"/><evaluate expression="flashScope.MenuConfirmacion.mainAudios.add(flashScope.MenuConfirmacionmainAudios3)"/><evaluate expression="jVoiceArchAudioItem" result="flashScope.MenuConfirmacionmainAudios4"/><set name="flashScope.MenuConfirmacionmainAudios4.src" value="locutionProvider.getAudioSrc('puerto_rico-es-US-SAN-BC-MENU-CONFIRMACION-COMERCIO-A-PT2','TrxYPagos')"/>
+			        <evaluate expression="jVoiceArchWording" result="flashScope.MenuConfirmacionmainAudios4.wording"/>
+			        <set name="flashScope.MenuConfirmacionmainAudios4.wording.text" value="'Usted ha seleccionado realizar un pago a'"/>
+			        <set name="flashScope.MenuConfirmacionmainAudios4.condition" value="'attempts==1'"/><evaluate expression="flashScope.MenuConfirmacion.mainAudios.add(flashScope.MenuConfirmacionmainAudios4)"/><evaluate expression="jVoiceArchAudioItem" result="flashScope.MenuConfirmacionmainAudios5"/><evaluate expression="jVoiceArchWording" result="flashScope.MenuConfirmacionmainAudios5.wording"/>
+			        <set name="flashScope.MenuConfirmacionmainAudios5.wording.text" value="'' + pagoComercio.comercioSel.merchantName + ''"/>
+			        <set name="flashScope.MenuConfirmacionmainAudios5.condition" value="'attempts==1'"/><evaluate expression="flashScope.MenuConfirmacion.mainAudios.add(flashScope.MenuConfirmacionmainAudios5)"/><evaluate expression="jVoiceArchAudioItem" result="flashScope.MenuConfirmacionmainAudios6"/><set name="flashScope.MenuConfirmacionmainAudios6.src" value="locutionProvider.getAudioSrc('puerto_rico-es-US-SAN-BC-MENU-CONFIRMACION-COMERCIO-C-PT2','TrxYPagos')"/>
+			        <evaluate expression="jVoiceArchWording" result="flashScope.MenuConfirmacionmainAudios6.wording"/>
+			        <set name="flashScope.MenuConfirmacionmainAudios6.wording.text" value="'si es correcto, presione 1. Para selecionar otro comercio, presione 2.'"/>
+			        <set name="flashScope.MenuConfirmacionmainAudios6.condition" value="'attempts==1'"/><evaluate expression="flashScope.MenuConfirmacion.mainAudios.add(flashScope.MenuConfirmacionmainAudios6)"/><evaluate expression="jVoiceArchAudioItem" result="flashScope.MenuConfirmacionmainAudios7"/><set name="flashScope.MenuConfirmacionmainAudios7.src" value="locutionProvider.getAudioSrc('puerto_rico-es-US-SAN-BC-MENU-CONFIRMACION-COMERCIO-A-PT3','TrxYPagos')"/>
+			        <evaluate expression="jVoiceArchWording" result="flashScope.MenuConfirmacionmainAudios7.wording"/>
+			        <set name="flashScope.MenuConfirmacionmainAudios7.wording.text" value="'Usted ha seleccionado realizar un pago a'"/>
+			        <set name="flashScope.MenuConfirmacionmainAudios7.condition" value="'attempts==2'"/><evaluate expression="flashScope.MenuConfirmacion.mainAudios.add(flashScope.MenuConfirmacionmainAudios7)"/><evaluate expression="jVoiceArchAudioItem" result="flashScope.MenuConfirmacionmainAudios8"/><evaluate expression="jVoiceArchWording" result="flashScope.MenuConfirmacionmainAudios8.wording"/>
+			        <set name="flashScope.MenuConfirmacionmainAudios8.wording.text" value="'' + pagoComercio.comercioSel.merchantName + ''"/>
+			        <set name="flashScope.MenuConfirmacionmainAudios8.condition" value="'attempts==2'"/><evaluate expression="flashScope.MenuConfirmacion.mainAudios.add(flashScope.MenuConfirmacionmainAudios8)"/><evaluate expression="jVoiceArchAudioItem" result="flashScope.MenuConfirmacionmainAudios9"/><set name="flashScope.MenuConfirmacionmainAudios9.src" value="locutionProvider.getAudioSrc('puerto_rico-es-US-SAN-BC-MENU-CONFIRMACION-COMERCIO-C-PT3','TrxYPagos')"/>
+			        <evaluate expression="jVoiceArchWording" result="flashScope.MenuConfirmacionmainAudios9.wording"/>
+			        <set name="flashScope.MenuConfirmacionmainAudios9.wording.text" value="'si es correcto, presione 1. Para selecionar otro comercio, presione 2.'"/>
+			        <set name="flashScope.MenuConfirmacionmainAudios9.condition" value="'attempts==2'"/><evaluate expression="flashScope.MenuConfirmacion.mainAudios.add(flashScope.MenuConfirmacionmainAudios9)"/>
+			       	<evaluate expression="jVoiceArchAudioItem" result="flashScope.MenuConfirmacionnoMatchAudios1"/><set name="flashScope.MenuConfirmacionnoMatchAudios1.src" value="locutionProvider.getAudioSrc('puerto_rico-es-US-SAN-BC-NM','TrxYPagos')"/>
+			       	<evaluate expression="jVoiceArchWording" result="flashScope.MenuConfirmacionnoMatchAudios1.wording"/>
+			       	<set name="flashScope.MenuConfirmacionnoMatchAudios1.wording.text" value="'La opción que usted seleccionó no es válida.'"/>
+			       	<evaluate expression="flashScope.MenuConfirmacion.noMatchAudios.add(flashScope.MenuConfirmacionnoMatchAudios1)"/>
+<evaluate expression="jVoiceArchAudioItem" result="flashScope.MenuConfirmacionnoInputAudios1"/><set name="flashScope.MenuConfirmacionnoInputAudios1.src" value="locutionProvider.getAudioSrc('puerto_rico-es-US-SAN-BC-NI','TrxYPagos')"/>
+<evaluate expression="jVoiceArchWording" result="flashScope.MenuConfirmacionnoInputAudios1.wording"/>
+<set name="flashScope.MenuConfirmacionnoInputAudios1.wording.text" value="'No ha seleccionado una opción.'"/>
+<evaluate expression="flashScope.MenuConfirmacion.noInputAudios.add(flashScope.MenuConfirmacionnoInputAudios1)"/>
+	</on-entry>
+	<evaluate expression="flowProcessor.process(flashScope.MenuConfirmacion)"/>
+	<transition to="render_MenuConfirmacion"></transition>
+</action-state>
+
+<view-state id="render_MenuConfirmacion" view="#{flowProcessor.getRenderer().getView()}" model="lastInputResult">
+	<transition on="match" to="render_decision_MenuConfirmacion"/>
+</view-state>
+	
+<action-state id="render_decision_MenuConfirmacion">
+	<evaluate expression="lastInputResult.interpretation"></evaluate>
+	<transition on="1" to="Ok"/>
+	<transition on="2" to="Otro"/>
+</action-state>
+<end-state id="Otro" view="#{flowProcessor.getRenderer().getView()}">
+	<output name="result" value="''" />
+</end-state>
+</flow> 
