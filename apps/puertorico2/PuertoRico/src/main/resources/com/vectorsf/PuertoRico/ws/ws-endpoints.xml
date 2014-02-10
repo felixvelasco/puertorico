@@ -1,24 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <endpoints>
-	<!-- 
-	namespace: wsdl targetNameSpace or tns
-	name: service port name / endpoint name
-	url: target	endpoint
-	-->
+	<!-- namespace: wsdl targetNameSpace or tns name: service port name / endpoint 
+		name url: target endpoint -->
 
-	<!-- Examples:
-	 <endpoint namespace="http://bluedash.net/ws"
-	 	name="HelloService" 
-		url="http://localhost:8080/ws/sayHello" />
-		
-	 <endpoint namespace="http://bluedash.net/ws" 
-		name="OtherHelloService"
-		url="http://localhost:8080/ws/otherSayHello" />
-	-->
+	<!-- Examples: <endpoint namespace="http://bluedash.net/ws" name="HelloService" 
+		url="http://localhost:8080/ws/sayHello" /> <endpoint namespace="http://bluedash.net/ws" 
+		name="OtherHelloService" url="http://localhost:8080/ws/otherSayHello" /> -->
 
-	 <endpoint namespace="http://ws.ivrpr.com/" 
-		name="WebServicesPort"
+	<endpoint namespace="http://ws.ivrpr.com/" name="WebServicesPort"
 		url="http://localhost:8088/mockWebServicesPortBinding" />
+
+	<endpoint namespace="http://tempuri.org/" name="ServicesSoap"
+		url="http://localhost:8088/mockServicesSoap" />
 
 </endpoints>
 
