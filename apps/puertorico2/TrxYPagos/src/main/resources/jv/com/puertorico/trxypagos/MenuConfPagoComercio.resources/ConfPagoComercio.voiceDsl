@@ -1,0 +1,15 @@
+menu ConfPagoComercio
+
+grammars{
+	dtmf "builtin:dtmf/digits"
+}
+audios{
+
+	main:
+		say wording "${menuConfPagoComercio.getTts()}"  
+}
+
+options{
+	confirmar : "1"
+	repetir : "2"	
+}
