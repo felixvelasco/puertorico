@@ -31,6 +31,12 @@ public class PagoComercio implements Serializable {
 	private List<Comercio> listaComercios;
 	private Comercio comercioSel;
 	
+	private String merchantId;
+	private String idMerchantCta;
+	private String montoPay;
+	private String fechProcPay;
+	private String referenciaPago;
+	
 	public void wsMerchantList() {
 		setWsMerchantListResult(0);
 		listaComercios = new ArrayList<Comercio>();
@@ -86,5 +92,45 @@ public class PagoComercio implements Serializable {
 	
 	public boolean isMerchantListOk() {
 		return wsMerchantListResult == 0;
+	}
+
+	public String getMerchantId() {
+		return merchantId;
+	}
+
+	public void setMerchantId(String merchantId) {
+		this.merchantId = merchantId;
+	}
+
+	public String getIdMerchantCta() {
+		return idMerchantCta;
+	}
+
+	public void setIdMerchantCta(String idMerchantCta) {
+		this.idMerchantCta = idMerchantCta;
+	}
+
+	public String getMontoPay() {
+		return montoPay;
+	}
+
+	public void setMontoPay(String montoPay) {
+		this.montoPay = montoPay;
+	}
+
+	public String getFechProcPay() {
+		return fechProcPay;
+	}
+
+	public void setFechProcPay(String fechProcPay) {
+		this.fechProcPay = fechProcPay;
+	}
+
+	public String getReferenciaPago() {
+		return referenciaPago;
+	}
+
+	public void setReferenciaPago(String referenciaPago) {
+		this.referenciaPago = referenciaPago;
 	}
 }

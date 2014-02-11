@@ -1,0 +1,8 @@
+output InfoPago
+{
+	bargein true
+}
+audios{
+	main:
+		say wording "infoPago.getTts()"
+}

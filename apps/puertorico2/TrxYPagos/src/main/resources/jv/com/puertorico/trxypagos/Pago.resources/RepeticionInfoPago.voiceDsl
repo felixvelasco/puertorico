@@ -1,0 +1,27 @@
+menu RepeticionInfoPago
+
+grammars{
+	dtmf "builtin:dtmf/digits"
+}
+audios{
+
+	main:
+		when("'attempts==0'") {
+			say src "puerto_rico-es-US-SAN-BC-MENU-REPETICION-PT1" wording "Para escuchar la información de nuevo, presione 1.  Para regresar al menú anterior, presione 8. Para regresar al menú principal, presione 9. Para comunicarse con un Representante de Servicio al Cliente, presione 0.  Para terminar la llamada, sólo cuelgue el teléfono."
+			}
+		when("'attempts==1'") {
+			say src "puerto_rico-es-US-SAN-BC-MENU-REPETICION-PT2" wording "Para escuchar la información de nuevo, presione 1.  Para regresar al menú anterior, presione 8. Para regresar al menú principal, presione 9. Para comunicarse con un Representante de Servicio al Cliente, presione 0.  Para terminar la llamada, sólo cuelgue el teléfono."
+			}
+		when("'attempts==2'") {
+			say src "puerto_rico-es-US-SAN-BC-MENU-REPETICION-PT3" wording "Para escuchar la información de nuevo, presione 1.  Para regresar al menú anterior, presione 8. Para regresar al menú principal, presione 9. Para comunicarse con un Representante de Servicio al Cliente, presione 0.  Para terminar la llamada, sólo cuelgue el teléfono."
+			}
+	nomatch:
+		say src "puerto_rico-es-US-SAN-BC-NM" wording "La opción que usted seleccionó no es válida."
+	noinput:
+		say src "puerto_rico-es-US-SAN-BC-NI" wording "No ha seleccionado una opción"
+}
+
+options{
+	repetir: "1"
+	menuPrincipal: "9"
+}

@@ -219,6 +219,12 @@
         <graphicsAlgorithm xsi:type="al:Text" foreground="/0/@colors.9" lineWidth="1" filled="false" transparency="0.0" width="42" height="24" font="/0/@fonts.1" value="Transfer"/>
         <location x="10" y="32"/>
       </anchors>
+      <anchors xsi:type="pi:FixPointAnchor" visible="true" active="true">
+        <properties key="TOOLTIP" value="OK"/>
+        <properties key="EVENT_NAME" value="OK"/>
+        <graphicsAlgorithm xsi:type="al:Text" foreground="/0/@colors.8" lineWidth="1" filled="false" transparency="0.0" width="15" height="24" font="/0/@fonts.1" value="OK"/>
+        <location x="62" y="32"/>
+      </anchors>
     </children>
     <children xsi:type="pi:ContainerShape" visible="true" active="true">
       <properties key="org.eclipse.graphiti.pattern.patternType" value="org.eclipse.graphiti.pattern.idpattern"/>
