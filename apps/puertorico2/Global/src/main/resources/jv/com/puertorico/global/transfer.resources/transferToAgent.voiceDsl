@@ -1,0 +1,8 @@
+blindTransfer transferToAgent
+
+{	
+	destination "tel:649691219"
+}
+
+audios{
+}

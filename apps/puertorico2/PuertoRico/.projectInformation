@@ -1,2 +1,24 @@
 <?xml version="1.0" encoding="ASCII"?>
-<base:JVApplication xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:base="http://base.jvoice.vectorsf.com/1.0" name="PuertoRico" description="" legacyLogger="true"/>
+<base:JVApplication xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:base="http://base.jvoice.vectorsf.com/1.0" xmlns:operations="http://jvoice.vectorsf.com/operations/1.0" name="PuertoRico" description="" legacyLogger="true">
+  <handlers event="maxAttempts">
+    <handler xsi:type="operations:Flow" href="archive:file:/C:/Users/operador/.m2/repository/Global/Global/1.0.0-SNAPSHOT/Global-1.0.0-SNAPSHOT.jar!/jv/com/puertorico/global/maxattempts.jvflow#_u16GIJLvEeOlMt3cyB_oWg"/>
+  </handlers>
+  <handlers event="maxNoInput">
+    <handler xsi:type="operations:Flow" href="archive:file:/C:/Users/operador/.m2/repository/Global/Global/1.0.0-SNAPSHOT/Global-1.0.0-SNAPSHOT.jar!/jv/com/puertorico/global/maxattempts.jvflow#_u16GIJLvEeOlMt3cyB_oWg"/>
+  </handlers>
+  <handlers event="maxNoMatch">
+    <handler xsi:type="operations:Flow" href="archive:file:/C:/Users/operador/.m2/repository/Global/Global/1.0.0-SNAPSHOT/Global-1.0.0-SNAPSHOT.jar!/jv/com/puertorico/global/maxattempts.jvflow#_u16GIJLvEeOlMt3cyB_oWg"/>
+  </handlers>
+  <handlers event="error">
+    <handler xsi:type="operations:Flow" href="archive:file:/C:/Users/operador/.m2/repository/Global/Global/1.0.0-SNAPSHOT/Global-1.0.0-SNAPSHOT.jar!/jv/com/puertorico/global/error.jvflow#_BcrM9JLwEeOlMt3cyB_oWg"/>
+  </handlers>
+  <handlers event="connectionerror">
+    <handler xsi:type="operations:Flow" href="archive:file:/C:/Users/operador/.m2/repository/Global/Global/1.0.0-SNAPSHOT/Global-1.0.0-SNAPSHOT.jar!/jv/com/puertorico/global/error.jvflow#_BcrM9JLwEeOlMt3cyB_oWg"/>
+  </handlers>
+  <handlers event="noresource">
+    <handler xsi:type="operations:Flow" href="archive:file:/C:/Users/operador/.m2/repository/Global/Global/1.0.0-SNAPSHOT/Global-1.0.0-SNAPSHOT.jar!/jv/com/puertorico/global/error.jvflow#_BcrM9JLwEeOlMt3cyB_oWg"/>
+  </handlers>
+  <handlers event="hangup">
+    <handler xsi:type="operations:Flow" href="archive:file:/C:/Users/operador/.m2/repository/Global/Global/1.0.0-SNAPSHOT/Global-1.0.0-SNAPSHOT.jar!/jv/com/puertorico/global/endCall.jvflow#_JdJDcJLwEeOlMt3cyB_oWg"/>
+  </handlers>
+</base:JVApplication>

@@ -4,4 +4,20 @@ xsi:schemaLocation="http://www.springframework.org/schema/webflow
 http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd"
 abstract="true">
 
+<view-state id="globalhandler_maxAttempts" view="flowRedirect:com/puertorico/global/maxattempts"/>
+<view-state id="globalhandler_maxNoInput" view="flowRedirect:com/puertorico/global/maxattempts"/>
+<view-state id="globalhandler_maxNoMatch" view="flowRedirect:com/puertorico/global/maxattempts"/>
+<view-state id="globalhandler_error" view="flowRedirect:com/puertorico/global/error"/>
+<view-state id="globalhandler_connectionerror" view="flowRedirect:com/puertorico/global/error"/>
+<view-state id="globalhandler_noresource" view="flowRedirect:com/puertorico/global/error"/>
+<view-state id="globalhandler_hangup" view="flowRedirect:com/puertorico/global/endCall"/>
+<global-transitions>
+<transition on="maxattempts" to="globalhandler_maxAttempts"/>
+<transition on="maxnoinput" to="globalhandler_maxNoInput"/>
+<transition on="maxnomatch" to="globalhandler_maxNoMatch"/>
+<transition on="error" to="globalhandler_error"/>
+<transition on="connectionerror" to="globalhandler_connectionerror"/>
+<transition on="noresource" to="globalhandler_noresource"/>
+<transition on="hangup" to="globalhandler_hangup"/>
+</global-transitions>
 </flow> 

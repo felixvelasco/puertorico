@@ -1,0 +1,38 @@
+<flow xmlns="http://www.springframework.org/schema/webflow"	
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"	
+xsi:schemaLocation="http://www.springframework.org/schema/webflow
+http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd"
+parent="Global/errorHandler"
+start-state= "_jVoiceCheckInit" >
+
+
+<action-state id="_jVoiceCheckInit">
+	<evaluate expression="jVoiceArchData.initialized" />
+		<transition on="no" to="_jVoiceInit"/>
+		<transition to="maxint"/>
+	</action-state>
+
+<view-state id="_jVoiceInit" view="_init" model="jVoiceArchData">
+	<transition to="maxint" >
+		<set name="jVoiceArchData.initialized" value="true"/>
+	</transition>
+</view-state>
+<view-state id="Final" view="flowRedirect:jVoiceArchFlows/jVoiceArchFlows/jVoiceArch-end"/>
+<action-state id="maxint">
+	<on-entry>
+		<evaluate expression="jVoiceArchOutput" result="flashScope.maxint"></evaluate>
+		<evaluate expression="jVoiceArchAudioItem" result="flashScope.maxintaudioItems1"/><evaluate expression="jVoiceArchWording" result="flashScope.maxintaudioItems1.wording"/>
+		<set name="flashScope.maxintaudioItems1.wording.text" value="'Lo sentimos, pero ha superado el número máximo de intentos permitidos.'"/>
+		<evaluate expression="flashScope.maxint.audioItems.add(flashScope.maxintaudioItems1)"/> 
+	</on-entry>
+	<evaluate expression="flowProcessor.process(flashScope.maxint)"/>
+	<transition to="transfer"/>
+</action-state>
+
+<subflow-state id="transfer" subflow="com/puertorico/global/transfer">
+ <transition to="Final">
+ 	<set name="flowScope.result" value="currentEvent.attributes.result" />
+ </transition>
+
+</subflow-state>
+</flow> 

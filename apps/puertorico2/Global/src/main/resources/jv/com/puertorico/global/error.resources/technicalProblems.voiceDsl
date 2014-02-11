@@ -1,0 +1,6 @@
+output technicalProblems
+
+audios{
+	main:
+		say wording "Estamos experimentando problemas técnicos."
+}

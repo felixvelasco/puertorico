@@ -1,0 +1,9 @@
+output transferInfoComun
+{
+	bargein false
+}
+
+audios{
+	main:
+		say wording "Por favor espere mientras transferimos su llamada a un representante de servicio de atención al cliente."
+}
