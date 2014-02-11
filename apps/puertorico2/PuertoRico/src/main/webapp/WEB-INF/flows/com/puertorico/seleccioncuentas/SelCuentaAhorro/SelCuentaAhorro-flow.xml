@@ -7,7 +7,6 @@ start-state= "_jVoiceCheckInit" >
 
 <on-start>
 <evaluate expression="manageCuentas" result="flowScope.manageTexts"></evaluate>
-<evaluate expression="text" result="flowScope.texto"></evaluate>
 
 </on-start>
 
@@ -15,83 +14,68 @@ start-state= "_jVoiceCheckInit" >
 <action-state id="_jVoiceCheckInit">
 	<evaluate expression="jVoiceArchData.initialized" />
 		<transition on="no" to="_jVoiceInit"/>
-		<transition to="outRobos"/>
+		<transition to="isOneAccount"/>
 	</action-state>
 
 <view-state id="_jVoiceInit" view="_init" model="jVoiceArchData">
-	<transition to="outRobos" >
+	<transition to="isOneAccount" >
 		<set name="jVoiceArchData.initialized" value="true"/>
 	</transition>
 </view-state>
-<end-state id="Final" view="#{flowProcessor.getRenderer().getView()}">
-	<output name="result" value="callData.listaCuentas[lastInputResult.interpretation - 1]" />
+<end-state id="AccSelected" view="#{flowProcessor.getRenderer().getView()}">
+	<output name="result" value="user.listaCuentas[lastInputResult.interpretation - 1]" />
 </end-state>
-<action-state id="outRobos">
-	<on-entry>
-		<evaluate expression="jVoiceArchOutput" result="flashScope.outRobos"></evaluate>
-		<evaluate expression="jVoiceArchAudioItem" result="flashScope.outRobosaudioItems1"/><evaluate expression="jVoiceArchWording" result="flashScope.outRobosaudioItems1.wording"/>
-		<set name="flashScope.outRobosaudioItems1.wording.text" value="'Para reportar robos o estravios presione asterisco'"/>
-		<evaluate expression="flashScope.outRobos.audioItems.add(flashScope.outRobosaudioItems1)"/> 
-	</on-entry>
-	<evaluate expression="flowProcessor.process(flashScope.outRobos)"/>
-	<transition to="Switch"/>
-</action-state>
 
-
-<action-state id="Switch">
-	<evaluate expression="callData.listaCuentas.size == 1" />
-	<transition on="yes" to="UnaCuenta"/>
-	<transition to="manage_Texts"/>
+<action-state id="isOneAccount">
+	<evaluate expression="user.listaCuentas.size() == 1" />
+	<transition on="yes" to="OnlyOneAcc"/>
+	<transition to="setTextForInput"/>
 </action-state>
-<action-state id="manage_Texts">
+<action-state id="setTextForInput">
    <evaluate expression="flowScope.manageTexts.manageTexts()"
    />
    
 
-	 <transition to="inputNumCuenta"></transition>
+	 <transition to="selectAccount"></transition>
 	
 </action-state>
-<action-state id="inputNumCuenta">
+<action-state id="selectAccount">
 	<on-entry>
-		<evaluate expression="jVoiceArchInput" result="flashScope.inputNumCuenta"></evaluate>
-		<set name="flashScope.inputNumCuenta.name" value="'inputNumCuenta'" />
-		<set name="flashScope.inputNumCuenta.bargein" value="true" />
-		<set name="flashScope.inputNumCuenta.maxAttempts" value="1" />
-		<set name="flashScope.inputNumCuenta.maxNoInput" value="1" />
-		<set name="flashScope.inputNumCuenta.maxNoMatch" value="1" />
+		<evaluate expression="jVoiceArchInput" result="flashScope.selectAccount"></evaluate>
+		<set name="flashScope.selectAccount.name" value="'selectAccount'" />
 		
 		<evaluate expression="jVoiceArchGrammar" result="flashScope.grammar1" />
 		<set name="flashScope.grammar1.src" value="'builtin:dtmf/digits'"/>
 		<set name="flashScope.grammar1.mode" value="'dtmf'"/>
 		<set name="flashScope.grammar1.module" value="'SeleccionCuentas'"/>
-		<evaluate expression="flashScope.inputNumCuenta.grammars.add(flashScope.grammar1)" />
+		<evaluate expression="flashScope.selectAccount.grammars.add(flashScope.grammar1)" />
 		
-        <evaluate expression="jVoiceArchAudioItem" result="flashScope.inputNumCuentamainAudios1"/><evaluate expression="jVoiceArchWording" result="flashScope.inputNumCuentamainAudios1.wording"/>
-        <set name="flashScope.inputNumCuentamainAudios1.wording.text" value="'' + texto.getTexto() + ''"/>
-        <evaluate expression="flashScope.inputNumCuenta.mainAudios.add(flashScope.inputNumCuentamainAudios1)"/>
-        <evaluate expression="jVoiceArchAudioItem" result="flashScope.inputNumCuentanoMatchAudios1"/><set name="flashScope.inputNumCuentanoMatchAudios1.src" value="locutionProvider.getAudioSrc('puerto_rico-es-US-SAN-BC-NM','SeleccionCuentas')"/>
-        <evaluate expression="jVoiceArchWording" result="flashScope.inputNumCuentanoMatchAudios1.wording"/>
-        <set name="flashScope.inputNumCuentanoMatchAudios1.wording.text" value="'La opción que usted seleccionó no es válida.'"/>
-        <evaluate expression="flashScope.inputNumCuenta.noMatchAudios.add(flashScope.inputNumCuentanoMatchAudios1)"/>
-        <evaluate expression="jVoiceArchAudioItem" result="flashScope.inputNumCuentanoInputAudios1"/><set name="flashScope.inputNumCuentanoInputAudios1.src" value="locutionProvider.getAudioSrc('puerto_rico-es-US-SAN-BC-NI','SeleccionCuentas')"/>
-        <evaluate expression="jVoiceArchWording" result="flashScope.inputNumCuentanoInputAudios1.wording"/>
-        <set name="flashScope.inputNumCuentanoInputAudios1.wording.text" value="'No ha seleccionado una opción.'"/>
-        <evaluate expression="flashScope.inputNumCuenta.noInputAudios.add(flashScope.inputNumCuentanoInputAudios1)"/>
+        <evaluate expression="jVoiceArchAudioItem" result="flashScope.selectAccountmainAudios1"/><evaluate expression="jVoiceArchWording" result="flashScope.selectAccountmainAudios1.wording"/>
+        <set name="flashScope.selectAccountmainAudios1.wording.text" value="'' + flowScope.manageTexts.text + ''"/>
+        <evaluate expression="flashScope.selectAccount.mainAudios.add(flashScope.selectAccountmainAudios1)"/>
+        <evaluate expression="jVoiceArchAudioItem" result="flashScope.selectAccountnoMatchAudios1"/><set name="flashScope.selectAccountnoMatchAudios1.src" value="locutionProvider.getAudioSrc('puerto_rico-es-US-SAN-BC-NM','SeleccionCuentas')"/>
+        <evaluate expression="jVoiceArchWording" result="flashScope.selectAccountnoMatchAudios1.wording"/>
+        <set name="flashScope.selectAccountnoMatchAudios1.wording.text" value="'La opción que usted seleccionó no es válida.'"/>
+        <evaluate expression="flashScope.selectAccount.noMatchAudios.add(flashScope.selectAccountnoMatchAudios1)"/>
+        <evaluate expression="jVoiceArchAudioItem" result="flashScope.selectAccountnoInputAudios1"/><set name="flashScope.selectAccountnoInputAudios1.src" value="locutionProvider.getAudioSrc('puerto_rico-es-US-SAN-BC-NI','SeleccionCuentas')"/>
+        <evaluate expression="jVoiceArchWording" result="flashScope.selectAccountnoInputAudios1.wording"/>
+        <set name="flashScope.selectAccountnoInputAudios1.wording.text" value="'No ha seleccionado una opción.'"/>
+        <evaluate expression="flashScope.selectAccount.noInputAudios.add(flashScope.selectAccountnoInputAudios1)"/>
 	</on-entry>
-	<evaluate expression="flowProcessor.process(flashScope.inputNumCuenta)"/>			
-	<transition to="render_inputNumCuenta"/>
+	<evaluate expression="flowProcessor.process(flashScope.selectAccount)"/>			
+	<transition to="render_selectAccount"/>
 </action-state>
 
-<view-state id="render_inputNumCuenta" view="#{flowProcessor.getRenderer().getView()}" model="lastInputResult">
-	<transition on="match" to="hayMasCuentas"/>
+<view-state id="render_selectAccount" view="#{flowProcessor.getRenderer().getView()}" model="lastInputResult">
+	<transition on="match" to="listMoreAcc"/>
 </view-state>
 
-<action-state id="hayMasCuentas">
+<action-state id="listMoreAcc">
 	<evaluate expression="lastInputResult.interpretation == '6'" />
-	<transition on="yes" to="manage_Texts"/>
-	<transition to="Final"/>
+	<transition on="yes" to="setTextForInput"/>
+	<transition to="AccSelected"/>
 </action-state>
-<end-state id="UnaCuenta" view="#{flowProcessor.getRenderer().getView()}">
-	<output name="result" value="callData.listaCuentas[0]" />
+<end-state id="OnlyOneAcc" view="#{flowProcessor.getRenderer().getView()}">
+	<output name="result" value="user.listaCuentas[0]" />
 </end-state>
 </flow> 
