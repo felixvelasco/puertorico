@@ -1,0 +1,6 @@
+output maxint
+
+audios{
+	main:
+		say wording "Lo sentimos, pero ha superado el número máximo de intentos permitidos."
+}

@@ -1,0 +1,52 @@
+<flow xmlns="http://www.springframework.org/schema/webflow"	
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"	
+xsi:schemaLocation="http://www.springframework.org/schema/webflow
+http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd"
+parent="Global/errorHandler"
+start-state= "_jVoiceCheckInit" >
+
+
+<action-state id="_jVoiceCheckInit">
+	<evaluate expression="jVoiceArchData.initialized" />
+		<transition on="no" to="_jVoiceInit"/>
+		<transition to="transferInfoComun"/>
+	</action-state>
+
+<view-state id="_jVoiceInit" view="_init" model="jVoiceArchData">
+	<transition to="transferInfoComun" >
+		<set name="jVoiceArchData.initialized" value="true"/>
+	</transition>
+</view-state>
+<end-state id="transferredEnd" view="#{flowProcessor.getRenderer().getView()}">
+	<output name="result" value="''" />
+</end-state>
+<action-state id="transferInfoComun">
+	<on-entry>
+		<evaluate expression="jVoiceArchOutput" result="flashScope.transferInfoComun"></evaluate>
+		<set name="flashScope.transferInfoComun.bargein" value="false" />
+		<evaluate expression="jVoiceArchAudioItem" result="flashScope.transferInfoComunaudioItems1"/><evaluate expression="jVoiceArchWording" result="flashScope.transferInfoComunaudioItems1.wording"/>
+		<set name="flashScope.transferInfoComunaudioItems1.wording.text" value="'Por favor espere mientras transferimos su llamada a un representante de servicio de atención al cliente.'"/>
+		<evaluate expression="flashScope.transferInfoComun.audioItems.add(flashScope.transferInfoComunaudioItems1)"/> 
+	</on-entry>
+	<evaluate expression="flowProcessor.process(flashScope.transferInfoComun)"/>
+	<transition to="transferToAgent"/>
+</action-state>
+
+<action-state id="transferToAgent">
+<on-entry>
+	<evaluate expression="jVoiceArchBlindTransfer" result = "flashScope.transferToAgent"/>
+	<set name="flashScope.transferToAgent.dest" value="'tel:649691219'"/>
+</on-entry>
+<evaluate expression="flowProcessor.process(flashScope.transferToAgent)"/>	
+<transition to="render_transferToAgent" />
+
+</action-state>
+
+<view-state id="render_transferToAgent" view="#{flowProcessor.getRenderer().getView()}" model="lastTransferResult">
+
+<transition on="transferred" to="transferredEnd"/>
+<transition on="unknown" to="transferInfoComun"/>
+<transition on="near_end_disconnect" to="transferredEnd"/>
+
+</view-state>
+</flow> 
