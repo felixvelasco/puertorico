@@ -1,15 +1,10 @@
-input menuPrincipal
+menu menuPrincipal
 
-{
-	bargein true
-	maxAttempts 3
-	maxNoInput 3
-	maxNoMatch 3
-}
 grammars{
-	dtmf "builtin:dtmf/digits?length=1"
-	voice "digits" 
- }
+	dtmf "menuPrincipalDtmf"
+	voice "menuPrincipalVoice"
+}
+
 audios{
 	main:
 		when("'attempts==0'") {
@@ -25,4 +20,9 @@ audios{
 		say wording "La opción que usted seleccionó no es válida."
 	noinput:
 		say wording "No ha seleccionado una opción."
+}
+
+options{
+	cuentas : "1"
+	trxPagos : "2"	
 }
