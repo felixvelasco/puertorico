@@ -1,0 +1,22 @@
+input CantidadPago
+
+grammars{
+	dtmf "builtin:dtmf/digits"
+}
+audios{
+	main:
+		when("'attempts==0'") {
+			say src "puerto_rico-es-US-SAN-BC-MENU-CANTIDAD-PAGO-COMERCIO-PT1" wording "Por favor, entre la cantidad que desea transferir, seguida por el signo de número. Recuerde incluir los centavos. Por ejemplo, si va a transferir 173.72 dólares, marque 1 7 3 7 2."
+			}
+		when("'attempts==1'") {
+			say src "puerto_rico-es-US-SAN-BC-MENU-CANTIDAD-PAGO-COMERCIO-PT2" wording "Por favor, entre la cantidad que desea transferir, seguida por el signo de número. Recuerde incluir los centavos. Por ejemplo, si va a transferir 173.72 dólares, marque 1 7 3 7 2."
+			}
+		when("'attempts==2'") {
+			say src "puerto_rico-es-US-SAN-BC-MENU-CANTIDAD-PAGO-COMERCIO-PT3" wording "Por favor, entre la cantidad que desea transferir, seguida por el signo de número. Recuerde incluir los centavos. Por ejemplo, si va a transferir 173.72 dólares, marque 1 7 3 7 2."
+			}
+	nomatch:
+		say src "puerto_rico-es-US-SAN-BC-NM" wording "La opción que usted seleccionó no es válida."
+	noinput:
+		say src "puerto_rico-es-US-SAN-BC-NI" wording "No ha seleccionado una opción"
+}
+

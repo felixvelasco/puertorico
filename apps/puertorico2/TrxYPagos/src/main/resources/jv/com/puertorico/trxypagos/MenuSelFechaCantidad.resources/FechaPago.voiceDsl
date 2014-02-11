@@ -1,0 +1,22 @@
+input FechaPago
+
+grammars{
+	dtmf "builtin:dtmf/digits"
+}
+audios{
+	main:
+		when("'attempts==0'") {
+			say src "puerto_rico-es-US-SAN-BC-MENU-SELECT-FECHA-PAGO-PT1" wording "Si desea que el pago se procese en el día de hoy, presione 1. Si desea que el pago se procese con fecha futura, por favor introduzca 6 dígitos con el siguiente formato: día, mes, año. Todo pago procesado después de las 5 de la tarde o en días no laborables, serán procesados con la fecha del próximo día laborable."
+			}
+		when("'attempts==1'") {
+			say src "puerto_rico-es-US-SAN-BC-MENU-SELECT-FECHA-PAGO-PT2" wording "Si desea que el pago se procese en el día de hoy, presione 1. Si desea que el pago se procese con fecha futura, por favor introduzca 6 dígitos con el siguiente formato: día, mes, año. Todo pago procesado después de las 5 de la tarde o en días no laborables, serán procesados con la fecha del próximo día laborable."
+			}
+		when("'attempts==2'") {
+			say src "puerto_rico-es-US-SAN-BC-MENU-SELECT-FECHA-PAGO-PT3" wording "Si desea que el pago se procese en el día de hoy, presione 1. Si desea que el pago se procese con fecha futura, por favor introduzca 6 dígitos con el siguiente formato: día, mes, año. Todo pago procesado después de las 5 de la tarde o en días no laborables, serán procesados con la fecha del próximo día laborable."
+			}
+	nomatch:
+		say src "puerto_rico-es-US-SAN-BC-NM" wording "La opción que usted seleccionó no es válida."
+	noinput:
+		say src "puerto_rico-es-US-SAN-BC-NI" wording "No ha seleccionado una opción"
+}
+
