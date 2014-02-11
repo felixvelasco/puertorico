@@ -1,13 +1,7 @@
 menu MenuTransPagos
 
-{
-	bargein true
-	maxAttempts 3
-	maxNoInput 2
-	maxNoMatch 2
-}
 grammars{
-	dtmf "builtin:dtmf/digits"
+	dtmf "menuTransPagosDtmf"
 }
 audios{
  	main: 
@@ -31,10 +25,10 @@ audios{
 	 	}
 	 	
 	nomatch:
-		say src "puerto_rico-es-US-SAN-BC-NI" wording "No ha seleccionado una opción."
+		say src "puerto_rico-es-US-SAN-BC-NM" wording "La opción que usted seleccionó no es válida."
 		
 	noinput:
-		say src "puerto_rico-es-US-SAN-BC-NM" wording "La opción que usted seleccionó no es válida."
+		say src "puerto_rico-es-US-SAN-BC-NI" wording "No ha seleccionado una opción."
 }
 
 options {

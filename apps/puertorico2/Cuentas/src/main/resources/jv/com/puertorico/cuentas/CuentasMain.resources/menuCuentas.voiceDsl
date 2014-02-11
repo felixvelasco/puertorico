@@ -1,7 +1,7 @@
 menu menuCuentas
 
 grammars{
-	dtmf "builtin:dtmf/digits"
+	dtmf "menuCuentasDtmf"
 }
 audios{
 

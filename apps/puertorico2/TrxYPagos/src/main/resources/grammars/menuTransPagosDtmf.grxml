@@ -1,0 +1,10 @@
+<?xml version="1.0" ?>
+<grammar root="main" version="1.0" xml:lang="es-ES" mode="dtmf">
+
+  <rule id="main" scope="public">
+    <one-of>
+      <item>1</item>
+    </one-of>
+  </rule>
+  
+</grammar>
